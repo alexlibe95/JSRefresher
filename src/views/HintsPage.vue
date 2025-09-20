@@ -80,41 +80,6 @@ const shuffleHints = () => {
 <template>
   <div class="min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <!-- Header -->
-      <div class="flex items-center justify-between mb-8">
-        <RouterLink
-          :to="`/category/${props.categoryId}`"
-          class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors font-medium"
-        >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Category
-        </RouterLink>
-
-        <div class="text-center">
-          <div class="flex items-center space-x-2">
-            <span class="text-2xl text-indigo-600 dark:text-indigo-400" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ category?.name }} Hints</h1>
-          </div>
-        </div>
-
-        <div class="flex items-center space-x-2">
-          <button
-            v-if="hints.length > 1"
-            @click="shuffleHints"
-            class="inline-flex items-center px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-            </svg>
-            Shuffle
-          </button>
-          <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
-            Hint {{ currentHintIndex + 1 }} of {{ hints.length }}
-          </div>
-        </div>
-      </div>
 
       <!-- Loading State -->
       <div v-if="isLoading" class="flex justify-center items-center py-16">
@@ -136,43 +101,87 @@ const shuffleHints = () => {
 
       <!-- Hints Content -->
       <div v-else-if="hints.length > 0">
-        <!-- Progress Bar -->
+        <!-- Header -->
         <div class="mb-8">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-sm font-medium text-gray-700">Progress</span>
-            <span class="text-sm font-medium text-gray-700">{{ Math.round(progress) }}%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2">
-            <div
-              class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
-              :style="{ width: `${progress}%` }"
-            ></div>
-          </div>
-        </div>
+          <!-- Back to Category and Title - Responsive -->
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+            <RouterLink
+              :to="`/category/${props.categoryId}`"
+              class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors font-medium mb-2 sm:mb-0"
+            >
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Category
+            </RouterLink>
 
-        <!-- Navigation Controls -->
-        <div class="flex items-center justify-between mb-8">
-          <button
-            @click="previousHint"
-            :disabled="isFirstHint"
-            class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
-          >
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            Previous
-          </button>
+            <div class="text-center sm:text-left">
+              <div class="flex items-center justify-center sm:justify-start space-x-2">
+                <span class="text-2xl text-indigo-600 dark:text-indigo-400" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
+                <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ category?.name }} Hints</h1>
+              </div>
+            </div>
+          </div>
 
-          <button
-            @click="nextHint"
-            :disabled="isLastHint"
-            class="inline-flex items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
-          >
-            Next
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          <!-- Controls Row - Responsive -->
+          <div class="flex items-center justify-between">
+            <!-- Shuffle Button - Hidden on very small screens -->
+            <button
+              v-if="hints.length > 1"
+              @click="shuffleHints"
+              class="hidden sm:inline-flex items-center px-3 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+              </svg>
+              Shuffle
+            </button>
+
+            <!-- Spacer -->
+            <div class="flex-1"></div>
+
+            <!-- Hint Counter -->
+            <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300 text-center sm:text-left">
+              Hint {{ currentHintIndex + 1 }} of {{ hints.length }}
+            </div>
+
+            <!-- Navigation Controls - Always visible -->
+            <div class="flex items-center space-x-2 ml-4">
+              <button
+                @click="previousHint"
+                :disabled="isFirstHint"
+                class="inline-flex items-center px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                @click="nextHint"
+                :disabled="isLastHint"
+                class="inline-flex items-center px-3 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="mt-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Progress</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ Math.round(progress) }}%</span>
+            </div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                :style="{ width: `${progress}%` }"
+              ></div>
+            </div>
+          </div>
         </div>
 
         <!-- Flashcard -->
