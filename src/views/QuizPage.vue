@@ -145,7 +145,7 @@ const getOptionLetter = (index: number) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Header -->
       <div class="flex items-center justify-between mb-8">
@@ -228,8 +228,8 @@ const getOptionLetter = (index: number) => {
                 <div class="flex items-center">
                   <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-sm font-semibold mr-3"
                         :class="[
-                          showResult.value && index === currentQuestion?.correct ? 'bg-green-500 text-white' :
-                          selectedAnswer === index && showResult.value && index !== currentQuestion?.correct ? 'bg-red-500 text-white' :
+                          showResult && index === currentQuestion?.correct ? 'bg-green-500 text-white' :
+                          selectedAnswer === index && showResult && index !== currentQuestion?.correct ? 'bg-red-500 text-white' :
                           selectedAnswer === index ? 'bg-indigo-500 text-white' :
                           'bg-gray-200 text-gray-600'
                         ]">

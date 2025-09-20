@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useDarkMode } from './composables/useDarkMode'
 
 const isMenuOpen = ref(false)
-const { isDark, toggleDarkMode } = useDarkMode()
+const { themeMode, isDark, toggleDarkMode } = useDarkMode()
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -16,9 +16,15 @@ const closeMenu = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+  <div class="min-h-screen transition-colors duration-300" :class="{
+    'bg-gradient-to-br from-blue-50 via-white to-indigo-50': !isDark,
+    'bg-gradient-to-br from-gray-900 to-gray-800': isDark
+  }">
     <!-- Navigation -->
-    <nav class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <nav class="shadow-lg border-b transition-colors duration-300" :class="{
+      'bg-white border-gray-200': !isDark,
+      'bg-gray-800 border-gray-700': isDark
+    }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <!-- Logo -->
@@ -46,30 +52,31 @@ const closeMenu = () => {
               About
             </RouterLink>
 
-            <!-- Dark Mode Toggle -->
+            <!-- Theme Toggle -->
             <button
               @click="toggleDarkMode"
-              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+              :title="themeMode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
             >
               <i
                 class="fas text-gray-600 dark:text-gray-300 transition-colors"
-                :class="isDark ? 'fa-sun' : 'fa-moon'"
+                :class="themeMode === 'light' ? 'fa-sun' : 'fa-moon'"
               ></i>
             </button>
+
           </div>
 
           <!-- Mobile menu button -->
           <div class="md:hidden flex items-center space-x-2">
-            <!-- Dark Mode Toggle for Mobile -->
+            <!-- Theme Toggle for Mobile -->
             <button
               @click="toggleDarkMode"
-              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+              :title="themeMode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'"
             >
               <i
                 class="fas text-gray-600 dark:text-gray-300 transition-colors text-sm"
-                :class="isDark ? 'fa-sun' : 'fa-moon'"
+                :class="themeMode === 'light' ? 'fa-sun' : 'fa-moon'"
               ></i>
             </button>
 
@@ -132,14 +139,23 @@ const closeMenu = () => {
       <RouterView />
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 mt-12 transition-colors duration-300">
+        <!-- Footer -->
+        <footer class="text-white py-8 mt-12 transition-colors duration-300" :class="{
+          'bg-gray-800': !isDark,
+          'bg-gray-900': isDark
+        }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <p class="text-gray-400 dark:text-gray-500">
+          <p class="mt-2" :class="{
+            'text-gray-400': !isDark,
+            'text-gray-500': isDark
+          }">
             Built with <i class="fas fa-heart text-red-500"></i> using Vue 3, TypeScript, and Tailwind CSS
           </p>
-          <p class="text-sm text-gray-500 dark:text-gray-600 mt-2">
+          <p class="text-sm mt-2" :class="{
+            'text-gray-500': !isDark,
+            'text-gray-600': isDark
+          }">
             © 2025 JSRefresher. All rights reserved.
           </p>
         </div>

@@ -1,54 +1,62 @@
 import { ref, computed, onMounted } from 'vue'
 
-const isDark = ref(false)
+type ThemeMode = 'light' | 'dark'
+
+const themeMode = ref<ThemeMode>('light')
 
 export function useDarkMode() {
   const toggleDarkMode = () => {
-    isDark.value = !isDark.value
-    localStorage.setItem('darkMode', isDark.value.toString())
-    updateDocumentClass()
+    setTheme(themeMode.value === 'light' ? 'dark' : 'light')
   }
 
-  const setDarkMode = (value: boolean) => {
-    isDark.value = value
-    localStorage.setItem('darkMode', value.toString())
+  const setTheme = (mode: ThemeMode) => {
+    themeMode.value = mode
+    localStorage.setItem('themeMode', mode)
     updateDocumentClass()
   }
 
   const updateDocumentClass = () => {
-    if (isDark.value) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+    const root = document.documentElement
+
+    // Remove existing theme classes
+    root.classList.remove('dark')
+
+    // Apply the selected theme
+    if (themeMode.value === 'dark') {
+      root.classList.add('dark')
     }
+
+    // Force a style recalculation
+    root.style.display = 'none'
+    // Trigger reflow
+    void root.offsetHeight
+    root.style.display = ''
+  }
+
+  const getCurrentTheme = () => {
+    return themeMode.value
   }
 
   const initDarkMode = () => {
     // Check localStorage first
-    const saved = localStorage.getItem('darkMode')
-    if (saved !== null) {
-      isDark.value = saved === 'true'
+    const saved = localStorage.getItem('themeMode') as ThemeMode
+    if (saved && ['light', 'dark'].includes(saved)) {
+      themeMode.value = saved
     } else {
-      // Check system preference
-      isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+      // Default to light mode for better user experience
+      themeMode.value = 'light'
     }
     updateDocumentClass()
   }
 
   onMounted(() => {
     initDarkMode()
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (localStorage.getItem('darkMode') === null) {
-        isDark.value = e.matches
-        updateDocumentClass()
-      }
-    })
   })
 
   return {
-    isDark: computed(() => isDark.value),
+    themeMode: computed(() => themeMode.value),
+    isDark: computed(() => getCurrentTheme() === 'dark'),
     toggleDarkMode,
-    setDarkMode
+    setTheme
   }
 }
