@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import questionsData from '../data/questions.json'
 
 interface Hint {
@@ -21,7 +21,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const route = useRoute()
 
 const category = ref<Category | null>(null)
 const hints = ref<Hint[]>([])
