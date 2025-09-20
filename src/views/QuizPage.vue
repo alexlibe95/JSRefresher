@@ -209,7 +209,7 @@ const getOptionLetter = (index: number) => {
         <p class="text-gray-600 mb-6">{{ error }}</p>
         <RouterLink
           :to="`/category/${props.categoryId}`"
-          class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          class="inline-flex items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors"
         >
           Back to Category
         </RouterLink>
@@ -261,7 +261,7 @@ const getOptionLetter = (index: number) => {
                   v-if="!isAnswered"
                   @click="submitAnswer"
                   :disabled="selectedAnswer === null"
-                  class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                  class="px-8 py-3 bg-indigo-600 dark:bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:text-gray-500 dark:disabled:text-gray-400 disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   Check Answer
                 </button>
@@ -269,14 +269,14 @@ const getOptionLetter = (index: number) => {
                 <button
                   v-else-if="isLastQuestion"
                   @click="finishQuiz()"
-                  class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
+                  class="px-8 py-3 bg-green-600 dark:bg-green-700 text-white font-semibold rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors cursor-pointer"
                 >
                   Finish Quiz
                 </button>
                 <button
                   v-else
                   @click="nextQuestion()"
-                  class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
+                  class="px-8 py-3 bg-green-600 dark:bg-green-700 text-white font-semibold rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors cursor-pointer"
                 >
                   Next Question
                 </button>
@@ -372,13 +372,13 @@ const getOptionLetter = (index: number) => {
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 @click="restartQuiz"
-                class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
+                class="px-6 py-3 bg-indigo-600 dark:bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors cursor-pointer"
               >
                 Try Again
               </button>
               <RouterLink
                 :to="`/category/${props.categoryId}`"
-                class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+                class="px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors cursor-pointer"
               >
                 Back to Category
               </RouterLink>
@@ -410,13 +410,13 @@ const getOptionLetter = (index: number) => {
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 @click="restartQuiz"
-                class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
+                class="px-6 py-3 bg-indigo-600 dark:bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors cursor-pointer"
               >
                 Try Again
               </button>
               <RouterLink
                 :to="`/category/${props.categoryId}`"
-                class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+                class="px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors cursor-pointer"
               >
                 Back to Category
               </RouterLink>
@@ -432,7 +432,7 @@ const getOptionLetter = (index: number) => {
         <p class="text-gray-600 mb-6">There are no quiz questions for this category yet.</p>
         <RouterLink
           :to="`/category/${props.categoryId}`"
-          class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          class="inline-flex items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors"
         >
           Back to Category
         </RouterLink>
