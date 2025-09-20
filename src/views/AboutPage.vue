@@ -1,0 +1,194 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+</script>
+
+<template>
+  <div class="min-h-screen bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <div class="text-6xl mb-6">🚀</div>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">About JSRefresher</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Your interactive companion for refreshing JavaScript, TypeScript, and modern web development knowledge.
+        </p>
+      </div>
+
+      <!-- Mission Section -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Our Mission</h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          JSRefresher was created to help developers like you quickly refresh and reinforce your knowledge
+          of modern web technologies. Whether you're preparing for an interview, brushing up before a project,
+          or just want to stay sharp, we've got you covered with interactive quizzes and helpful hints.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-4xl mb-3">🎯</div>
+            <h3 class="font-semibold text-gray-900 mb-2">Quiz Mode</h3>
+            <p class="text-sm text-gray-600">Test your knowledge with multiple-choice questions and get instant feedback.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">💡</div>
+            <h3 class="font-semibold text-gray-900 mb-2">Hints Mode</h3>
+            <p class="text-sm text-gray-600">Browse flashcards with bite-sized explanations for quick refresh sessions.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">📊</div>
+            <h3 class="font-semibold text-gray-900 mb-2">Progress Tracking</h3>
+            <p class="text-sm text-gray-600">Monitor your learning progress and identify areas for improvement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technologies Covered -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Technologies Covered</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2">📜</div>
+            <h3 class="font-semibold text-gray-900">JavaScript</h3>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2">🔷</div>
+            <h3 class="font-semibold text-gray-900">TypeScript</h3>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2">🌐</div>
+            <h3 class="font-semibold text-gray-900">Web Dev</h3>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2">💚</div>
+            <h3 class="font-semibold text-gray-900">Vue.js</h3>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2">⚛️</div>
+            <h3 class="font-semibold text-gray-900">React</h3>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-6">
+          And more! We're constantly adding new categories and questions to help you stay current
+          with the latest web development technologies and best practices.
+        </p>
+      </div>
+
+      <!-- Features -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">🎨 Modern UI</h3>
+            <p class="text-gray-600 mb-4">
+              Clean, responsive design built with Vue 3 and Tailwind CSS for an optimal learning experience
+              on any device.
+            </p>
+
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">⚡ Fast & Lightweight</h3>
+            <p class="text-gray-600 mb-4">
+              Optimized for performance with lazy loading and efficient state management.
+            </p>
+
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">🔄 Regular Updates</h3>
+            <p class="text-gray-600">
+              New questions and hints added regularly to keep content fresh and relevant.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">📱 Mobile Friendly</h3>
+            <p class="text-gray-600 mb-4">
+              Fully responsive design that works perfectly on smartphones, tablets, and desktops.
+            </p>
+
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">🎯 Targeted Learning</h3>
+            <p class="text-gray-600 mb-4">
+              Focus on specific technologies or concepts with our categorized content structure.
+            </p>
+
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">📈 Progress Tracking</h3>
+            <p class="text-gray-600">
+              Monitor your improvement over time and identify areas that need more attention.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Built With</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-4xl mb-2">🟢</div>
+            <h3 class="font-semibold text-gray-900">Vue 3</h3>
+            <p class="text-sm text-gray-600">Composition API</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">🔷</div>
+            <h3 class="font-semibold text-gray-900">TypeScript</h3>
+            <p class="text-sm text-gray-600">Type Safety</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">🎨</div>
+            <h3 class="font-semibold text-gray-900">Tailwind CSS</h3>
+            <p class="text-sm text-gray-600">Utility-First CSS</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">🛤️</div>
+            <h3 class="font-semibold text-gray-900">Vue Router</h3>
+            <p class="text-sm text-gray-600">Client-Side Routing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Ready to Start Learning?</h2>
+        <p class="text-gray-600 mb-8">
+          Jump right in and start refreshing your knowledge!
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <RouterLink
+            to="/"
+            class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            Start Learning
+          </RouterLink>
+          <a
+            href="https://github.com"
+            target="_blank"
+            class="px-8 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-16 pt-8 border-t border-gray-200 text-center">
+        <p class="text-gray-500">
+          Built with ❤️ using modern web technologies
+        </p>
+        <p class="text-sm text-gray-400 mt-2">
+          © 2025 JSRefresher. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bg-white {
+  animation: fadeInUp 0.5s ease-out;
+}
+</style>
