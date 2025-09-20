@@ -136,7 +136,7 @@ const shuffleHints = () => {
 
       <!-- Error State -->
       <div v-else-if="error" class="text-center py-16">
-        <div class="text-6xl mb-4">😵</div>
+        <div class="text-6xl mb-4"><i class="fas fa-dizzy"></i></div>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Hints Not Found</h2>
         <p class="text-gray-600 mb-6">{{ error }}</p>
         <RouterLink
@@ -168,7 +168,7 @@ const shuffleHints = () => {
           <div class="p-8">
             <!-- Question Side -->
             <div v-if="!showAnswer" class="text-center">
-              <div class="text-6xl mb-6">❓</div>
+              <div class="text-6xl mb-6"><i class="fas fa-question"></i></div>
               <h2 class="text-2xl font-bold text-gray-900 mb-8 leading-relaxed">
                 {{ currentHint?.title }}
               </h2>
@@ -182,7 +182,7 @@ const shuffleHints = () => {
 
             <!-- Answer Side -->
             <div v-else class="text-center">
-              <div class="text-6xl mb-6">💡</div>
+              <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
               <h2 class="text-2xl font-bold text-gray-900 mb-4 leading-relaxed">
                 {{ currentHint?.title }}
               </h2>
@@ -272,7 +272,7 @@ const shuffleHints = () => {
 
         <!-- Completion Message -->
         <div v-if="isLastHint && showAnswer" class="mt-8 bg-white rounded-xl shadow-lg p-8 text-center">
-          <div class="text-6xl mb-6">🎉</div>
+          <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
           <h2 class="text-3xl font-bold text-gray-900 mb-4">All Hints Completed!</h2>
           <p class="text-xl text-gray-600 mb-6">
             You've reviewed all {{ hints.length }} hints in this category.
@@ -303,7 +303,7 @@ const shuffleHints = () => {
 
       <!-- No Hints -->
       <div v-else class="text-center py-16">
-        <div class="text-6xl mb-4">💡</div>
+        <div class="text-6xl mb-4"><i class="fas fa-lightbulb"></i></div>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">No Hints Available</h2>
         <p class="text-gray-600 mb-6">There are no hints for this category yet.</p>
         <RouterLink

@@ -23,7 +23,7 @@ const isLoading = ref(true)
 const error = ref<string | null>(null)
 
 const categoryName = computed(() => category.value?.name || 'Unknown Category')
-const categoryIcon = computed(() => category.value?.icon || '📚')
+const categoryIcon = computed(() => category.value?.icon || 'fas fa-book')
 const categoryDescription = computed(() => category.value?.description || '')
 
 onMounted(() => {
@@ -77,7 +77,7 @@ const getStats = () => {
 
       <!-- Error State -->
       <div v-else-if="error" class="text-center py-16">
-        <div class="text-6xl mb-4">😵</div>
+        <div class="text-6xl mb-4"><i class="fas fa-dizzy"></i></div>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Category Not Found</h2>
         <p class="text-gray-600 mb-6">{{ error }}</p>
         <RouterLink
@@ -127,8 +127,8 @@ const getStats = () => {
           <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             <div class="p-8">
               <div class="text-center">
-                <div class="text-6xl mb-6">💡</div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Hints Mode</h3>
+              <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Hints Mode</h3>
                 <p class="text-gray-600 mb-6 leading-relaxed">
                   Browse through flashcards with bite-sized explanations and reminders.
                   Perfect for quick refresh sessions and learning new concepts.
@@ -159,8 +159,8 @@ const getStats = () => {
           <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             <div class="p-8">
               <div class="text-center">
-                <div class="text-6xl mb-6">🎯</div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Quiz Mode</h3>
+              <div class="text-6xl mb-6"><i class="fas fa-bullseye"></i></div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Quiz Mode</h3>
                 <p class="text-gray-600 mb-6 leading-relaxed">
                   Test your knowledge with multiple-choice questions and code challenges.
                   Get immediate feedback and detailed explanations for each answer.
@@ -193,7 +193,7 @@ const getStats = () => {
           <h3 class="text-2xl font-bold text-gray-900 mb-4">How to Use</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">🎯 Quiz Mode</h4>
+              <h4 class="text-lg font-semibold text-gray-800 mb-2"><i class="fas fa-bullseye mr-2"></i>Quiz Mode</h4>
               <ul class="text-gray-600 space-y-1">
                 <li>• Multiple choice questions</li>
                 <li>• Immediate feedback</li>
@@ -202,7 +202,7 @@ const getStats = () => {
               </ul>
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-gray-800 mb-2">💡 Hints Mode</h4>
+              <h4 class="text-lg font-semibold text-gray-800 mb-2"><i class="fas fa-lightbulb mr-2"></i>Hints Mode</h4>
               <ul class="text-gray-600 space-y-1">
                 <li>• Flashcard-style learning</li>
                 <li>• Quick refresh sessions</li>

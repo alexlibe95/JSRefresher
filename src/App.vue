@@ -22,7 +22,7 @@ const closeMenu = () => {
           <!-- Logo -->
           <div class="flex items-center">
             <RouterLink to="/" class="flex items-center space-x-2" @click="closeMenu">
-              <div class="text-2xl">🚀</div>
+              <div class="text-2xl"><i class="fas fa-rocket"></i></div>
               <span class="text-xl font-bold text-gray-900">JSRefresher</span>
             </RouterLink>
           </div>
@@ -111,7 +111,7 @@ const closeMenu = () => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <p class="text-gray-400">
-            Built with ❤️ using Vue 3, TypeScript, and Tailwind CSS
+            Built with <i class="fas fa-heart text-red-500"></i> using Vue 3, TypeScript, and Tailwind CSS
           </p>
           <p class="text-sm text-gray-500 mt-2">
             © 2025 JSRefresher. All rights reserved.

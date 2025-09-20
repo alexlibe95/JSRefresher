@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <!-- Header -->
       <div class="text-center mb-16">
-        <div class="text-6xl mb-6">🚀</div>
+        <div class="text-6xl mb-6"><i class="fas fa-rocket"></i></div>
         <h1 class="text-4xl font-bold text-gray-900 mb-4">About JSRefresher</h1>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
           Your interactive companion for refreshing JavaScript, TypeScript, and modern web development knowledge.
@@ -24,17 +24,17 @@ import { RouterLink } from 'vue-router'
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="text-center">
-            <div class="text-4xl mb-3">🎯</div>
+            <div class="text-4xl mb-3"><i class="fas fa-bullseye"></i></div>
             <h3 class="font-semibold text-gray-900 mb-2">Quiz Mode</h3>
             <p class="text-sm text-gray-600">Test your knowledge with multiple-choice questions and get instant feedback.</p>
           </div>
           <div class="text-center">
-            <div class="text-4xl mb-3">💡</div>
+            <div class="text-4xl mb-3"><i class="fas fa-lightbulb"></i></div>
             <h3 class="font-semibold text-gray-900 mb-2">Hints Mode</h3>
             <p class="text-sm text-gray-600">Browse flashcards with bite-sized explanations for quick refresh sessions.</p>
           </div>
           <div class="text-center">
-            <div class="text-4xl mb-3">📊</div>
+            <div class="text-4xl mb-3"><i class="fas fa-chart-line"></i></div>
             <h3 class="font-semibold text-gray-900 mb-2">Progress Tracking</h3>
             <p class="text-sm text-gray-600">Monitor your learning progress and identify areas for improvement.</p>
           </div>
@@ -46,24 +46,24 @@ import { RouterLink } from 'vue-router'
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Technologies Covered</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           <div class="text-center p-4 bg-gray-50 rounded-lg">
-            <div class="text-3xl mb-2">📜</div>
+            <div class="text-3xl mb-2"><i class="fab fa-js-square"></i></div>
             <h3 class="font-semibold text-gray-900">JavaScript</h3>
           </div>
           <div class="text-center p-4 bg-gray-50 rounded-lg">
-            <div class="text-3xl mb-2">🔷</div>
-            <h3 class="font-semibold text-gray-900">TypeScript</h3>
-          </div>
-          <div class="text-center p-4 bg-gray-50 rounded-lg">
-            <div class="text-3xl mb-2">🌐</div>
+            <div class="text-3xl mb-2"><i class="fas fa-globe"></i></div>
             <h3 class="font-semibold text-gray-900">Web Dev</h3>
           </div>
           <div class="text-center p-4 bg-gray-50 rounded-lg">
-            <div class="text-3xl mb-2">💚</div>
+            <div class="text-3xl mb-2"><i class="fab fa-vuejs"></i></div>
             <h3 class="font-semibold text-gray-900">Vue.js</h3>
           </div>
           <div class="text-center p-4 bg-gray-50 rounded-lg">
-            <div class="text-3xl mb-2">⚛️</div>
+            <div class="text-3xl mb-2"><i class="fab fa-react"></i></div>
             <h3 class="font-semibold text-gray-900">React</h3>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div class="text-3xl mb-2"><i class="fab fa-angular"></i></div>
+            <h3 class="font-semibold text-gray-900">Angular</h3>
           </div>
         </div>
         <p class="text-gray-600 mt-6">
@@ -77,7 +77,7 @@ import { RouterLink } from 'vue-router'
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">🎨 Modern UI</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3"><i class="fas fa-palette mr-2"></i>Modern UI</h3>
             <p class="text-gray-600 mb-4">
               Clean, responsive design built with Vue 3 and Tailwind CSS for an optimal learning experience
               on any device.
@@ -94,17 +94,17 @@ import { RouterLink } from 'vue-router'
             </p>
           </div>
           <div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">📱 Mobile Friendly</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3"><i class="fas fa-mobile-alt mr-2"></i>Mobile Friendly</h3>
             <p class="text-gray-600 mb-4">
               Fully responsive design that works perfectly on smartphones, tablets, and desktops.
             </p>
 
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">🎯 Targeted Learning</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3"><i class="fas fa-bullseye mr-2"></i>Targeted Learning</h3>
             <p class="text-gray-600 mb-4">
               Focus on specific technologies or concepts with our categorized content structure.
             </p>
 
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">📈 Progress Tracking</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3"><i class="fas fa-chart-line mr-2"></i>Progress Tracking</h3>
             <p class="text-gray-600">
               Monitor your improvement over time and identify areas that need more attention.
             </p>
@@ -117,24 +117,24 @@ import { RouterLink } from 'vue-router'
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Built With</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
-            <div class="text-4xl mb-2">🟢</div>
+            <div class="text-4xl mb-2"><i class="fab fa-vuejs"></i></div>
             <h3 class="font-semibold text-gray-900">Vue 3</h3>
             <p class="text-sm text-gray-600">Composition API</p>
           </div>
           <div class="text-center">
-            <div class="text-4xl mb-2">🔷</div>
-            <h3 class="font-semibold text-gray-900">TypeScript</h3>
-            <p class="text-sm text-gray-600">Type Safety</p>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl mb-2">🎨</div>
+            <div class="text-4xl mb-2"><i class="fas fa-palette"></i></div>
             <h3 class="font-semibold text-gray-900">Tailwind CSS</h3>
             <p class="text-sm text-gray-600">Utility-First CSS</p>
           </div>
           <div class="text-center">
-            <div class="text-4xl mb-2">🛤️</div>
+            <div class="text-4xl mb-2"><i class="fas fa-route"></i></div>
             <h3 class="font-semibold text-gray-900">Vue Router</h3>
             <p class="text-sm text-gray-600">Client-Side Routing</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2"><i class="fab fa-js-square"></i></div>
+            <h3 class="font-semibold text-gray-900">JavaScript</h3>
+            <p class="text-sm text-gray-600">Core Language</p>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@ import { RouterLink } from 'vue-router'
       <!-- Footer -->
       <div class="mt-16 pt-8 border-t border-gray-200 text-center">
         <p class="text-gray-500">
-          Built with ❤️ using modern web technologies
+          Built with <i class="fas fa-heart text-red-500"></i> using modern web technologies
         </p>
         <p class="text-sm text-gray-400 mt-2">
           © 2025 JSRefresher. All rights reserved.

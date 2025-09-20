@@ -50,11 +50,11 @@ const score = computed(() => {
 
 const getScoreText = computed(() => {
   const percentage = score.value
-  if (percentage >= 90) return 'Excellent! 🎉'
-  if (percentage >= 80) return 'Great job! 👏'
-  if (percentage >= 70) return 'Good work! 👍'
-  if (percentage >= 60) return 'Not bad! 📚'
-  return 'Keep practicing! 💪'
+  if (percentage >= 90) return 'Excellent!'
+  if (percentage >= 80) return 'Great job!'
+  if (percentage >= 70) return 'Good work!'
+  if (percentage >= 60) return 'Not bad!'
+  return 'Keep practicing!'
 })
 
 onMounted(() => {
@@ -178,7 +178,7 @@ const getOptionLetter = (index: number) => {
 
       <!-- Error State -->
       <div v-else-if="error" class="text-center py-16">
-        <div class="text-6xl mb-4">😵</div>
+        <div class="text-6xl mb-4"><i class="fas fa-dizzy"></i></div>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">Quiz Not Found</h2>
         <p class="text-gray-600 mb-6">{{ error }}</p>
         <RouterLink
@@ -336,7 +336,7 @@ const getOptionLetter = (index: number) => {
 
         <!-- Quiz Results -->
         <div v-if="isLastQuestion && isAnswered" class="mt-8 bg-white rounded-xl shadow-lg p-8 text-center">
-          <div class="text-6xl mb-6">🏆</div>
+          <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
           <h2 class="text-3xl font-bold text-gray-900 mb-4">Quiz Complete!</h2>
           <div class="text-6xl font-bold text-indigo-600 mb-4">{{ score }}%</div>
           <p class="text-xl text-gray-600 mb-6">{{ getScoreText }}</p>
@@ -375,7 +375,7 @@ const getOptionLetter = (index: number) => {
 
       <!-- No Questions -->
       <div v-else class="text-center py-16">
-        <div class="text-6xl mb-4">📝</div>
+        <div class="text-6xl mb-4"><i class="fas fa-file-alt"></i></div>
         <h2 class="text-2xl font-bold text-gray-900 mb-2">No Questions Available</h2>
         <p class="text-gray-600 mb-6">There are no quiz questions for this category yet.</p>
         <RouterLink

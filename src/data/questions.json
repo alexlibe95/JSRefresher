@@ -3,7 +3,7 @@
     "javascript": {
       "name": "JavaScript",
       "description": "Core JavaScript concepts and modern features",
-      "icon": "📜",
+      "icon": "fab fa-js-square",
       "hints": [
         {
           "id": "js-1",
@@ -69,79 +69,10 @@
         }
       ]
     },
-    "typescript": {
-      "name": "TypeScript",
-      "description": "Type safety and advanced features for JavaScript",
-      "icon": "🔷",
-      "hints": [
-        {
-          "id": "ts-1",
-          "title": "Type vs Interface",
-          "content": "Types are more flexible and can represent primitive types, unions, intersections, and more. Interfaces are primarily for object shapes and can be extended. Use interfaces for objects, types for everything else."
-        },
-        {
-          "id": "ts-2",
-          "title": "Generics",
-          "content": "Generics allow you to create reusable components that work with multiple types. They provide type safety while maintaining flexibility. Example: function identity<T>(arg: T): T { return arg; }"
-        },
-        {
-          "id": "ts-3",
-          "title": "Union Types",
-          "content": "Union types allow a value to be one of several types. Use the | operator: type StringOrNumber = string | number. This is useful for functions that accept multiple types."
-        },
-        {
-          "id": "ts-4",
-          "title": "Optional Properties",
-          "content": "Use ? to make properties optional in interfaces and types. Example: interface User { name: string; age?: number; }. Optional properties can be undefined."
-        },
-        {
-          "id": "ts-5",
-          "title": "Type Assertions",
-          "content": "Type assertions tell TypeScript to treat a value as a specific type. Use 'as' keyword or angle bracket syntax. Example: const input = document.getElementById('myInput') as HTMLInputElement;"
-        }
-      ],
-      "quiz": [
-        {
-          "id": "ts-quiz-1",
-          "question": "What is the main benefit of TypeScript?",
-          "options": ["Faster runtime performance", "Smaller bundle size", "Type safety and better IDE support", "Automatic code formatting"],
-          "correct": 2,
-          "explanation": "TypeScript provides compile-time type checking and better IDE support with autocompletion and error detection."
-        },
-        {
-          "id": "ts-quiz-2",
-          "question": "How do you define an optional property in a TypeScript interface?",
-          "options": ["property?: type", "property!: type", "property: type | undefined", "property: type?"],
-          "correct": 0,
-          "explanation": "Use the ? operator after the property name to make it optional in interfaces and types."
-        },
-        {
-          "id": "ts-quiz-3",
-          "question": "What does 'as const' do in TypeScript?",
-          "options": ["Makes the value immutable", "Creates a constant assertion", "Both A and B", "None of the above"],
-          "correct": 2,
-          "explanation": "'as const' makes object literals readonly and narrows literal types to their most specific type."
-        },
-        {
-          "id": "ts-quiz-4",
-          "question": "Which of the following is NOT a valid TypeScript type?",
-          "options": ["string | number", "string & number", "Record<string, any>", "Map<string, number>"],
-          "correct": 1,
-          "explanation": "string & number (intersection type) is not valid because no value can be both string and number simultaneously."
-        },
-        {
-          "id": "ts-quiz-5",
-          "question": "What is the difference between 'any' and 'unknown' in TypeScript?",
-          "options": ["No difference", "'unknown' is safer because it requires type checking", "'any' is safer", "'unknown' allows all operations"],
-          "correct": 1,
-          "explanation": "'unknown' is type-safe - you must narrow it before using it, while 'any' allows all operations without type checking."
-        }
-      ]
-    },
     "web": {
       "name": "Web/Frontend",
       "description": "General web development and frontend concepts",
-      "icon": "🌐",
+      "icon": "fas fa-globe",
       "hints": [
         {
           "id": "web-1",
@@ -210,7 +141,7 @@
     "vue": {
       "name": "Vue.js",
       "description": "Vue.js framework concepts and best practices",
-      "icon": "💚",
+      "icon": "fab fa-vuejs",
       "hints": [
         {
           "id": "vue-1",
@@ -279,7 +210,7 @@
     "react": {
       "name": "React",
       "description": "React framework concepts and hooks",
-      "icon": "⚛️",
+      "icon": "fab fa-react",
       "hints": [
         {
           "id": "react-1",
@@ -348,7 +279,7 @@
     "angular": {
       "name": "Angular",
       "description": "Angular framework concepts and best practices",
-      "icon": "🅰️",
+      "icon": "fab fa-angular",
       "hints": [
         {
           "id": "angular-1",

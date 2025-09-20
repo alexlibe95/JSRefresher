@@ -47,15 +47,15 @@ const getCategory = (key: string) => {
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div class="text-3xl font-bold">📚</div>
+              <div class="text-3xl font-bold"><i class="fas fa-book"></i></div>
               <div class="text-sm">Interactive Learning</div>
             </div>
             <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div class="text-3xl font-bold">🎯</div>
+              <div class="text-3xl font-bold"><i class="fas fa-bullseye"></i></div>
               <div class="text-sm">Quiz Mode</div>
             </div>
             <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div class="text-3xl font-bold">💡</div>
+              <div class="text-3xl font-bold"><i class="fas fa-lightbulb"></i></div>
               <div class="text-sm">Hints Mode</div>
             </div>
           </div>
@@ -94,7 +94,7 @@ const getCategory = (key: string) => {
               <div class="p-8">
                 <div class="text-center">
                   <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {{ getCategory(categoryKey)?.icon }}
+                    <i :class="getCategory(categoryKey)?.icon"></i>
                   </div>
                   <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
                     {{ getCategory(categoryKey)?.name }}
@@ -120,7 +120,7 @@ const getCategory = (key: string) => {
 
         <!-- Error State -->
         <div v-else class="text-center py-16">
-          <div class="text-6xl mb-4">😵</div>
+          <div class="text-6xl mb-4"><i class="fas fa-dizzy"></i></div>
           <h3 class="text-2xl font-bold text-gray-900 mb-2">No categories found</h3>
           <p class="text-gray-600">There was an error loading the technology categories.</p>
         </div>
@@ -139,7 +139,7 @@ const getCategory = (key: string) => {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Quiz Mode -->
           <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div class="text-4xl mb-4">🎯</div>
+            <div class="text-4xl mb-4"><i class="fas fa-bullseye"></i></div>
             <h3 class="text-xl font-bold text-gray-900 mb-3">Quiz Mode</h3>
             <p class="text-gray-600">
               Test your knowledge with multiple-choice questions and code challenges.
@@ -149,7 +149,7 @@ const getCategory = (key: string) => {
 
           <!-- Hints Mode -->
           <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div class="text-4xl mb-4">💡</div>
+            <div class="text-4xl mb-4"><i class="fas fa-lightbulb"></i></div>
             <h3 class="text-xl font-bold text-gray-900 mb-3">Hints Mode</h3>
             <p class="text-gray-600">
               Browse through flashcards with bite-sized explanations and reminders.
@@ -159,7 +159,7 @@ const getCategory = (key: string) => {
 
           <!-- Progress Tracking -->
           <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-            <div class="text-4xl mb-4">📊</div>
+            <div class="text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
             <h3 class="text-xl font-bold text-gray-900 mb-3">Progress Tracking</h3>
             <p class="text-gray-600">
               Track your learning progress across different technologies and topics.
