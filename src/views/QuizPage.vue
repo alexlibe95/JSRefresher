@@ -161,7 +161,7 @@ const getOptionLetter = (index: number) => {
 
         <div class="text-center">
           <div class="flex items-center space-x-2">
-            <span class="text-2xl">{{ category?.icon }}</span>
+            <span class="text-2xl" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
             <h1 class="text-xl font-bold text-gray-900">{{ category?.name }} Quiz</h1>
           </div>
         </div>
@@ -307,7 +307,7 @@ const getOptionLetter = (index: number) => {
             <h3 class="text-lg font-semibold text-gray-900">Question Navigation</h3>
             <button
               @click="restartQuiz"
-              class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
             >
               Restart Quiz
             </button>
@@ -359,13 +359,13 @@ const getOptionLetter = (index: number) => {
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               @click="restartQuiz"
-              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
+              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
             >
               Try Again
             </button>
             <RouterLink
               :to="`/category/${props.categoryId}`"
-              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
             >
               Back to Category
             </RouterLink>

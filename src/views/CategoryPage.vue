@@ -23,7 +23,10 @@ const isLoading = ref(true)
 const error = ref<string | null>(null)
 
 const categoryName = computed(() => category.value?.name || 'Unknown Category')
-const categoryIcon = computed(() => category.value?.icon || 'fas fa-book')
+const categoryIcon = computed(() => {
+  const icon = category.value?.icon || 'fas fa-book'
+  return `<i class="${icon}"></i>`
+})
 const categoryDescription = computed(() => category.value?.description || '')
 
 onMounted(() => {
@@ -94,7 +97,7 @@ const getStats = () => {
         <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
           <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white">
             <div class="flex items-center mb-4">
-              <div class="text-6xl mr-6">{{ categoryIcon }}</div>
+              <div class="text-6xl mr-6" v-html="categoryIcon"></div>
               <div>
                 <h1 class="text-4xl font-bold mb-2">{{ categoryName }}</h1>
                 <p class="text-xl text-indigo-100">{{ categoryDescription }}</p>
@@ -124,16 +127,16 @@ const getStats = () => {
         <!-- Mode Selection -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Hints Mode -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div class="p-8">
-              <div class="text-center">
-              <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Hints Mode</h3>
-                <p class="text-gray-600 mb-6 leading-relaxed">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow h-full flex flex-col">
+            <div class="p-8 flex-1 flex flex-col">
+              <div class="text-center flex-1 flex flex-col justify-center">
+                <div class="text-6xl mb-6 flex-shrink-0"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex-shrink-0">Hints Mode</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed flex-1 flex items-center">
                   Browse through flashcards with bite-sized explanations and reminders.
                   Perfect for quick refresh sessions and learning new concepts.
                 </p>
-                <div class="mb-6">
+                <div class="mb-6 flex-shrink-0">
                   <div class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 text-green-800">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -143,12 +146,12 @@ const getStats = () => {
                 </div>
               </div>
             </div>
-            <div class="bg-gradient-to-r from-green-500 to-emerald-600 p-6">
+            <div class="bg-gradient-to-r from-green-500 to-emerald-600 p-6 flex-shrink-0">
               <RouterLink
                 :to="`/hints/${props.categoryId}`"
                 class="block text-center"
               >
-                <button class="w-full bg-white text-green-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 transition-colors">
+                <button class="w-full bg-white text-green-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                   Start Hints Mode
                 </button>
               </RouterLink>
@@ -156,16 +159,16 @@ const getStats = () => {
           </div>
 
           <!-- Quiz Mode -->
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div class="p-8">
-              <div class="text-center">
-              <div class="text-6xl mb-6"><i class="fas fa-bullseye"></i></div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Quiz Mode</h3>
-                <p class="text-gray-600 mb-6 leading-relaxed">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow h-full flex flex-col">
+            <div class="p-8 flex-1 flex flex-col">
+              <div class="text-center flex-1 flex flex-col justify-center">
+                <div class="text-6xl mb-6 flex-shrink-0"><i class="fas fa-bullseye"></i></div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex-shrink-0">Quiz Mode</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed flex-1 flex items-center">
                   Test your knowledge with multiple-choice questions and code challenges.
                   Get immediate feedback and detailed explanations for each answer.
                 </p>
-                <div class="mb-6">
+                <div class="mb-6 flex-shrink-0">
                   <div class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -175,12 +178,12 @@ const getStats = () => {
                 </div>
               </div>
             </div>
-            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 flex-shrink-0">
               <RouterLink
                 :to="`/quiz/${props.categoryId}`"
                 class="block text-center"
               >
-                <button class="w-full bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 transition-colors">
+                <button class="w-full bg-white text-indigo-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                   Start Quiz Mode
                 </button>
               </RouterLink>

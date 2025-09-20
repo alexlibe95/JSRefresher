@@ -107,7 +107,7 @@ const shuffleHints = () => {
 
         <div class="text-center">
           <div class="flex items-center space-x-2">
-            <span class="text-2xl">{{ category?.icon }}</span>
+            <span class="text-2xl" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
             <h1 class="text-xl font-bold text-gray-900">{{ category?.name }} Hints</h1>
           </div>
         </div>
@@ -226,7 +226,7 @@ const shuffleHints = () => {
           <div class="flex space-x-2">
             <button
               @click="restartHints"
-              class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0V9a8 8 0 1115.356 2M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -281,19 +281,19 @@ const shuffleHints = () => {
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               @click="restartHints"
-              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
+              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
             >
               Review Again
             </button>
             <button
               @click="shuffleHints"
-              class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+              class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
             >
               Shuffle & Review
             </button>
             <RouterLink
               :to="`/category/${props.categoryId}`"
-              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
             >
               Back to Category
             </RouterLink>

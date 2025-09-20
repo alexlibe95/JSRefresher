@@ -30,6 +30,14 @@ const getCategoryKeys = () => {
 const getCategory = (key: string) => {
   return categories.value[key]
 }
+
+const getCategoryIcon = (key: string) => {
+  const category = categories.value[key]
+  if (category && category.icon) {
+    return `<i class="${category.icon}"></i>`
+  }
+  return '<i class="fas fa-book"></i>'
+}
 </script>
 
 <template>
@@ -85,26 +93,25 @@ const getCategory = (key: string) => {
           <div
             v-for="categoryKey in getCategoryKeys()"
             :key="categoryKey"
-            class="group"
+            class="group h-full"
           >
             <RouterLink
               :to="`/category/${categoryKey}`"
-              class="block bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-indigo-200"
+              class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-indigo-200 h-full flex flex-col"
             >
-              <div class="p-8">
-                <div class="text-center">
-                  <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <i :class="getCategory(categoryKey)?.icon"></i>
+              <div class="p-8 flex-1 flex flex-col">
+                <div class="text-center flex-1 flex flex-col justify-center">
+                  <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" style="will-change: transform;" v-html="getCategoryIcon(categoryKey)">
                   </div>
-                  <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors flex-shrink-0" style="will-change: color;">
                     {{ getCategory(categoryKey)?.name }}
                   </h3>
-                  <p class="text-gray-600 leading-relaxed">
+                  <p class="text-gray-600 leading-relaxed flex-1 flex items-center">
                     {{ getCategory(categoryKey)?.description }}
                   </p>
                 </div>
               </div>
-              <div class="bg-gradient-to-r from-indigo-500 to-purple-600 p-4">
+              <div class="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 flex-shrink-0">
                 <div class="flex justify-between items-center text-white">
                   <span class="text-sm font-medium">Explore →</span>
                   <div class="flex space-x-2">
@@ -185,9 +192,7 @@ const getCategory = (key: string) => {
   }
 }
 
-.group:hover {
-  animation: fadeInUp 0.3s ease-out;
-}
+/* Removed hover animation to prevent flickering */
 
 /* Gradient text animation */
 @keyframes gradientShift {
