@@ -30,6 +30,7 @@ const currentQuestionIndex = ref(0)
 const selectedAnswer = ref<number | null>(null)
 const showResult = ref(false)
 const isAnswered = ref(false)
+const isQuizFinished = ref(false)
 const userAnswers = ref<number[]>([])
 const isLoading = ref(true)
 const error = ref<string | null>(null)
@@ -80,13 +81,13 @@ const selectAnswer = (answerIndex: number) => {
   selectedAnswer.value = answerIndex
 }
 
-const submitAnswer = () => {
-  if (selectedAnswer.value === null || isAnswered.value) return
+    const submitAnswer = () => {
+      if (selectedAnswer.value === null || isAnswered.value) return
 
-  userAnswers.value[currentQuestionIndex.value] = selectedAnswer.value
-  isAnswered.value = true
-  showResult.value = true
-}
+      userAnswers.value[currentQuestionIndex.value] = selectedAnswer.value
+      isAnswered.value = true
+      showResult.value = true
+    }
 
 const nextQuestion = () => {
   if (!isLastQuestion.value) {
@@ -95,17 +96,24 @@ const nextQuestion = () => {
   }
 }
 
-const resetQuestionState = () => {
-  selectedAnswer.value = userAnswers.value[currentQuestionIndex.value]
-  isAnswered.value = userAnswers.value[currentQuestionIndex.value] !== -1
-  showResult.value = false
-}
+    const resetQuestionState = () => {
+      selectedAnswer.value = userAnswers.value[currentQuestionIndex.value]
+      isAnswered.value = userAnswers.value[currentQuestionIndex.value] !== -1
+      showResult.value = false
+    }
 
-const restartQuiz = () => {
-  currentQuestionIndex.value = 0
-  userAnswers.value = new Array(questions.value.length).fill(-1)
-  resetQuestionState()
-}
+    const restartQuiz = () => {
+      currentQuestionIndex.value = 0
+      userAnswers.value = new Array(questions.value.length).fill(-1)
+      resetQuestionState()
+      isQuizFinished.value = false
+      showResult.value = false
+      isAnswered.value = false
+    }
+
+    const finishQuiz = () => {
+      isQuizFinished.value = true
+    }
 
 const goToQuestion = (index: number) => {
   currentQuestionIndex.value = index
@@ -115,19 +123,19 @@ const goToQuestion = (index: number) => {
 const getAnswerClass = (optionIndex: number) => {
   if (!showResult.value) {
     return selectedAnswer.value === optionIndex
-      ? 'bg-indigo-100 border-indigo-300 text-indigo-900'
-      : 'bg-white border-gray-300 text-gray-900 hover:bg-gray-50'
+      ? 'bg-indigo-100 border-indigo-300 text-indigo-900 dark:bg-indigo-900/30 dark:border-indigo-600 dark:text-indigo-200'
+      : 'bg-white border-gray-300 text-gray-900 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700'
   }
 
   if (optionIndex === currentQuestion.value?.correct) {
-    return 'bg-green-100 border-green-300 text-green-900'
+    return 'bg-green-100 border-green-500 text-green-900 dark:bg-green-900/30 dark:border-green-600 dark:text-green-200'
   }
 
   if (optionIndex === selectedAnswer.value && optionIndex !== currentQuestion.value?.correct) {
-    return 'bg-red-100 border-red-300 text-red-900'
+    return 'bg-red-100 border-red-500 text-red-900 dark:bg-red-900/30 dark:border-red-600 dark:text-red-200'
   }
 
-  return 'bg-gray-100 border-gray-300 text-gray-500'
+  return 'bg-gray-100 border-gray-300 text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400'
 }
 
 const getOptionLetter = (index: number) => {
@@ -181,185 +189,224 @@ const getOptionLetter = (index: number) => {
       </div>
 
       <!-- Quiz Content -->
-      <div v-else-if="questions.length > 0">
-        <!-- Progress Bar -->
-        <div class="mb-8">
-          <div class="flex justify-between items-center mb-2">
-            <span class="text-sm font-medium text-gray-700">Progress</span>
-            <span class="text-sm font-medium text-gray-700">{{ Math.round(progress) }}%</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2">
-            <div
-              class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
-              :style="{ width: `${progress}%` }"
-            ></div>
-          </div>
-        </div>
-
-        <!-- Question Card -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-          <div class="p-8">
-            <h2 class="text-xl font-bold text-gray-900 mb-6 leading-relaxed">
-              {{ currentQuestion?.question }}
-            </h2>
-
-            <!-- Options -->
-            <div class="space-y-3">
-              <button
-                v-for="(option, index) in currentQuestion?.options"
-                :key="index"
-                @click="selectAnswer(index)"
-                :disabled="isAnswered"
-                :class="[
-                  'w-full text-left p-4 rounded-lg border-2 transition-all duration-200',
-                  getAnswerClass(index),
-                  'disabled:cursor-not-allowed'
-                ]"
-              >
-                <div class="flex items-center">
-                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-sm font-semibold mr-3"
-                        :class="[
-                          showResult && index === currentQuestion?.correct ? 'bg-green-500 text-white' :
-                          selectedAnswer === index && showResult && index !== currentQuestion?.correct ? 'bg-red-500 text-white' :
-                          selectedAnswer === index ? 'bg-indigo-500 text-white' :
-                          'bg-gray-200 text-gray-600'
-                        ]">
-                    {{ getOptionLetter(index) }}
-                  </span>
-                  <span>{{ option }}</span>
-                </div>
-              </button>
+      <div v-if="questions.length > 0">
+        <!-- Quiz Interface (hidden when finished) -->
+        <div v-if="!isQuizFinished">
+          <!-- Progress Bar -->
+          <div class="mb-8">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Progress</span>
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ Math.round(progress) }}%</span>
             </div>
-
-            <!-- Submit Button -->
-            <div class="mt-8 text-center">
-              <button
-                v-if="!isAnswered"
-                @click="submitAnswer"
-                :disabled="selectedAnswer === null"
-                class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-              >
-                Check Answer
-              </button>
-
-              <button
-                v-else
-                @click="nextQuestion"
-                class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-              >
-                {{ isLastQuestion ? 'Finish Quiz' : 'Next Question' }}
-              </button>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div
+                class="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                :style="{ width: `${progress}%` }"
+              ></div>
             </div>
           </div>
-        </div>
 
-        <!-- Explanation -->
-        <div v-if="showResult" class="bg-white rounded-xl shadow-lg p-8 mb-8">
-          <div class="flex items-start">
-            <div class="flex-shrink-0 mr-4">
-              <div :class="[
-                'w-8 h-8 rounded-full flex items-center justify-center',
-                selectedAnswer === currentQuestion?.correct ? 'bg-green-100' : 'bg-red-100'
-              ]">
-                <svg
-                  v-if="selectedAnswer === currentQuestion?.correct"
-                  class="w-5 h-5 text-green-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          <!-- Question Card -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-8 transition-colors duration-300">
+            <div class="p-8">
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed transition-colors duration-300">
+                {{ currentQuestion?.question }}
+              </h2>
+
+              <!-- Options -->
+              <div class="space-y-3">
+                <button
+                  v-for="(option, index) in currentQuestion?.options"
+                  :key="index"
+                  @click="selectAnswer(index)"
+                  :disabled="isAnswered"
+                  :class="[
+                    'w-full text-left p-4 rounded-lg border-2 transition-all duration-200',
+                    getAnswerClass(index),
+                    'disabled:cursor-not-allowed'
+                  ]"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <svg
+                  <div class="flex items-center">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold mr-3"
+                          :class="[
+                            showResult && index === currentQuestion?.correct ? 'bg-green-500 text-white' :
+                            selectedAnswer === index && showResult && index !== currentQuestion?.correct ? 'bg-red-500 text-white' :
+                            selectedAnswer === index ? 'bg-indigo-500 text-white' :
+                            'bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
+                          ]">
+                      {{ getOptionLetter(index) }}
+                    </span>
+                    <span>{{ option }}</span>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="mt-8 text-center">
+                <button
+                  v-if="!isAnswered"
+                  @click="submitAnswer"
+                  :disabled="selectedAnswer === null"
+                  class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                >
+                  Check Answer
+                </button>
+
+                <button
+                  v-else-if="isLastQuestion"
+                  @click="finishQuiz()"
+                  class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
+                >
+                  Finish Quiz
+                </button>
+                <button
                   v-else
-                  class="w-5 h-5 text-red-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  @click="nextQuestion()"
+                  class="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                  Next Question
+                </button>
               </div>
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold mb-2">
-                {{ selectedAnswer === currentQuestion?.correct ? 'Correct!' : 'Incorrect' }}
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-                {{ currentQuestion?.explanation }}
-              </p>
+          </div>
+
+          <!-- Explanation and Navigation -->
+          <div v-if="!isQuizFinished">
+            <!-- Explanation -->
+            <div v-if="showResult" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8 transition-colors duration-300 border-l-4" :class="selectedAnswer === currentQuestion?.correct ? 'border-l-green-500' : 'border-l-red-500'">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mr-4">
+                  <div :class="[
+                    'w-12 h-12 rounded-full flex items-center justify-center',
+                    selectedAnswer === currentQuestion?.correct ? 'bg-green-100' : 'bg-red-100'
+                  ]">
+                    <svg
+                      v-if="selectedAnswer === currentQuestion?.correct"
+                      class="w-6 h-6 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <svg
+                      v-else
+                      class="w-6 h-6 text-red-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-3" :class="selectedAnswer === currentQuestion?.correct ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'">
+                    {{ selectedAnswer === currentQuestion?.correct ? '✅ Correct!' : '❌ Incorrect' }}
+                  </h3>
+                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {{ currentQuestion?.explanation }}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Navigation -->
-        <div v-if="questions.length > 1" class="bg-white rounded-xl shadow-lg p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-gray-900">Question Navigation</h3>
-            <button
-              @click="restartQuiz"
-              class="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
-            >
-              Restart Quiz
-            </button>
-          </div>
+            <!-- Navigation -->
+            <div v-if="questions.length > 1" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white transition-colors duration-300">Question Navigation</h3>
+                <button
+                  @click="restartQuiz"
+                  class="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                >
+                  Restart Quiz
+                </button>
+              </div>
 
-          <div class="grid grid-cols-5 sm:grid-cols-10 gap-2">
-            <button
-              v-for="(question, index) in questions"
-              :key="question.id"
-              @click="goToQuestion(index)"
-              :class="[
-                'aspect-square rounded-lg border-2 font-semibold text-sm transition-all',
-                index === currentQuestionIndex
-                  ? 'bg-indigo-600 border-indigo-600 text-white'
-                  : userAnswers[index] === -1
-                  ? 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
-                  : userAnswers[index] === question.correct
-                  ? 'bg-green-100 border-green-300 text-green-800'
-                  : 'bg-red-100 border-red-300 text-red-800'
-              ]"
-            >
-              {{ index + 1 }}
-            </button>
+              <div class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                <button
+                  v-for="(question, index) in questions"
+                  :key="question.id"
+                  @click="goToQuestion(index)"
+                :class="[
+                  'aspect-square rounded-lg border-2 font-semibold text-sm transition-all',
+                  index === currentQuestionIndex
+                    ? 'bg-indigo-600 border-indigo-600 text-white'
+                    : userAnswers[index] === -1
+                    ? 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : userAnswers[index] === question.correct
+                    ? 'bg-green-100 dark:bg-green-900 border-green-300 dark:border-green-600 text-green-800 dark:text-green-200'
+                    : 'bg-red-100 dark:bg-red-900 border-red-300 dark:border-red-600 text-red-800 dark:text-red-200'
+                ]"
+                >
+                  {{ index + 1 }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Quiz Results -->
-        <div v-if="isLastQuestion && isAnswered" class="mt-8 bg-white rounded-xl shadow-lg p-8 text-center">
-          <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">Quiz Complete!</h2>
-          <div class="text-6xl font-bold text-indigo-600 mb-4">{{ score }}%</div>
-          <p class="text-xl text-gray-600 mb-6">{{ getScoreText }}</p>
+        <div v-if="isQuizFinished" class="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center transition-colors duration-300">
+          <!-- Web Category: Simplified Results -->
+          <div v-if="props.categoryId === 'web'">
+            <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Quiz Complete!</h2>
+            <div class="text-6xl font-bold text-indigo-600 mb-4">{{ score }}%</div>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">{{ getScoreText }}</p>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-gray-50 rounded-lg p-4">
-              <div class="text-2xl font-bold text-gray-900">{{ userAnswers.filter((a, i) => a === questions[i]?.correct).length }}</div>
-              <div class="text-sm text-gray-600">Correct Answers</div>
-            </div>
-            <div class="bg-gray-50 rounded-lg p-4">
-              <div class="text-2xl font-bold text-gray-900">{{ questions.length }}</div>
-              <div class="text-sm text-gray-600">Total Questions</div>
-            </div>
-            <div class="bg-gray-50 rounded-lg p-4">
-              <div class="text-2xl font-bold text-gray-900">{{ Math.round((userAnswers.filter((a, i) => a === questions[i]?.correct).length / questions.length) * 100) }}%</div>
-              <div class="text-sm text-gray-600">Accuracy</div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                @click="restartQuiz"
+                class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
+              >
+                Try Again
+              </button>
+              <RouterLink
+                :to="`/category/${props.categoryId}`"
+                class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+              >
+                Back to Category
+              </RouterLink>
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              @click="restartQuiz"
-              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
-            >
-              Try Again
-            </button>
-            <RouterLink
-              :to="`/category/${props.categoryId}`"
-              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
-            >
-              Back to Category
-            </RouterLink>
+          <!-- Other Categories: Detailed Results -->
+          <div v-else>
+            <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Quiz Complete!</h2>
+            <div class="text-6xl font-bold text-indigo-600 mb-4">{{ score }}%</div>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">{{ getScoreText }}</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors duration-300">
+                <div class="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ userAnswers.filter((a, i) => a === questions[i]?.correct).length }}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Correct Answers</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors duration-300">
+                <div class="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ questions.length }}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Total Questions</div>
+              </div>
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 transition-colors duration-300">
+                <div class="text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ Math.round((userAnswers.filter((a, i) => a === questions[i]?.correct).length / questions.length) * 100) }}%</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Accuracy</div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                @click="restartQuiz"
+                class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
+              >
+                Try Again
+              </button>
+              <RouterLink
+                :to="`/category/${props.categoryId}`"
+                class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+              >
+                Back to Category
+              </RouterLink>
+            </div>
           </div>
         </div>
       </div>
