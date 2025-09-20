@@ -34,9 +34,9 @@ const getCategory = (key: string) => {
 const getCategoryIcon = (key: string) => {
   const category = categories.value[key]
   if (category && category.icon) {
-    return `<i class="${category.icon}"></i>`
+    return `<i class="${category.icon} text-purple-300"></i>`
   }
-  return '<i class="fas fa-book"></i>'
+  return '<i class="fas fa-book text-purple-300"></i>'
 }
 </script>
 
@@ -154,7 +154,7 @@ const getCategoryIcon = (key: string) => {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Quiz Mode -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-            <div class="text-4xl mb-4"><i class="fas fa-bullseye"></i></div>
+            <div class="text-4xl mb-4 text-purple-500"><i class="fas fa-bullseye"></i></div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Quiz Mode</h3>
             <p class="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Test your knowledge with multiple-choice questions and code challenges.
@@ -164,7 +164,7 @@ const getCategoryIcon = (key: string) => {
 
           <!-- Hints Mode -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-            <div class="text-4xl mb-4"><i class="fas fa-lightbulb"></i></div>
+            <div class="text-4xl mb-4 text-purple-500"><i class="fas fa-lightbulb"></i></div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Hints Mode</h3>
             <p class="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Browse through flashcards with bite-sized explanations and reminders.
@@ -174,7 +174,7 @@ const getCategoryIcon = (key: string) => {
 
           <!-- Progress Tracking -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-            <div class="text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
+            <div class="text-4xl mb-4 text-purple-500"><i class="fas fa-chart-line"></i></div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">Progress Tracking</h3>
             <p class="text-gray-600 dark:text-gray-300 transition-colors duration-300">
               Track your learning progress across different technologies and topics.

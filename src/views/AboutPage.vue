@@ -153,7 +153,7 @@ import { RouterLink } from 'vue-router'
             Start Learning
           </RouterLink>
           <a
-            href="https://github.com"
+            href="https://github.com/alexlibe95/JSRefresher"
             target="_blank"
             class="px-8 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
           >
