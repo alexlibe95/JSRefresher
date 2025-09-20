@@ -26,7 +26,6 @@ const route = useRoute()
 const category = ref<Category | null>(null)
 const hints = ref<Hint[]>([])
 const currentHintIndex = ref(0)
-const showAnswer = ref(false)
 const isLoading = ref(true)
 const error = ref<string | null>(null)
 
@@ -54,39 +53,27 @@ onMounted(() => {
   }
 })
 
-const toggleAnswer = () => {
-  showAnswer.value = !showAnswer.value
-}
-
 const nextHint = () => {
   if (!isLastHint.value) {
     currentHintIndex.value++
-    showAnswer.value = false
   }
 }
 
 const previousHint = () => {
   if (!isFirstHint.value) {
     currentHintIndex.value--
-    showAnswer.value = false
   }
 }
 
-const restartHints = () => {
-  currentHintIndex.value = 0
-  showAnswer.value = false
-}
 
 const goToHint = (index: number) => {
   currentHintIndex.value = index
-  showAnswer.value = false
 }
 
 const shuffleHints = () => {
   const shuffled = [...hints.value].sort(() => Math.random() - 0.5)
   hints.value = shuffled
   currentHintIndex.value = 0
-  showAnswer.value = false
 }
 </script>
 
@@ -163,84 +150,6 @@ const shuffleHints = () => {
           </div>
         </div>
 
-        <!-- Flashcard -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-          <div class="p-8">
-            <!-- Web Category: Show Answer Immediately -->
-            <div v-if="props.categoryId === 'web'" class="text-center">
-              <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed transition-colors duration-300">
-                {{ currentHint?.title }}
-              </h2>
-              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-8 transition-colors duration-300">
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line transition-colors duration-300">
-                  {{ currentHint?.content }}
-                </p>
-              </div>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  @click="restartHints"
-                  class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
-                >
-                  Review Again
-                </button>
-                <button
-                  v-if="!isLastHint"
-                  @click="nextHint"
-                  class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
-                >
-                  Next Hint
-                </button>
-              </div>
-            </div>
-
-            <!-- Other Categories: Question/Answer Toggle -->
-            <div v-else>
-              <!-- Question Side -->
-              <div v-if="!showAnswer" class="text-center">
-                <div class="text-6xl mb-6"><i class="fas fa-question"></i></div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 leading-relaxed transition-colors duration-300">
-                  {{ currentHint?.title }}
-                </h2>
-                <button
-                  @click="toggleAnswer"
-                  class="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
-                >
-                  Show Answer
-                </button>
-              </div>
-
-              <!-- Answer Side -->
-              <div v-else class="text-center">
-                <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed transition-colors duration-300">
-                  {{ currentHint?.title }}
-                </h2>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-8 transition-colors duration-300">
-                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line transition-colors duration-300">
-                    {{ currentHint?.content }}
-                  </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    @click="toggleAnswer"
-                    class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
-                  >
-                    Show Question
-                  </button>
-                  <button
-                    v-if="!isLastHint"
-                    @click="nextHint"
-                    class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
-                  >
-                    Next Hint
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Navigation Controls -->
         <div class="flex items-center justify-between mb-8">
           <button
@@ -254,22 +163,10 @@ const shuffleHints = () => {
             Previous
           </button>
 
-          <div class="flex space-x-2">
-            <button
-              @click="restartHints"
-              class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
-            >
-              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0V9a8 8 0 1115.356 2M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-              Restart
-            </button>
-          </div>
-
           <button
             @click="nextHint"
             :disabled="isLastHint"
-            class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:cursor-not-allowed transition-colors cursor-pointer"
+            class="inline-flex items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
           >
             Next
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,9 +175,36 @@ const shuffleHints = () => {
           </button>
         </div>
 
+        <!-- Flashcard -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-8 transition-colors duration-300">
+          <div class="p-8">
+            <div class="text-center">
+              <div class="text-6xl mb-6 text-indigo-600 dark:text-indigo-400"><i class="fas fa-lightbulb"></i></div>
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed transition-colors duration-300">
+                {{ currentHint?.title }}
+              </h2>
+              <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 mb-8 transition-colors duration-300 border-l-4 border-l-indigo-500 dark:border-l-indigo-400">
+                <p class="text-gray-800 dark:text-gray-100 leading-relaxed whitespace-pre-line transition-colors duration-300 text-lg">
+                  {{ currentHint?.content }}
+                </p>
+              </div>
+              <div class="flex justify-center">
+                <button
+                  v-if="!isLastHint"
+                  @click="nextHint"
+                  class="px-6 py-3 bg-green-600 dark:bg-green-700 text-white font-semibold rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors cursor-pointer"
+                >
+                  Next Hint
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <!-- Hint Grid Navigation -->
-        <div v-if="hints.length > 1" class="bg-white rounded-xl shadow-lg p-6">
-          <h3 class="text-lg font-semibold text-gray-900 mb-4">All Hints</h3>
+        <div v-if="hints.length > 1" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">All Hints</h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
             <button
               v-for="(hint, index) in hints"
@@ -289,8 +213,8 @@ const shuffleHints = () => {
               :class="[
                 'p-4 rounded-lg border-2 font-medium text-sm transition-all',
                 index === currentHintIndex
-                  ? 'bg-indigo-100 border-indigo-300 text-indigo-900'
-                  : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300'
+                  ? 'bg-indigo-100 dark:bg-indigo-900/30 border-indigo-300 dark:border-indigo-600 text-indigo-900 dark:text-indigo-200'
+                  : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
               ]"
             >
               <div class="text-center">
@@ -302,29 +226,23 @@ const shuffleHints = () => {
         </div>
 
         <!-- Completion Message -->
-        <div v-if="isLastHint && showAnswer" class="mt-8 bg-white rounded-xl shadow-lg p-8 text-center">
-          <div class="text-6xl mb-6"><i class="fas fa-trophy"></i></div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">All Hints Completed!</h2>
-          <p class="text-xl text-gray-600 mb-6">
+        <div v-if="isLastHint" class="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center transition-colors duration-300">
+          <div class="text-6xl mb-6 text-indigo-600 dark:text-indigo-400"><i class="fas fa-trophy"></i></div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">All Hints Completed!</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
             You've reviewed all {{ hints.length }} hints in this category.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              @click="restartHints"
-              class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
-            >
-              Review Again
-            </button>
-            <button
               @click="shuffleHints"
-              class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
+              class="px-6 py-3 bg-green-600 dark:bg-green-700 text-white font-semibold rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors cursor-pointer"
             >
               Shuffle & Review
             </button>
             <RouterLink
               :to="`/category/${props.categoryId}`"
-              class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+              class="px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors cursor-pointer"
             >
               Back to Category
             </RouterLink>
@@ -334,12 +252,12 @@ const shuffleHints = () => {
 
       <!-- No Hints -->
       <div v-else class="text-center py-16">
-        <div class="text-6xl mb-4"><i class="fas fa-lightbulb"></i></div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">No Hints Available</h2>
-        <p class="text-gray-600 mb-6">There are no hints for this category yet.</p>
+        <div class="text-6xl mb-4 text-indigo-600 dark:text-indigo-400"><i class="fas fa-lightbulb"></i></div>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">No Hints Available</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">There are no hints for this category yet.</p>
         <RouterLink
           :to="`/category/${props.categoryId}`"
-          class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          class="inline-flex items-center px-4 py-2 bg-indigo-600 dark:bg-indigo-700 text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-colors"
         >
           Back to Category
         </RouterLink>

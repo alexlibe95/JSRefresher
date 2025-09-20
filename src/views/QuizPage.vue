@@ -96,7 +96,7 @@ const nextQuestion = () => {
   }
 }
 
-    const resetQuestionState = () => {
+const resetQuestionState = () => {
       selectedAnswer.value = userAnswers.value[currentQuestionIndex.value]
       isAnswered.value = userAnswers.value[currentQuestionIndex.value] !== -1
       showResult.value = false
