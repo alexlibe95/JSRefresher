@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 import questionsData from '../data/questions.json'
 
 interface QuizQuestion {
@@ -23,7 +23,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const route = useRoute()
 
 const category = ref<Category | null>(null)
 const questions = ref<QuizQuestion[]>([])
@@ -37,7 +36,6 @@ const error = ref<string | null>(null)
 
 const currentQuestion = computed(() => questions.value[currentQuestionIndex.value])
 const isLastQuestion = computed(() => currentQuestionIndex.value === questions.value.length - 1)
-const isFirstQuestion = computed(() => currentQuestionIndex.value === 0)
 const progress = computed(() => ((currentQuestionIndex.value + 1) / questions.value.length) * 100)
 
 const score = computed(() => {
@@ -93,13 +91,6 @@ const submitAnswer = () => {
 const nextQuestion = () => {
   if (!isLastQuestion.value) {
     currentQuestionIndex.value++
-    resetQuestionState()
-  }
-}
-
-const previousQuestion = () => {
-  if (!isFirstQuestion.value) {
-    currentQuestionIndex.value--
     resetQuestionState()
   }
 }

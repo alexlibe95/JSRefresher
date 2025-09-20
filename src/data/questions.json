@@ -29,6 +29,56 @@
           "id": "js-5",
           "title": "Spread vs Rest Operators",
           "content": "Spread (...) expands arrays/objects into individual elements. Rest (...) collects multiple elements into an array. Example: spread - [...arr1, ...arr2]; rest - function(...args)"
+        },
+        {
+          "id": "js-6",
+          "title": "Async/Await",
+          "content": "Async/await is syntactic sugar over Promises. 'async' functions return promises automatically. 'await' pauses execution until the promise resolves. Use try/catch for error handling."
+        },
+        {
+          "id": "js-7",
+          "title": "ES6 Modules",
+          "content": "ES6 modules use import/export syntax. Default exports: export default functionName; Named exports: export const name = 'value'. Import: import name from './file' or import { name } from './file'."
+        },
+        {
+          "id": "js-8",
+          "title": "Template Literals",
+          "content": "Template literals use backticks and ${} for variable interpolation. They preserve whitespace and allow multi-line strings. Example: `Hello, ${name}! You have ${count} messages.`"
+        },
+        {
+          "id": "js-9",
+          "title": "Destructuring",
+          "content": "Destructuring extracts values from arrays/objects into variables. Array: const [a, b] = arr; Object: const {name, age} = person. Use rest/spread with destructuring."
+        },
+        {
+          "id": "js-10",
+          "title": "Hoisting",
+          "content": "Variable and function declarations are moved to the top of their scope. 'var' declarations are hoisted (initialized with undefined), 'let' and 'const' are hoisted but not initialized (Temporal Dead Zone)."
+        },
+        {
+          "id": "js-11",
+          "title": "Prototypes",
+          "content": "Every object has a prototype (__proto__) that provides inherited properties and methods. Constructor functions have a prototype property. Use Object.create() to create objects with specific prototypes."
+        },
+        {
+          "id": "js-12",
+          "title": "Event Loop",
+          "content": "JavaScript has a single-threaded, non-blocking event loop. Call stack executes synchronous code. Callback queue holds asynchronous callbacks. Event loop processes queue when stack is empty."
+        },
+        {
+          "id": "js-13",
+          "title": "This Keyword",
+          "content": "'this' refers to the object that owns the currently executing code. In methods, 'this' is the object; in functions, 'this' is global/window; in arrow functions, 'this' is inherited from parent scope."
+        },
+        {
+          "id": "js-14",
+          "title": "Set and Map",
+          "content": "Set stores unique values, Map stores key-value pairs. Set: const s = new Set([1,2,3]); Map: const m = new Map([['a',1], ['b',2]]). Both maintain insertion order and are iterable."
+        },
+        {
+          "id": "js-15",
+          "title": "Generators",
+          "content": "Generator functions use 'function*' and 'yield' to pause/resume execution. They return an iterator object. Use for...of loops to iterate through yielded values. Useful for lazy evaluation and infinite sequences."
         }
       ],
       "quiz": [
@@ -66,6 +116,76 @@
           "options": ["map()", "filter()", "forEach()", "reduce()"],
           "correct": 1,
           "explanation": "filter() creates a new array with all elements that pass the condition specified in the callback function."
+        },
+        {
+          "id": "js-quiz-6",
+          "question": "What is the output of: Boolean('false')?",
+          "options": ["false", "true", "undefined", "null"],
+          "correct": 1,
+          "explanation": "Boolean('false') returns true because any non-empty string is truthy in JavaScript."
+        },
+        {
+          "id": "js-quiz-7",
+          "question": "Which of the following is a falsy value?",
+          "options": ["0", "''", "false", "All of the above"],
+          "correct": 3,
+          "explanation": "0, empty string (''), and false are all falsy values in JavaScript."
+        },
+        {
+          "id": "js-quiz-8",
+          "question": "What does the 'new' keyword do?",
+          "options": ["Creates a new object", "Calls a constructor function", "Sets prototype", "All of the above"],
+          "correct": 3,
+          "explanation": "The 'new' keyword creates an object, calls the constructor function, and sets the prototype of the new object."
+        },
+        {
+          "id": "js-quiz-9",
+          "question": "What is the difference between null and undefined?",
+          "options": ["null is an object, undefined is a primitive", "undefined means not defined, null means no value", "Both are the same", "undefined is an object, null is a primitive"],
+          "correct": 1,
+          "explanation": "null is explicitly assigned to indicate 'no value', while undefined means the variable has been declared but not assigned a value."
+        },
+        {
+          "id": "js-quiz-10",
+          "question": "What does JSON.stringify() do?",
+          "options": ["Converts object to string", "Converts string to object", "Parses JSON", "Validates JSON"],
+          "correct": 0,
+          "explanation": "JSON.stringify() converts a JavaScript object or value to a JSON string."
+        },
+        {
+          "id": "js-quiz-11",
+          "question": "Which method removes the last element from an array?",
+          "options": ["pop()", "push()", "shift()", "unshift()"],
+          "correct": 0,
+          "explanation": "pop() removes the last element from an array and returns it."
+        },
+        {
+          "id": "js-quiz-12",
+          "question": "What is a closure?",
+          "options": ["A function that returns another function", "A function that has access to outer scope variables", "A function that closes the browser", "A function with no parameters"],
+          "correct": 1,
+          "explanation": "A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned."
+        },
+        {
+          "id": "js-quiz-13",
+          "question": "What does 'this' refer to in an arrow function?",
+          "options": ["The function itself", "The global object", "The parent scope's 'this'", "The arrow function"],
+          "correct": 2,
+          "explanation": "Arrow functions don't have their own 'this' - they inherit 'this' from the parent scope where they are defined."
+        },
+        {
+          "id": "js-quiz-14",
+          "question": "Which of the following is NOT a JavaScript data type?",
+          "options": ["string", "number", "character", "boolean"],
+          "correct": 2,
+          "explanation": "JavaScript doesn't have a 'character' data type. Individual characters are strings of length 1."
+        },
+        {
+          "id": "js-quiz-15",
+          "question": "What is the result of: 3 + '3'?",
+          "options": ["6", "'33'", "'6'", "Error"],
+          "correct": 1,
+          "explanation": "When adding a number and string, JavaScript converts the number to string and concatenates them, resulting in '33'."
         }
       ]
     },
@@ -98,6 +218,56 @@
           "id": "web-5",
           "title": "CSS Flexbox",
           "content": "Flexbox is a layout method for arranging items in rows or columns. Use display: flex on container, justify-content for horizontal alignment, align-items for vertical alignment."
+        },
+        {
+          "id": "web-6",
+          "title": "CSS Grid",
+          "content": "CSS Grid is a 2D layout system. Use display: grid on container, grid-template-columns/rows to define layout. grid-column/grid-row for item placement. More powerful than Flexbox for complex layouts."
+        },
+        {
+          "id": "web-7",
+          "title": "CSS Media Queries",
+          "content": "Media queries apply CSS based on device characteristics. Use @media (max-width: 768px) for mobile styles. Common breakpoints: mobile (768px), tablet (1024px), desktop (1200px+)."
+        },
+        {
+          "id": "web-8",
+          "title": "CSS Transitions",
+          "content": "Transitions create smooth animations between states. Use transition: property duration timing-function. Common properties: transform, opacity, background-color. Use transform instead of changing dimensions for better performance."
+        },
+        {
+          "id": "web-9",
+          "title": "CSS Animations",
+          "content": "@keyframes defines animation steps. Use animation: name duration timing-function iteration-count. Keyframes go from 0% to 100%. Use animation-fill-mode: forwards to keep final state."
+        },
+        {
+          "id": "web-10",
+          "title": "CSS Variables",
+          "content": "CSS custom properties (variables) allow reusable values. Define: --primary-color: #007bff; Use: color: var(--primary-color). Change dynamically with JavaScript: element.style.setProperty('--primary-color', '#ff0000')."
+        },
+        {
+          "id": "web-11",
+          "title": "Responsive Design",
+          "content": "Use relative units (%, em, rem, vw, vh) instead of fixed units. Mobile-first approach: start with mobile styles, then enhance for larger screens. Use CSS Grid/Flexbox for layouts."
+        },
+        {
+          "id": "web-12",
+          "title": "Semantic HTML",
+          "content": "Use meaningful HTML elements: <header>, <nav>, <main>, <article>, <section>, <aside>, <footer>. Improves accessibility, SEO, and code readability. Screen readers and search engines understand content better."
+        },
+        {
+          "id": "web-13",
+          "title": "Accessibility (A11y)",
+          "content": "Use alt text for images, proper heading hierarchy (h1-h6), sufficient color contrast (4.5:1 ratio). Test with screen readers. Use ARIA labels for dynamic content. Make focus visible and logical."
+        },
+        {
+          "id": "web-14",
+          "title": "Performance Optimization",
+          "content": "Minimize HTTP requests, compress images, use CDN. Lazy load images and components. Use CSS/JS minification. Implement caching headers. Avoid render-blocking resources."
+        },
+        {
+          "id": "web-15",
+          "title": "Progressive Enhancement",
+          "content": "Build core functionality with HTML/CSS first, then enhance with JavaScript. Ensures site works without JS. Start with basic experience, add features progressively. Better accessibility and performance."
         }
       ],
       "quiz": [
@@ -135,6 +305,454 @@
           "options": ["active", "focus", "hover", "visited"],
           "correct": 2,
           "explanation": ":hover pseudo-class applies styles when the user hovers over an element with the mouse cursor."
+        },
+        {
+          "id": "web-quiz-6",
+          "question": "What is the correct way to center a div horizontally and vertically using Flexbox?",
+          "options": ["display: flex; justify-content: center; align-items: center;", "display: flex; text-align: center; vertical-align: middle;", "display: block; margin: 0 auto;", "position: absolute; top: 50%; left: 50%;"],
+          "correct": 0,
+          "explanation": "Using display: flex with justify-content: center and align-items: center centers the content both horizontally and vertically."
+        },
+        {
+          "id": "web-quiz-7",
+          "question": "Which HTML element is used for navigation links?",
+          "options": ["<nav>", "<navigation>", "<links>", "<menu>"],
+          "correct": 0,
+          "explanation": "The <nav> element represents a section of navigation links, which is semantically correct and improves accessibility."
+        },
+        {
+          "id": "web-quiz-8",
+          "question": "What does CSS 'z-index' property do?",
+          "options": ["Sets the zoom level", "Controls stacking order", "Sets font size", "Creates shadows"],
+          "correct": 1,
+          "explanation": "z-index controls the stacking order of positioned elements, with higher values appearing in front of lower values."
+        },
+        {
+          "id": "web-quiz-9",
+          "question": "Which CSS property is used to make text bold?",
+          "options": ["font-style", "font-weight", "text-decoration", "font-family"],
+          "correct": 1,
+          "explanation": "font-weight property controls the thickness of text, with 'bold' or numeric values like 700 making text bold."
+        },
+        {
+          "id": "web-quiz-10",
+          "question": "What is the purpose of the 'alt' attribute in <img> tags?",
+          "options": ["To set image dimensions", "To provide alternative text for screen readers", "To create image links", "To add image borders"],
+          "correct": 1,
+          "explanation": "The alt attribute provides alternative text when the image cannot be displayed, and is crucial for accessibility."
+        },
+        {
+          "id": "web-quiz-11",
+          "question": "Which of the following is a valid CSS media query?",
+          "options": ["@media screen and (max-width: 768px)", "@media (max-width: 768px)", "@media mobile", "@media responsive"],
+          "correct": 0,
+          "explanation": "@media screen and (max-width: 768px) is the correct syntax for a media query targeting screens with maximum width of 768px."
+        },
+        {
+          "id": "web-quiz-12",
+          "question": "What does 'rem' unit represent in CSS?",
+          "options": ["Relative to parent element", "Relative to root element font size", "Relative to viewport width", "Fixed pixel size"],
+          "correct": 1,
+          "explanation": "'rem' (root em) is relative to the root element's font size, making it scalable and consistent across the entire document."
+        },
+        {
+          "id": "web-quiz-13",
+          "question": "Which HTML element is used to create a dropdown list?",
+          "options": ["<input type='dropdown'>", "<select>", "<option>", "<datalist>"],
+          "correct": 1,
+          "explanation": "The <select> element creates a dropdown list, with <option> elements defining the available choices."
+        },
+        {
+          "id": "web-quiz-14",
+          "question": "What is the correct way to include an external CSS file?",
+          "options": ["<style src='styles.css'>", "<link rel='stylesheet' href='styles.css'>", "<css href='styles.css'>", "<include src='styles.css'>"],
+          "correct": 1,
+          "explanation": "The correct way to include an external CSS file is using <link rel='stylesheet' href='styles.css'> in the HTML head section."
+        },
+        {
+          "id": "web-quiz-15",
+          "question": "Which CSS property is used to create rounded corners?",
+          "options": ["border-radius", "corner-radius", "rounded-corners", "border-style"],
+          "correct": 0,
+          "explanation": "border-radius property is used to create rounded corners on elements, with values like '10px' or '50%' for circles."
+        }
+      ]
+    },
+    "css": {
+      "name": "CSS",
+      "description": "Cascading Style Sheets fundamentals and advanced features",
+      "icon": "fab fa-css3-alt",
+      "hints": [
+        {
+          "id": "css-1",
+          "title": "CSS Box Model",
+          "content": "Every element has content, padding, border, and margin. Total width = content + padding-left + padding-right + border-left + border-right + margin-left + margin-right. Use box-sizing: border-box to include padding/border in element width."
+        },
+        {
+          "id": "css-2",
+          "title": "CSS Selectors",
+          "content": "Selectors target elements: element (div), class (.my-class), ID (#my-id), universal (*), attribute ([type='text']). Pseudo-classes (:hover, :focus) and pseudo-elements (::before, ::after) add special states and content."
+        },
+        {
+          "id": "css-3",
+          "title": "CSS Specificity",
+          "content": "Specificity determines which rule applies: inline styles (1000), IDs (100), classes/attributes/pseudo-classes (10), elements/pseudo-elements (1). !important overrides everything. Use developer tools to debug specificity issues."
+        },
+        {
+          "id": "css-4",
+          "title": "CSS Flexbox",
+          "content": "Flexbox layouts items in rows or columns. Container properties: display: flex, justify-content (horizontal), align-items (vertical). Item properties: flex-grow, flex-shrink, flex-basis. Use flex: 1 for equal-width items."
+        },
+        {
+          "id": "css-5",
+          "title": "CSS Grid",
+          "content": "CSS Grid creates 2D layouts. Container: display: grid, grid-template-columns/rows. Items: grid-column, grid-row, grid-area. Named grid areas with grid-template-areas. More powerful than Flexbox for complex layouts."
+        },
+        {
+          "id": "css-6",
+          "title": "CSS Units",
+          "content": "Absolute units: px (fixed), pt (print), in, cm. Relative units: % (parent), em (parent font-size), rem (root font-size), vw/vh (viewport), vmin/vmax (smaller/larger viewport dimension). Use relative units for responsive design."
+        },
+        {
+          "id": "css-7",
+          "title": "CSS Media Queries",
+          "content": "Apply styles based on device characteristics. @media (max-width: 768px) for mobile. Common breakpoints: 576px (mobile), 768px (tablet), 992px (desktop), 1200px (large desktop). Mobile-first approach: start with mobile styles, enhance for larger screens."
+        },
+        {
+          "id": "css-8",
+          "title": "CSS Transitions",
+          "content": "Smooth animations between states. transition: property duration timing-function delay. Common properties: transform, opacity, background-color. Use transform instead of changing dimensions for better performance. Easing functions: ease, ease-in, ease-out, ease-in-out."
+        },
+        {
+          "id": "css-9",
+          "title": "CSS Animations",
+          "content": "@keyframes define animation steps from 0% to 100%. animation: name duration timing-function iteration-count direction fill-mode. Use animation-fill-mode: forwards to keep final state. Keyframes can have multiple intermediate steps."
+        },
+        {
+          "id": "css-10",
+          "title": "CSS Variables",
+          "content": "Custom properties for reusable values. Define: --primary-color: #007bff; Use: color: var(--primary-color). Change with JavaScript: element.style.setProperty('--primary-color', '#ff0000'). Support fallback values: var(--primary-color, blue)."
+        },
+        {
+          "id": "css-11",
+          "title": "CSS Positioning",
+          "content": "Static (default): normal flow. Relative: offset from normal position. Absolute: positioned relative to nearest positioned ancestor. Fixed: positioned relative to viewport. Sticky: toggles between relative and fixed based on scroll position."
+        },
+        {
+          "id": "css-12",
+          "title": "CSS Float and Clear",
+          "content": "Float removes elements from normal flow, floats them left/right. Use clear to prevent floated elements from affecting other elements. Modern layouts prefer Flexbox/Grid over floats. clearfix hack: ::after { content: ''; display: table; clear: both; }"
+        },
+        {
+          "id": "css-13",
+          "title": "CSS Z-Index",
+          "content": "Controls stacking order of positioned elements. Higher values appear in front. Only works on positioned elements (relative, absolute, fixed, sticky). z-index: auto follows document order. Use z-index for layering elements like modals, dropdowns, tooltips."
+        },
+        {
+          "id": "css-14",
+          "title": "CSS Pseudo-elements",
+          "content": "::before and ::after create virtual elements. Use content property to add text/icons. ::first-letter styles first letter, ::first-line styles first line. ::selection styles selected text. Combine with pseudo-classes for powerful styling."
+        },
+        {
+          "id": "css-15",
+          "title": "CSS Custom Properties",
+          "content": "CSS variables can be scoped to components. Use :root for global variables. Variables cascade and inherit. JavaScript can read/modify them. Support in all modern browsers. Great for theming and maintainable stylesheets."
+        }
+      ],
+      "quiz": [
+        {
+          "id": "css-quiz-1",
+          "question": "Which CSS property is used to create space between flex items?",
+          "options": ["align-items", "justify-content", "gap", "flex-direction"],
+          "correct": 2,
+          "explanation": "The 'gap' property creates space between flex items, replacing the need for margins in many cases."
+        },
+        {
+          "id": "css-quiz-2",
+          "question": "What does CSS specificity 1-0-0 mean?",
+          "options": ["1 ID, 0 classes, 0 elements", "1 class, 0 IDs, 0 elements", "1 element, 0 classes, 0 IDs", "Invalid specificity"],
+          "correct": 0,
+          "explanation": "CSS specificity is calculated as (inline styles, IDs, classes/attributes/pseudo-classes, elements/pseudo-elements)."
+        },
+        {
+          "id": "css-quiz-3",
+          "question": "Which CSS property creates a 2D grid layout?",
+          "options": ["display: flex", "display: grid", "display: table", "display: inline-grid"],
+          "correct": 1,
+          "explanation": "display: grid creates a grid container, allowing you to place items in rows and columns."
+        },
+        {
+          "id": "css-quiz-4",
+          "question": "What is the default value of the 'position' property?",
+          "options": ["relative", "absolute", "static", "fixed"],
+          "correct": 2,
+          "explanation": "By default, elements have position: static, meaning they flow normally in the document without special positioning."
+        },
+        {
+          "id": "css-quiz-5",
+          "question": "Which pseudo-class selects an element when the user hovers over it?",
+          "options": ["active", "focus", "hover", "visited"],
+          "correct": 2,
+          "explanation": ":hover pseudo-class applies styles when the user hovers over an element with the mouse cursor."
+        },
+        {
+          "id": "css-quiz-6",
+          "question": "What is the correct way to center a div horizontally and vertically using Flexbox?",
+          "options": ["display: flex; justify-content: center; align-items: center;", "display: flex; text-align: center; vertical-align: middle;", "display: block; margin: 0 auto;", "position: absolute; top: 50%; left: 50%;"],
+          "correct": 0,
+          "explanation": "Using display: flex with justify-content: center and align-items: center centers the content both horizontally and vertically."
+        },
+        {
+          "id": "css-quiz-7",
+          "question": "Which CSS property is used to make text bold?",
+          "options": ["font-style", "font-weight", "text-decoration", "font-family"],
+          "correct": 1,
+          "explanation": "font-weight property controls the thickness of text, with 'bold' or numeric values like 700 making text bold."
+        },
+        {
+          "id": "css-quiz-8",
+          "question": "What does 'rem' unit represent in CSS?",
+          "options": ["Relative to parent element", "Relative to root element font size", "Relative to viewport width", "Fixed pixel size"],
+          "correct": 1,
+          "explanation": "'rem' (root em) is relative to the root element's font size, making it scalable and consistent across the entire document."
+        },
+        {
+          "id": "css-quiz-9",
+          "question": "Which CSS property is used to create rounded corners?",
+          "options": ["border-radius", "corner-radius", "rounded-corners", "border-style"],
+          "correct": 0,
+          "explanation": "border-radius property is used to create rounded corners on elements, with values like '10px' or '50%' for circles."
+        },
+        {
+          "id": "css-quiz-10",
+          "question": "What is the purpose of CSS media queries?",
+          "options": ["To apply styles based on device characteristics", "To create animations", "To define variables", "To import external stylesheets"],
+          "correct": 0,
+          "explanation": "Media queries allow you to apply CSS styles based on device characteristics like screen size, resolution, and orientation."
+        },
+        {
+          "id": "css-quiz-11",
+          "question": "Which CSS property controls the stacking order of elements?",
+          "options": ["order", "z-index", "layer", "stack"],
+          "correct": 1,
+          "explanation": "z-index controls the stacking order of positioned elements, with higher values appearing in front of lower values."
+        },
+        {
+          "id": "css-quiz-12",
+          "question": "What does the 'flex' shorthand property do?",
+          "options": ["Sets flex-grow, flex-shrink, and flex-basis", "Creates flexible containers", "Defines flex direction", "Aligns flex items"],
+          "correct": 0,
+          "explanation": "The flex shorthand sets flex-grow, flex-shrink, and flex-basis in one declaration, commonly used as 'flex: 1' for equal-width items."
+        },
+        {
+          "id": "css-quiz-13",
+          "question": "Which CSS pseudo-element creates content before an element?",
+          "options": [":before", "::before", ":after", "::after"],
+          "correct": 1,
+          "explanation": "::before creates a pseudo-element before the selected element's content. Use with the content property to add text or icons."
+        },
+        {
+          "id": "css-quiz-14",
+          "question": "What is the correct syntax for defining a CSS custom property?",
+          "options": ["--primary-color: blue;", ":root { --primary-color: blue; }", "var(--primary-color, blue);", "define: --primary-color blue;"],
+          "correct": 1,
+          "explanation": "CSS custom properties are defined in :root or any selector using --property-name: value syntax."
+        },
+        {
+          "id": "css-quiz-15",
+          "question": "Which CSS property is used to create smooth transitions?",
+          "options": ["animation", "transition", "transform", "keyframe"],
+          "correct": 1,
+          "explanation": "The transition property creates smooth animations between different states of an element when a property changes."
+        }
+      ]
+    },
+    "html": {
+      "name": "HTML",
+      "description": "HyperText Markup Language fundamentals and semantic elements",
+      "icon": "fab fa-html5",
+      "hints": [
+        {
+          "id": "html-1",
+          "title": "HTML Document Structure",
+          "content": "Every HTML document needs <!DOCTYPE html>, <html>, <head>, and <body>. Head contains meta tags, title, and links to CSS/JS. Body contains visible content. Use <meta charset='UTF-8'> for proper character encoding."
+        },
+        {
+          "id": "html-2",
+          "title": "Semantic HTML Elements",
+          "content": "Use meaningful elements: <header>, <nav>, <main>, <article>, <section>, <aside>, <footer>. Improves accessibility, SEO, and code readability. Screen readers and search engines understand content structure better."
+        },
+        {
+          "id": "html-3",
+          "title": "HTML Forms",
+          "content": "Forms use <form> element with action and method. Input types: text, email, password, number, date, file, radio, checkbox, submit. Use <label> for accessibility. Validate with required, pattern, min/max attributes."
+        },
+        {
+          "id": "html-4",
+          "title": "HTML Tables",
+          "content": "Use <table>, <thead>, <tbody>, <tr>, <th>, <td>. thead for headers, tbody for data. Use colspan/rowspan for merged cells. caption element for table description. Tables should be used for tabular data only."
+        },
+        {
+          "id": "html-5",
+          "title": "HTML Lists",
+          "content": "Unordered lists: <ul> with <li>. Ordered lists: <ol> with <li>. Definition lists: <dl> with <dt> (term) and <dd> (description). Nested lists possible. Use CSS for custom styling."
+        },
+        {
+          "id": "html-6",
+          "title": "HTML Images",
+          "content": "Use <img> with src, alt (required for accessibility), width/height. Responsive images: srcset for different sizes, sizes attribute. Use picture element for art direction. Always include alt text for screen readers."
+        },
+        {
+          "id": "html-7",
+          "title": "HTML Links",
+          "content": "Use <a> with href attribute. Internal links: href='#section' or href='page.html'. External links: href='https://example.com'. Email links: href='mailto:email@example.com'. Download links: href='file.pdf' download."
+        },
+        {
+          "id": "html-8",
+          "title": "HTML5 Semantic Elements",
+          "content": "New elements: <article>, <aside>, <details>, <figcaption>, <figure>, <header>, <footer>, <main>, <mark>, <nav>, <section>, <summary>, <time>. Improves document structure and accessibility."
+        },
+        {
+          "id": "html-9",
+          "title": "HTML Attributes",
+          "content": "Attributes provide additional information: id (unique identifier), class (CSS styling), style (inline CSS), title (tooltip), data-* (custom data). Boolean attributes like disabled, required, checked don't need values."
+        },
+        {
+          "id": "html-10",
+          "title": "HTML Accessibility",
+          "content": "Use alt text for images, proper heading hierarchy (h1-h6), semantic HTML, ARIA labels for dynamic content. Ensure sufficient color contrast (4.5:1 ratio). Test with keyboard navigation and screen readers."
+        },
+        {
+          "id": "html-11",
+          "title": "HTML5 Media Elements",
+          "content": "Audio: <audio> with <source> elements. Video: <video> with controls, autoplay, muted attributes. Use multiple <source> elements for different formats (mp4, webm, ogg). Include fallback content."
+        },
+        {
+          "id": "html-12",
+          "title": "HTML5 Form Elements",
+          "content": "New input types: email, url, tel, search, range, color, date, time, datetime-local, month, week. Use <datalist> for autocomplete. <fieldset> groups related controls. <legend> describes fieldset."
+        },
+        {
+          "id": "html-13",
+          "title": "HTML Entities",
+          "content": "HTML entities represent special characters: & (ampersand), < (less than), > (greater than), \" (quotation mark), ' (apostrophe),   (non-breaking space). Use &#number; for numeric codes, &#xhex; for hexadecimal codes."
+        },
+        {
+          "id": "html-14",
+          "title": "HTML5 Canvas",
+          "content": "<canvas> element for graphics. Use JavaScript Canvas API: getContext('2d'), methods like fillRect(), strokeRect(), arc(), lineTo(). Ideal for charts, games, image manipulation. Fallback content for non-supporting browsers."
+        },
+        {
+          "id": "html-15",
+          "title": "HTML Meta Tags",
+          "content": "Meta tags in <head>: charset for encoding, viewport for responsive design, description/keywords for SEO. Open Graph tags for social media sharing. Use <meta name='robots' content='noindex'> to prevent search indexing."
+        }
+      ],
+      "quiz": [
+        {
+          "id": "html-quiz-1",
+          "question": "Which element is used for the main content of an HTML document?",
+          "options": ["<main>", "<content>", "<body>", "<article>"],
+          "correct": 0,
+          "explanation": "The <main> element represents the main content of the document, excluding headers, footers, and sidebars."
+        },
+        {
+          "id": "html-quiz-2",
+          "question": "What is the correct way to include an image in HTML?",
+          "options": ["<img src='image.jpg'>", "<img src='image.jpg' alt='description'>", "<image src='image.jpg'>", "<picture src='image.jpg'>"],
+          "correct": 1,
+          "explanation": "The alt attribute is required for accessibility and should describe the image content for screen readers."
+        },
+        {
+          "id": "html-quiz-3",
+          "question": "Which element creates a hyperlink?",
+          "options": ["<link>", "<a>", "<href>", "<url>"],
+          "correct": 1,
+          "explanation": "The <a> (anchor) element creates hyperlinks, with the href attribute specifying the destination."
+        },
+        {
+          "id": "html-quiz-4",
+          "question": "What does the 'lang' attribute specify?",
+          "options": ["Language of the document", "Character encoding", "Document title", "Page description"],
+          "correct": 0,
+          "explanation": "The lang attribute specifies the primary language of the document content, improving accessibility and SEO."
+        },
+        {
+          "id": "html-quiz-5",
+          "question": "Which element is used for navigation links?",
+          "options": ["<nav>", "<navigation>", "<links>", "<menu>"],
+          "correct": 0,
+          "explanation": "The <nav> element represents a section of navigation links and improves semantic structure."
+        },
+        {
+          "id": "html-quiz-6",
+          "question": "What is the correct way to create an ordered list?",
+          "options": ["<ul><li>Item</li></ul>", "<ol><li>Item</li></ol>", "<list><li>Item</li></list>", "<numbered><li>Item</li></numbered>"],
+          "correct": 1,
+          "explanation": "An ordered list uses <ol> (ordered list) with <li> (list item) elements, displaying numbers by default."
+        },
+        {
+          "id": "html-quiz-7",
+          "question": "Which attribute makes a form field required?",
+          "options": ["required", "mandatory", "needed", "validate"],
+          "correct": 0,
+          "explanation": "The required attribute makes form fields mandatory, preventing form submission if empty."
+        },
+        {
+          "id": "html-quiz-8",
+          "question": "What is the purpose of the 'alt' attribute?",
+          "options": ["To set image dimensions", "To provide alternative text for accessibility", "To create image links", "To add image borders"],
+          "correct": 1,
+          "explanation": "The alt attribute provides alternative text when images cannot be displayed and is crucial for screen readers."
+        },
+        {
+          "id": "html-quiz-9",
+          "question": "Which element creates a table?",
+          "options": ["<table>", "<grid>", "<matrix>", "<data>"],
+          "correct": 0,
+          "explanation": "The <table> element creates a table structure with rows (<tr>) and cells (<td> or <th>)."
+        },
+        {
+          "id": "html-quiz-10",
+          "question": "What does the 'method' attribute specify in a form?",
+          "options": ["How to submit data", "Where to submit data", "What data to submit", "When to submit data"],
+          "correct": 0,
+          "explanation": "The method attribute specifies the HTTP method (GET or POST) for form submission."
+        },
+        {
+          "id": "html-quiz-11",
+          "question": "Which element is used to group form controls?",
+          "options": ["<group>", "<fieldset>", "<container>", "<form-group>"],
+          "correct": 1,
+          "explanation": "<fieldset> groups related form controls and <legend> provides a caption for the group."
+        },
+        {
+          "id": "html-quiz-12",
+          "question": "What is the correct way to create a dropdown list?",
+          "options": ["<input type='dropdown'>", "<select>", "<option>", "<datalist>"],
+          "correct": 1,
+          "explanation": "The <select> element creates a dropdown list with <option> elements defining the available choices."
+        },
+        {
+          "id": "html-quiz-13",
+          "question": "Which attribute is used for two-way data binding in Angular?",
+          "options": ["[(ngModel)]", "[property]", "(event)", "*ngIf"],
+          "correct": 0,
+          "explanation": "[(ngModel)] creates two-way data binding, combining property binding [] and event binding () syntax."
+        },
+        {
+          "id": "html-quiz-14",
+          "question": "What is the purpose of the 'action' attribute in a form?",
+          "options": ["To specify where to send form data", "To define form validation", "To set form method", "To add form styling"],
+          "correct": 0,
+          "explanation": "The action attribute specifies the URL where the form data should be sent when submitted."
+        },
+        {
+          "id": "html-quiz-15",
+          "question": "Which element represents a self-contained piece of content?",
+          "options": ["<section>", "<article>", "<div>", "<content>"],
+          "correct": 1,
+          "explanation": "The <article> element represents a self-contained piece of content that could be independently distributed or reused."
         }
       ]
     },
@@ -167,6 +785,56 @@
           "id": "vue-5",
           "title": "Props and Emits",
           "content": "Props are reactive data passed from parent to child. Define them with prop types for validation. Emits are events sent from child to parent. Use defineEmits to declare them in Composition API."
+        },
+        {
+          "id": "vue-6",
+          "title": "Vue Router",
+          "content": "Vue Router handles client-side routing. Use <router-view> to display routes, <router-link> for navigation. Define routes with path, component, and name. Use :to prop with params for dynamic routes."
+        },
+        {
+          "id": "vue-7",
+          "title": "Vuex vs Pinia",
+          "content": "Vuex is the traditional state management library. Pinia is the new recommended state management with simpler API, TypeScript support, and better developer experience. Use stores, getters, and actions."
+        },
+        {
+          "id": "vue-8",
+          "title": "Watch vs WatchEffect",
+          "content": "watch() watches specific reactive sources and runs when they change. watchEffect() automatically tracks dependencies and runs when any reactive source changes. Use watch for side effects, watchEffect for reactive effects."
+        },
+        {
+          "id": "vue-9",
+          "title": "Directives",
+          "content": "Vue directives modify DOM behavior. v-if/v-else conditionally renders elements. v-for renders lists. v-bind binds attributes, v-on attaches event listeners. v-model creates two-way binding."
+        },
+        {
+          "id": "vue-10",
+          "title": "Components Communication",
+          "content": "Parent to child: props. Child to parent: emit events. Sibling components: event bus or state management. Deep nesting: provide/inject. Global state: Vuex/Pinia stores."
+        },
+        {
+          "id": "vue-11",
+          "title": "Slots",
+          "content": "Slots allow parent components to pass content to child components. Named slots target specific areas. Scoped slots pass data from child to slot content. Use slot props to access child data."
+        },
+        {
+          "id": "vue-12",
+          "title": "Mixins vs Composables",
+          "content": "Mixins merge options from multiple sources, can cause conflicts. Composables are functions that use Composition API, more flexible and reusable. Prefer composables over mixins for new projects."
+        },
+        {
+          "id": "vue-13",
+          "title": "Async Components",
+          "content": "Use defineAsyncComponent() for lazy loading. Suspense component handles loading states. Error boundaries catch component errors. Use dynamic imports for code splitting and better performance."
+        },
+        {
+          "id": "vue-14",
+          "title": "Vue 3 Features",
+          "content": "Vue 3 brings Composition API, better TypeScript support, Teleport for rendering outside component tree, Suspense for async components, improved performance, and better tree-shaking."
+        },
+        {
+          "id": "vue-15",
+          "title": "Testing",
+          "content": "Use Vue Test Utils for component testing, Vitest for unit testing. Test components in isolation, mock dependencies. Test computed properties, methods, and user interactions. Use shallow mounting for better performance."
         }
       ],
       "quiz": [
@@ -204,6 +872,76 @@
           "options": ["v-show", "v-if", "v-else", "All of the above"],
           "correct": 3,
           "explanation": "v-if, v-else-if, and v-else are used for conditional rendering. v-show toggles visibility with CSS display property."
+        },
+        {
+          "id": "vue-quiz-6",
+          "question": "What is the correct way to define a prop with validation in Vue?",
+          "options": ["props: { name: String }", "props: { name: { type: String, required: true } }", "defineProps({ name: String })", "Both A and B"],
+          "correct": 3,
+          "explanation": "Both syntaxes are valid: object syntax in Options API and defineProps in Composition API with type validation."
+        },
+        {
+          "id": "vue-quiz-7",
+          "question": "Which hook runs after every reactive change in a component?",
+          "options": ["onMounted", "onUpdated", "watchEffect", "computed"],
+          "correct": 2,
+          "explanation": "watchEffect automatically tracks reactive dependencies and runs whenever any of them change."
+        },
+        {
+          "id": "vue-quiz-8",
+          "question": "What does the 'key' attribute do in v-for?",
+          "options": ["Sets unique identifier", "Helps Vue track DOM changes", "Improves performance", "All of the above"],
+          "correct": 3,
+          "explanation": "The key attribute helps Vue identify which items changed, improves performance, and prevents bugs with list reordering."
+        },
+        {
+          "id": "vue-quiz-9",
+          "question": "Which of the following is NOT a valid way to handle events in Vue?",
+          "options": ["@click", "v-on:click", ":click", "All are valid"],
+          "correct": 2,
+          "explanation": ":click is not valid syntax. Use @click or v-on:click for event handling."
+        },
+        {
+          "id": "vue-quiz-10",
+          "question": "What is the difference between v-if and v-show?",
+          "options": ["v-if removes element from DOM, v-show uses display: none", "v-show removes element from DOM, v-if uses display: none", "Both do the same thing", "v-if is for single elements, v-show for multiple"],
+          "correct": 0,
+          "explanation": "v-if completely removes/adds elements from the DOM, while v-show toggles the CSS display property."
+        },
+        {
+          "id": "vue-quiz-11",
+          "question": "Which component is used to display routed components?",
+          "options": ["<router-view>", "<router-outlet>", "<component-view>", "<route-display>"],
+          "correct": 0,
+          "explanation": "<router-view> is the component that displays the component for the current route."
+        },
+        {
+          "id": "vue-quiz-12",
+          "question": "What is the correct way to create a computed property in Composition API?",
+          "options": ["const computedValue = computed(() => expression)", "const computedValue = () => expression", "const computedValue = ref(() => expression)", "const computedValue = reactive(() => expression)"],
+          "correct": 0,
+          "explanation": "Use the computed() function from Vue to create computed properties in Composition API."
+        },
+        {
+          "id": "vue-quiz-13",
+          "question": "Which directive creates two-way data binding?",
+          "options": ["v-bind", "v-model", "v-on", "v-if"],
+          "correct": 1,
+          "explanation": "v-model creates two-way data binding, syncing data between form inputs and component data."
+        },
+        {
+          "id": "vue-quiz-14",
+          "question": "What is the purpose of the 'setup' function in Composition API?",
+          "options": ["To initialize the component", "To return reactive data and methods", "To handle component lifecycle", "All of the above"],
+          "correct": 1,
+          "explanation": "The setup function is where you define reactive data, methods, and lifecycle hooks in Composition API."
+        },
+        {
+          "id": "vue-quiz-15",
+          "question": "Which of the following is used for dependency injection in Vue?",
+          "options": ["provide/inject", "props/emits", "context/inject", "parent/child"],
+          "correct": 0,
+          "explanation": "provide() and inject() are used for dependency injection in Vue, allowing parent components to provide data to deeply nested children."
         }
       ]
     },
@@ -236,6 +974,56 @@
           "id": "react-5",
           "title": "Custom Hooks",
           "content": "Custom hooks let you extract component logic into reusable functions. They start with 'use' and can call other hooks. Use them to share stateful logic between components."
+        },
+        {
+          "id": "react-6",
+          "title": "useContext Hook",
+          "content": "useContext accesses context values without nesting. Create context with createContext(), provide with <Provider>, consume with useContext(Context). Alternative to prop drilling for global state."
+        },
+        {
+          "id": "react-7",
+          "title": "useReducer Hook",
+          "content": "useReducer is alternative to useState for complex state logic. Takes reducer function and initial state. Returns current state and dispatch function. Use for state machines or when next state depends on previous state."
+        },
+        {
+          "id": "react-8",
+          "title": "useMemo Hook",
+          "content": "useMemo memoizes expensive calculations. Only recalculates when dependencies change. Use for performance optimization. Similar to computed properties in other frameworks."
+        },
+        {
+          "id": "react-9",
+          "title": "useCallback Hook",
+          "content": "useCallback memoizes function references. Prevents unnecessary re-renders of child components. Pass stable function references to child components that depend on reference equality."
+        },
+        {
+          "id": "react-10",
+          "title": "useRef Hook",
+          "content": "useRef creates mutable references that persist across renders. Access DOM elements: const ref = useRef(null); <div ref={ref}>. Also used for storing values that don't trigger re-renders."
+        },
+        {
+          "id": "react-11",
+          "title": "React Router",
+          "content": "React Router handles client-side routing. Use <BrowserRouter>, <Routes>, <Route>. Navigate with <Link> or useNavigate(). Route parameters with useParams(). Query strings with useSearchParams()."
+        },
+        {
+          "id": "react-12",
+          "title": "Context API",
+          "content": "Context provides way to pass data through component tree without prop drilling. Create context, provide value with Provider, consume with useContext or Consumer. Use for global state like theme, authentication."
+        },
+        {
+          "id": "react-13",
+          "title": "Error Boundaries",
+          "content": "Error boundaries catch JavaScript errors in component tree. Create class component with getDerivedStateFromError and componentDidCatch. Use <ErrorBoundary> wrapper to prevent app crashes."
+        },
+        {
+          "id": "react-14",
+          "title": "React.memo",
+          "content": "React.memo prevents re-renders if props haven't changed. Similar to shouldComponentUpdate. Use for performance optimization. Pass custom comparison function as second argument."
+        },
+        {
+          "id": "react-15",
+          "title": "React DevTools",
+          "content": "Browser extension for debugging React apps. Inspect component hierarchy, view props/state, profile performance. Use Profiler to measure render times. Check for unnecessary re-renders."
         }
       ],
       "quiz": [
@@ -273,6 +1061,76 @@
           "options": ["componentDidMount", "componentDidUpdate", "componentWillUnmount", "componentWillUpdate"],
           "correct": 0,
           "explanation": "useEffect with empty dependency array [] runs only once after the initial render, equivalent to componentDidMount."
+        },
+        {
+          "id": "react-quiz-6",
+          "question": "What is the purpose of the 'key' prop in React lists?",
+          "options": ["To provide unique identifiers", "To help React identify changed items", "To improve performance", "All of the above"],
+          "correct": 3,
+          "explanation": "Keys help React identify which items changed, been added, or removed, and improve performance by reducing unnecessary re-renders."
+        },
+        {
+          "id": "react-quiz-7",
+          "question": "Which hook is used to access context in functional components?",
+          "options": ["useContext", "useState", "useEffect", "useReducer"],
+          "correct": 0,
+          "explanation": "useContext hook allows functional components to subscribe to React context without nesting."
+        },
+        {
+          "id": "react-quiz-8",
+          "question": "What does useMemo do?",
+          "options": ["Memoizes component renders", "Memoizes expensive calculations", "Memoizes event handlers", "Memoizes state updates"],
+          "correct": 1,
+          "explanation": "useMemo memoizes the result of expensive calculations and only recalculates when dependencies change."
+        },
+        {
+          "id": "react-quiz-9",
+          "question": "Which of the following is NOT a valid React hook?",
+          "options": ["useState", "useEffect", "useQuery", "useContext"],
+          "correct": 2,
+          "explanation": "useQuery is not a built-in React hook. It's commonly used in data fetching libraries like React Query, but not part of core React."
+        },
+        {
+          "id": "react-quiz-10",
+          "question": "What is the correct way to handle form input in React?",
+          "options": ["Using controlled components", "Using uncontrolled components", "Both are valid", "Neither is correct"],
+          "correct": 2,
+          "explanation": "Both controlled (using state) and uncontrolled (using refs) components are valid ways to handle form input in React."
+        },
+        {
+          "id": "react-quiz-11",
+          "question": "Which component is used to render different components based on a route?",
+          "options": ["<Switch>", "<Routes>", "<Router>", "<Route>"],
+          "correct": 1,
+          "explanation": "<Routes> is used in React Router v6 to render the first child <Route> that matches the current location."
+        },
+        {
+          "id": "react-quiz-12",
+          "question": "What is the purpose of React.memo?",
+          "options": ["To memoize component props", "To prevent re-renders when props haven't changed", "To create pure components", "All of the above"],
+          "correct": 3,
+          "explanation": "React.memo is a higher-order component that memoizes the component, preventing re-renders when props haven't changed."
+        },
+        {
+          "id": "react-quiz-13",
+          "question": "Which hook is used for side effects in React?",
+          "options": ["useState", "useEffect", "useContext", "useMemo"],
+          "correct": 1,
+          "explanation": "useEffect is the primary hook for handling side effects like API calls, subscriptions, and DOM manipulation in functional components."
+        },
+        {
+          "id": "react-quiz-14",
+          "question": "What is JSX?",
+          "options": ["JavaScript XML", "JavaScript Extension", "JSON XML", "Java Syntax Extension"],
+          "correct": 0,
+          "explanation": "JSX stands for JavaScript XML and allows you to write HTML-like syntax in JavaScript that gets compiled to React.createElement calls."
+        },
+        {
+          "id": "react-quiz-15",
+          "question": "Which method is called when a component is removed from the DOM?",
+          "options": ["componentWillUnmount", "componentDidUnmount", "useEffect cleanup", "All of the above"],
+          "correct": 2,
+          "explanation": "The cleanup function returned from useEffect is called when the component is unmounted, equivalent to componentWillUnmount in class components."
         }
       ]
     },
@@ -305,6 +1163,56 @@
           "id": "angular-5",
           "title": "Angular CLI Commands",
           "content": "ng new creates new app, ng generate component/directive/service/pipe creates code. ng serve starts dev server, ng build builds for production. ng test runs unit tests, ng e2e runs end-to-end tests. Use --skip-tests to skip test files."
+        },
+        {
+          "id": "angular-6",
+          "title": "Angular Modules",
+          "content": "@NgModule decorator defines module with declarations (components, directives, pipes), imports (other modules), exports (public declarations), providers (services), bootstrap (root component)."
+        },
+        {
+          "id": "angular-7",
+          "title": "Pipes",
+          "content": "Pipes transform data in templates. Built-in: DatePipe, CurrencyPipe, JsonPipe, SlicePipe. Create custom pipes with @Pipe decorator. Use pure pipes for stateless transformations, impure for stateful."
+        },
+        {
+          "id": "angular-8",
+          "title": "Forms",
+          "content": "Template-driven forms use directives in template. Reactive forms use FormBuilder in component. Use FormControl, FormGroup, FormArray. Validators provide validation. ngForm directive manages form state."
+        },
+        {
+          "id": "angular-9",
+          "title": "HTTP Client",
+          "content": "HttpClientModule provides HTTP functionality. Use HttpClient for GET, POST, PUT, DELETE requests. Handle responses with subscribe() or async pipe. Use interceptors for request/response modification."
+        },
+        {
+          "id": "angular-10",
+          "title": "Testing",
+          "content": "Use TestBed for component testing. Karma + Jasmine for unit tests. Use async() or fakeAsync() for async testing. Mock services with jasmine.createSpyObj(). Test components in isolation."
+        },
+        {
+          "id": "angular-11",
+          "title": "Angular Universal",
+          "content": "Server-side rendering for Angular. Improves SEO, initial load time. Use @nguniversal/express-engine. Prerender static pages. Handle browser-specific APIs with isPlatformBrowser()."
+        },
+        {
+          "id": "angular-12",
+          "title": "Angular Material",
+          "content": "UI component library following Material Design. Use mat-button, mat-card, mat-form-field. Import MatButtonModule, MatCardModule. Customize themes with angular.json. Responsive breakpoints."
+        },
+        {
+          "id": "angular-13",
+          "title": "Lazy Loading",
+          "content": "Load modules only when needed. Use loadChildren in routes. Reduces initial bundle size. Improves app performance. Use preloading strategies for critical modules."
+        },
+        {
+          "id": "angular-14",
+          "title": "Security",
+          "content": "Use Angular's built-in security features. DomSanitizer for safe HTML/CSS. Avoid innerHTML with user input. Use HTTPS. Implement authentication guards. Validate form inputs. Use Content Security Policy."
+        },
+        {
+          "id": "angular-15",
+          "title": "Performance",
+          "content": "Use OnPush change detection strategy. Use trackBy in ngFor. Avoid unnecessary subscriptions. Use lazy loading. Minimize watchers. Use pure pipes. Profile with Angular DevTools."
         }
       ],
       "quiz": [
@@ -342,6 +1250,76 @@
           "options": ["To handle asynchronous operations", "To subscribe to observables automatically", "To prevent memory leaks", "Both B and C"],
           "correct": 3,
           "explanation": "The async pipe subscribes to an Observable or Promise automatically and returns the latest value. It also unsubscribes when the component is destroyed, preventing memory leaks."
+        },
+        {
+          "id": "angular-quiz-6",
+          "question": "Which directive is used for conditional rendering in Angular?",
+          "options": ["*ngIf", "*ngFor", "*ngSwitch", "All of the above"],
+          "correct": 3,
+          "explanation": "*ngIf for conditional rendering, *ngFor for lists, and *ngSwitch for multiple conditions are all structural directives in Angular."
+        },
+        {
+          "id": "angular-quiz-7",
+          "question": "What is the correct way to handle HTTP errors in Angular?",
+          "options": ["Using try-catch blocks", "Using .catch() operator", "Using HttpErrorResponse", "All of the above"],
+          "correct": 3,
+          "explanation": "Angular provides multiple ways to handle HTTP errors including try-catch, .catch() operator, and HttpErrorResponse class."
+        },
+        {
+          "id": "angular-quiz-8",
+          "question": "Which lifecycle hook is called after a component's view has been initialized?",
+          "options": ["ngOnInit", "ngAfterViewInit", "ngAfterContentInit", "ngOnChanges"],
+          "correct": 1,
+          "explanation": "ngAfterViewInit is called after Angular has fully initialized the component's view and child views."
+        },
+        {
+          "id": "angular-quiz-9",
+          "question": "What does the 'trackBy' function do in ngFor?",
+          "options": ["Tracks array changes", "Improves performance", "Prevents unnecessary DOM updates", "All of the above"],
+          "correct": 3,
+          "explanation": "trackBy helps Angular track which items have changed and improves performance by reducing DOM manipulations."
+        },
+        {
+          "id": "angular-quiz-10",
+          "question": "Which of the following is used for two-way data binding in Angular?",
+          "options": ["[(ngModel)]", "[property]", "(event)", "*ngIf"],
+          "correct": 0,
+          "explanation": "[(ngModel)] creates two-way data binding, combining property binding [] and event binding () syntax."
+        },
+        {
+          "id": "angular-quiz-11",
+          "question": "What is the purpose of the @Injectable decorator?",
+          "options": ["To create components", "To mark a class as available for dependency injection", "To create directives", "To handle HTTP requests"],
+          "correct": 1,
+          "explanation": "@Injectable decorator marks a class as available to be provided and injected as a dependency in Angular's DI system."
+        },
+        {
+          "id": "angular-quiz-12",
+          "question": "Which operator is used to cancel previous HTTP requests in Angular?",
+          "options": ["switchMap", "mergeMap", "concatMap", "exhaustMap"],
+          "correct": 0,
+          "explanation": "switchMap cancels previous ongoing HTTP requests and only returns the latest one, preventing race conditions."
+        },
+        {
+          "id": "angular-quiz-13",
+          "question": "What is the correct way to create a custom pipe in Angular?",
+          "options": ["Create a class with @Pipe decorator", "Implement PipeTransform interface", "Both A and B", "Use ng generate pipe command"],
+          "correct": 2,
+          "explanation": "Custom pipes require @Pipe decorator and implement PipeTransform interface. The CLI command ng generate pipe creates the boilerplate."
+        },
+        {
+          "id": "angular-quiz-14",
+          "question": "Which change detection strategy improves performance?",
+          "options": ["Default", "OnPush", "Manual", "Always"],
+          "correct": 1,
+          "explanation": "OnPush change detection strategy only checks for changes when input properties change or events are explicitly triggered, improving performance."
+        },
+        {
+          "id": "angular-quiz-15",
+          "question": "What is the purpose of Angular's environment files?",
+          "options": ["To store configuration", "To define API endpoints", "To enable/disable features", "All of the above"],
+          "correct": 3,
+          "explanation": "Environment files (environment.ts, environment.prod.ts) store configuration like API URLs, feature flags, and other environment-specific settings."
         }
       ]
     }
