@@ -756,6 +756,384 @@
         }
       ]
     },
+    "testing": {
+      "name": "Testing",
+      "description": "Software testing fundamentals and modern testing practices",
+      "icon": "fas fa-vial",
+      "hints": [
+        {
+          "id": "testing-1",
+          "title": "Unit Testing",
+          "content": "Unit testing tests individual functions or components in isolation. Use frameworks like Jest, Vitest, Mocha. Focus on testing one thing at a time. Mock external dependencies. Write tests before code (TDD) or after (BDD)."
+        },
+        {
+          "id": "testing-2",
+          "title": "Integration Testing",
+          "content": "Integration testing verifies that multiple components work together correctly. Test component interactions, API calls, and data flow. Use Testing Library for DOM testing. Test both happy paths and error scenarios."
+        },
+        {
+          "id": "testing-3",
+          "title": "E2E Testing",
+          "content": "End-to-end testing simulates real user scenarios. Use Cypress, Playwright, or Selenium. Tests entire application workflows. More expensive to run but catches integration issues. Use for critical user journeys."
+        },
+        {
+          "id": "testing-4",
+          "title": "Test Doubles",
+          "content": "Test doubles replace real dependencies in tests. Stubs provide canned answers. Spies record function calls. Mocks replace entire objects. Fakes are simplified implementations. Use them to isolate code under test."
+        },
+        {
+          "id": "testing-5",
+          "title": "Code Coverage",
+          "content": "Measures how much of your code is tested. Tools: Istanbul, c8, nyc. Types: statement, branch, function, line coverage. Aim for 80%+ coverage. Don't focus only on coverage numbers - test quality matters more."
+        },
+        {
+          "id": "testing-6",
+          "title": "Testing Library",
+          "content": "Testing Library focuses on testing user behavior, not implementation details. Use getByRole, getByText, getByTestId. Avoid testing internal state. Tests should resemble how users interact with the application."
+        },
+        {
+          "id": "testing-7",
+          "title": "Jest Framework",
+          "content": "Jest is a popular JavaScript testing framework. Features: zero config, built-in assertions, mocking, snapshot testing. Use describe blocks for test suites, it/test for individual tests. Global setup and teardown with beforeAll/afterAll."
+        },
+        {
+          "id": "testing-8",
+          "title": "Vitest",
+          "content": "Vitest is a fast unit test framework powered by Vite. ESM-first, TypeScript support out of box, fast HMR in tests. Similar API to Jest. Great for Vite-based projects. Use vitest/ui for visual test interface."
+        },
+        {
+          "id": "testing-9",
+          "title": "Cypress",
+          "content": "Cypress is an E2E testing framework. Real-time reloading, automatic waiting, network stubbing. Write tests in JavaScript. Use cy.get(), cy.click(), cy.should(). Great developer experience with time travel debugging."
+        },
+        {
+          "id": "testing-10",
+          "title": "Playwright",
+          "content": "Playwright is a modern E2E testing framework. Cross-browser support (Chrome, Firefox, Safari, Edge). Mobile emulation, network interception. Write tests in TypeScript/JavaScript. Faster than Selenium with better reliability."
+        },
+        {
+          "id": "testing-11",
+          "title": "Mocking",
+          "content": "Replace real dependencies with controlled substitutes. Jest: jest.mock(), jest.fn(). Sinon: sinon.stub(), sinon.spy(). Benefits: faster tests, predictable behavior, isolate code under test. Mock what you don't own."
+        },
+        {
+          "id": "testing-12",
+          "title": "Test-Driven Development (TDD)",
+          "content": "Write tests before implementing features. Red-Green-Refactor cycle: write failing test, make it pass, improve code. Benefits: better design, confidence in changes, documentation. Use with pair programming for best results."
+        },
+        {
+          "id": "testing-13",
+          "title": "Behavior-Driven Development (BDD)",
+          "content": "Focus on behavior rather than implementation. Use Given-When-Then format. Tools: Cucumber, Jest with describe/it. Tests become living documentation. Better collaboration between developers and stakeholders."
+        },
+        {
+          "id": "testing-14",
+          "title": "Performance Testing",
+          "content": "Measure application speed and resource usage. Tools: Lighthouse, WebPageTest, Chrome DevTools. Test load times, memory leaks, CPU usage. Set performance budgets. Monitor in production with Real User Monitoring (RUM)."
+        },
+        {
+          "id": "testing-15",
+          "title": "Accessibility Testing",
+          "content": "Ensure applications are usable by people with disabilities. Tools: axe-core, Lighthouse accessibility audit, screen readers. Test keyboard navigation, color contrast, alt text. Follow WCAG guidelines. Automate with axe-playwright."
+        }
+      ],
+      "quiz": [
+        {
+          "id": "testing-quiz-1",
+          "question": "Which testing type focuses on testing individual functions in isolation?",
+          "options": ["Unit Testing", "Integration Testing", "E2E Testing", "Performance Testing"],
+          "correct": 0,
+          "explanation": "Unit testing tests individual functions or components in isolation, focusing on testing one thing at a time."
+        },
+        {
+          "id": "testing-quiz-2",
+          "question": "What is the primary purpose of test doubles?",
+          "options": ["To make tests run faster", "To replace real dependencies", "To create fake data", "To generate test reports"],
+          "correct": 1,
+          "explanation": "Test doubles (stubs, mocks, spies) replace real dependencies to isolate the code under test and make tests more predictable."
+        },
+        {
+          "id": "testing-quiz-3",
+          "question": "Which framework is commonly used for E2E testing?",
+          "options": ["Jest", "Mocha", "Cypress", "Chai"],
+          "correct": 2,
+          "explanation": "Cypress is a popular end-to-end testing framework that provides great developer experience and reliable test execution."
+        },
+        {
+          "id": "testing-quiz-4",
+          "question": "What does TDD stand for?",
+          "options": ["Test-Driven Development", "Test Data Design", "Type-Driven Development", "Test Development Design"],
+          "correct": 0,
+          "explanation": "TDD (Test-Driven Development) is a software development process where you write tests before implementing features."
+        },
+        {
+          "id": "testing-quiz-5",
+          "question": "Which tool is used for measuring code coverage?",
+          "options": ["Jest", "Istanbul", "Cypress", "Mocha"],
+          "correct": 1,
+          "explanation": "Istanbul (nyc) is a code coverage tool that works with various testing frameworks to measure test coverage."
+        },
+        {
+          "id": "testing-quiz-6",
+          "question": "What is the main focus of Testing Library?",
+          "options": ["Testing implementation details", "Testing user behavior", "Testing performance", "Testing security"],
+          "correct": 1,
+          "explanation": "Testing Library focuses on testing user behavior rather than implementation details, making tests more resilient to changes."
+        },
+        {
+          "id": "testing-quiz-7",
+          "question": "Which of the following is a test double?",
+          "options": ["Stub", "Mock", "Spy", "All of the above"],
+          "correct": 3,
+          "explanation": "Stubs, mocks, and spies are all types of test doubles used to replace real dependencies in tests."
+        },
+        {
+          "id": "testing-quiz-8",
+          "question": "What does BDD stand for?",
+          "options": ["Behavior-Driven Development", "Bug-Driven Development", "Build-Driven Development", "Basic Data Development"],
+          "correct": 0,
+          "explanation": "BDD (Behavior-Driven Development) focuses on the behavior of the application from the user's perspective."
+        },
+        {
+          "id": "testing-quiz-9",
+          "question": "Which testing level tests the entire application workflow?",
+          "options": ["Unit Testing", "Integration Testing", "End-to-End Testing", "Component Testing"],
+          "correct": 2,
+          "explanation": "End-to-End (E2E) testing tests complete user workflows from start to finish, simulating real user scenarios."
+        },
+        {
+          "id": "testing-quiz-10",
+          "question": "What is the purpose of snapshot testing?",
+          "options": ["To test component rendering", "To detect UI changes", "To measure performance", "To validate data structures"],
+          "correct": 1,
+          "explanation": "Snapshot testing captures the rendered output of components and alerts you when the UI changes unexpectedly."
+        },
+        {
+          "id": "testing-quiz-11",
+          "question": "Which framework is faster and designed for Vite projects?",
+          "options": ["Jest", "Vitest", "Mocha", "Jasmine"],
+          "correct": 1,
+          "explanation": "Vitest is built on top of Vite and provides faster test execution with native ESM support and great developer experience."
+        },
+        {
+          "id": "testing-quiz-12",
+          "question": "What is the recommended testing approach?",
+          "options": ["Test implementation details", "Test user behavior", "Test private methods", "Test internal state"],
+          "correct": 1,
+          "explanation": "The recommended approach is to test user behavior rather than implementation details, making tests more maintainable."
+        },
+        {
+          "id": "testing-quiz-13",
+          "question": "Which tool provides cross-browser E2E testing?",
+          "options": ["Jest", "Testing Library", "Playwright", "Vitest"],
+          "correct": 2,
+          "explanation": "Playwright supports multiple browsers (Chrome, Firefox, Safari, Edge) and provides reliable cross-browser testing."
+        },
+        {
+          "id": "testing-quiz-14",
+          "question": "What is the purpose of test coverage?",
+          "options": ["To measure test quality", "To measure how much code is tested", "To find bugs", "To improve performance"],
+          "correct": 1,
+          "explanation": "Test coverage measures the percentage of code that is executed during tests, helping identify untested code."
+        },
+        {
+          "id": "testing-quiz-15",
+          "question": "Which testing type is most expensive to maintain?",
+          "options": ["Unit Testing", "Integration Testing", "E2E Testing", "Component Testing"],
+          "correct": 2,
+          "explanation": "E2E tests are most expensive to maintain because they test complete user workflows and can break with UI changes."
+        }
+      ]
+    },
+    "apis": {
+      "name": "APIs & Data",
+      "description": "REST APIs, authentication, and data management concepts",
+      "icon": "fas fa-database",
+      "hints": [
+        {
+          "id": "apis-1",
+          "title": "REST API Basics",
+          "content": "REST (Representational State Transfer) uses HTTP methods: GET (read), POST (create), PUT (update), PATCH (partial update), DELETE (remove). Use proper status codes: 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Server Error."
+        },
+        {
+          "id": "apis-2",
+          "title": "Fetch API",
+          "content": "Native JavaScript API for making HTTP requests. Use fetch(url, options) with options: method, headers, body. Returns Promise. Handle responses with .then() or async/await. Always handle errors with try/catch."
+        },
+        {
+          "id": "apis-3",
+          "title": "Axios Library",
+          "content": "Popular HTTP client with better error handling, request/response interceptors, automatic JSON parsing. Use axios.get(), axios.post(), etc. Better browser support than fetch. Built-in request cancellation with CancelToken."
+        },
+        {
+          "id": "apis-4",
+          "title": "CRUD Operations",
+          "content": "Create, Read, Update, Delete operations. Map to HTTP methods: C=POST, R=GET, U=PUT/PATCH, D=DELETE. Use consistent API endpoints: /api/users (GET=read all, POST=create), /api/users/:id (GET=read one, PUT=update, DELETE=remove)."
+        },
+        {
+          "id": "apis-5",
+          "title": "JSON Handling",
+          "content": "JavaScript Object Notation for data exchange. Use JSON.stringify() to convert objects to JSON, JSON.parse() to convert JSON to objects. Handle large JSON with streaming parsers. Validate JSON before parsing."
+        },
+        {
+          "id": "apis-6",
+          "title": "API Authentication",
+          "content": "Secure API access with authentication. Basic Auth: username:password in base64. Bearer tokens: Authorization: Bearer token. API keys: custom headers. Always send credentials over HTTPS. Store tokens securely."
+        },
+        {
+          "id": "apis-7",
+          "title": "JWT Tokens",
+          "content": "JSON Web Tokens contain user information and expiration. Three parts: Header.Payload.Signature. Decode payload to get user info. Verify signature for authenticity. Store in localStorage/sessionStorage, not cookies for XSS protection."
+        },
+        {
+          "id": "apis-8",
+          "title": "OAuth 2.0",
+          "content": "Authorization framework for delegated access. Flows: Authorization Code (server-side apps), Implicit (SPAs), Client Credentials (server-to-server). Uses access tokens and refresh tokens. Popular with social logins (Google, Facebook, GitHub)."
+        },
+        {
+          "id": "apis-9",
+          "title": "Error Handling",
+          "content": "Handle API errors gracefully. Check response.ok or status codes. Use try/catch for network errors. Show user-friendly error messages. Implement retry logic with exponential backoff. Log errors for debugging."
+        },
+        {
+          "id": "apis-10",
+          "title": "Rate Limiting",
+          "content": "APIs limit requests to prevent abuse. Check rate limit headers: X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset. Implement client-side throttling. Use exponential backoff for retries. Handle 429 (Too Many Requests) status."
+        },
+        {
+          "id": "apis-11",
+          "title": "CORS",
+          "content": "Cross-Origin Resource Sharing allows browsers to make requests to different domains. Server must send Access-Control-Allow-Origin header. Preflight requests for non-simple methods (PUT, DELETE). Use credentials: 'include' for cookies."
+        },
+        {
+          "id": "apis-12",
+          "title": "GraphQL",
+          "content": "Query language for APIs. Request only needed data with single endpoint. Use queries for reading, mutations for writing, subscriptions for real-time. Better for mobile apps with limited bandwidth. Tools: Apollo Client, Relay."
+        },
+        {
+          "id": "apis-13",
+          "title": "API Caching",
+          "content": "Cache API responses to improve performance and reduce server load. Use browser cache, Service Workers, or libraries like SWR, React Query. Set appropriate cache headers: Cache-Control, ETag, Last-Modified. Invalidate cache when data changes."
+        },
+        {
+          "id": "apis-14",
+          "title": "WebSocket APIs",
+          "content": "Real-time bidirectional communication. Use for live chat, notifications, live updates. ws:// for unencrypted, wss:// for encrypted. Event-driven with onmessage, onopen, onclose, onerror. Use Socket.IO for fallbacks and room management."
+        },
+        {
+          "id": "apis-15",
+          "title": "API Documentation",
+          "content": "Document APIs for developers. Tools: Swagger/OpenAPI, Postman Collections, GraphQL Playground. Include request/response examples, authentication methods, error codes. Use API versioning for breaking changes. Test endpoints regularly."
+        }
+      ],
+      "quiz": [
+        {
+          "id": "apis-quiz-1",
+          "question": "Which HTTP method is used to create a new resource?",
+          "options": ["GET", "POST", "PUT", "DELETE"],
+          "correct": 1,
+          "explanation": "POST is used to create new resources, while PUT is used to update existing resources."
+        },
+        {
+          "id": "apis-quiz-2",
+          "question": "What is the correct way to handle fetch errors?",
+          "options": ["Use .catch() method", "Check response.ok property", "Use try/catch with async/await", "All of the above"],
+          "correct": 3,
+          "explanation": "Fetch requires checking response.ok for HTTP errors, and network errors need try/catch. All approaches are valid."
+        },
+        {
+          "id": "apis-quiz-3",
+          "question": "Which library provides better error handling than native fetch?",
+          "options": ["jQuery", "Axios", "Lodash", "Moment.js"],
+          "correct": 1,
+          "explanation": "Axios provides automatic JSON parsing, better error handling, and more features compared to native fetch."
+        },
+        {
+          "id": "apis-quiz-4",
+          "question": "What does CRUD stand for?",
+          "options": ["Create Read Update Delete", "Code Run Update Deploy", "Cache Read Update Data", "Connect Read Upload Download"],
+          "correct": 0,
+          "explanation": "CRUD represents the four basic operations for persistent storage: Create, Read, Update, Delete."
+        },
+        {
+          "id": "apis-quiz-5",
+          "question": "Which HTTP status code indicates successful authentication is required?",
+          "options": ["200 OK", "401 Unauthorized", "403 Forbidden", "404 Not Found"],
+          "correct": 1,
+          "explanation": "401 Unauthorized indicates that authentication is required and has failed or not been provided."
+        },
+        {
+          "id": "apis-quiz-6",
+          "question": "What is the purpose of JSON.stringify()?",
+          "options": ["Parse JSON string", "Convert object to JSON string", "Validate JSON", "Compress JSON"],
+          "correct": 1,
+          "explanation": "JSON.stringify() converts a JavaScript object or value to a JSON string for API requests."
+        },
+        {
+          "id": "apis-quiz-7",
+          "question": "Which authentication method uses tokens?",
+          "options": ["Basic Auth", "JWT", "Both A and B", "Neither"],
+          "correct": 2,
+          "explanation": "JWT (JSON Web Tokens) use tokens for authentication, while Basic Auth uses username:password encoding."
+        },
+        {
+          "id": "apis-quiz-8",
+          "question": "What does CORS stand for?",
+          "options": ["Cross-Origin Resource Sharing", "Client-Origin Request Security", "Content Security Resource Origin", "Cross-Site Request Scripting"],
+          "correct": 0,
+          "explanation": "CORS (Cross-Origin Resource Sharing) allows browsers to make requests to different domains securely."
+        },
+        {
+          "id": "apis-quiz-9",
+          "question": "Which HTTP method is used for partial updates?",
+          "options": ["PUT", "PATCH", "POST", "UPDATE"],
+          "correct": 1,
+          "explanation": "PATCH is used for partial updates, while PUT replaces the entire resource."
+        },
+        {
+          "id": "apis-quiz-10",
+          "question": "What is the purpose of API rate limiting?",
+          "options": ["To improve performance", "To prevent abuse", "To reduce costs", "All of the above"],
+          "correct": 3,
+          "explanation": "Rate limiting prevents API abuse, improves performance, and reduces server costs by limiting request frequency."
+        },
+        {
+          "id": "apis-quiz-11",
+          "question": "Which tool is commonly used for API documentation?",
+          "options": ["Postman", "Swagger", "Both A and B", "Neither"],
+          "correct": 2,
+          "explanation": "Both Postman Collections and Swagger/OpenAPI are popular tools for API documentation and testing."
+        },
+        {
+          "id": "apis-quiz-12",
+          "question": "What is the difference between PUT and PATCH?",
+          "options": ["PUT replaces entire resource, PATCH updates partially", "PATCH replaces entire resource, PUT updates partially", "No difference", "PUT is for creating, PATCH for updating"],
+          "correct": 0,
+          "explanation": "PUT replaces the entire resource with new data, while PATCH applies partial modifications to the resource."
+        },
+        {
+          "id": "apis-quiz-13",
+          "question": "Which header indicates how many requests are remaining?",
+          "options": ["X-RateLimit-Limit", "X-RateLimit-Remaining", "X-RateLimit-Reset", "Content-RateLimit"],
+          "correct": 1,
+          "explanation": "X-RateLimit-Remaining header shows how many requests are left in the current rate limit window."
+        },
+        {
+          "id": "apis-quiz-14",
+          "question": "What is GraphQL?",
+          "options": ["Query language for databases", "Query language for APIs", "Database management system", "API testing tool"],
+          "correct": 1,
+          "explanation": "GraphQL is a query language for APIs that allows clients to request only the data they need."
+        },
+        {
+          "id": "apis-quiz-15",
+          "question": "Which HTTP status code indicates 'Not Found'?",
+          "options": ["404", "403", "401", "500"],
+          "correct": 0,
+          "explanation": "HTTP 404 Not Found indicates that the requested resource could not be found on the server."
+        }
+      ]
+    },
     "vue": {
       "name": "Vue.js",
       "description": "Vue.js framework concepts and best practices",

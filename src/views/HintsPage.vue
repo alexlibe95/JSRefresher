@@ -107,8 +107,8 @@ const shuffleHints = () => {
 
         <div class="text-center">
           <div class="flex items-center space-x-2">
-            <span class="text-2xl" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
-            <h1 class="text-xl font-bold text-gray-900">{{ category?.name }} Hints</h1>
+            <span class="text-2xl text-indigo-600 dark:text-indigo-400" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ category?.name }} Hints</h1>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ const shuffleHints = () => {
             </svg>
             Shuffle
           </button>
-          <div class="text-sm text-gray-500">
+          <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
             Hint {{ currentHintIndex + 1 }} of {{ hints.length }}
           </div>
         </div>
@@ -166,45 +166,76 @@ const shuffleHints = () => {
         <!-- Flashcard -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
           <div class="p-8">
-            <!-- Question Side -->
-            <div v-if="!showAnswer" class="text-center">
-              <div class="text-6xl mb-6"><i class="fas fa-question"></i></div>
-              <h2 class="text-2xl font-bold text-gray-900 mb-8 leading-relaxed">
-                {{ currentHint?.title }}
-              </h2>
-              <button
-                @click="toggleAnswer"
-                class="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
-              >
-                Show Answer
-              </button>
-            </div>
-
-            <!-- Answer Side -->
-            <div v-else class="text-center">
+            <!-- Web Category: Show Answer Immediately -->
+            <div v-if="props.categoryId === 'web'" class="text-center">
               <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4 leading-relaxed">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed transition-colors duration-300">
                 {{ currentHint?.title }}
               </h2>
-              <div class="bg-gray-50 rounded-lg p-6 mb-8">
-                <p class="text-gray-700 leading-relaxed whitespace-pre-line">
+              <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-8 transition-colors duration-300">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line transition-colors duration-300">
                   {{ currentHint?.content }}
                 </p>
               </div>
               <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  @click="toggleAnswer"
-                  class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+                  @click="restartHints"
+                  class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
                 >
-                  Show Question
+                  Review Again
                 </button>
                 <button
                   v-if="!isLastHint"
                   @click="nextHint"
-                  class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+                  class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
                 >
                   Next Hint
                 </button>
+              </div>
+            </div>
+
+            <!-- Other Categories: Question/Answer Toggle -->
+            <div v-else>
+              <!-- Question Side -->
+              <div v-if="!showAnswer" class="text-center">
+                <div class="text-6xl mb-6"><i class="fas fa-question"></i></div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 leading-relaxed transition-colors duration-300">
+                  {{ currentHint?.title }}
+                </h2>
+                <button
+                  @click="toggleAnswer"
+                  class="px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors cursor-pointer"
+                >
+                  Show Answer
+                </button>
+              </div>
+
+              <!-- Answer Side -->
+              <div v-else class="text-center">
+                <div class="text-6xl mb-6"><i class="fas fa-lightbulb"></i></div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed transition-colors duration-300">
+                  {{ currentHint?.title }}
+                </h2>
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-8 transition-colors duration-300">
+                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line transition-colors duration-300">
+                    {{ currentHint?.content }}
+                  </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    @click="toggleAnswer"
+                    class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+                  >
+                    Show Question
+                  </button>
+                  <button
+                    v-if="!isLastHint"
+                    @click="nextHint"
+                    class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors cursor-pointer"
+                  >
+                    Next Hint
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -215,7 +246,7 @@ const shuffleHints = () => {
           <button
             @click="previousHint"
             :disabled="isFirstHint"
-            class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
+            class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:text-gray-400 dark:disabled:text-gray-500 disabled:cursor-not-allowed transition-colors cursor-pointer"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -226,7 +257,7 @@ const shuffleHints = () => {
           <div class="flex space-x-2">
             <button
               @click="restartHints"
-              class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
+              class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0V9a8 8 0 1115.356 2M4.582 9H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -238,7 +269,7 @@ const shuffleHints = () => {
           <button
             @click="nextHint"
             :disabled="isLastHint"
-            class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+            class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 dark:disabled:bg-gray-700 disabled:cursor-not-allowed transition-colors cursor-pointer"
           >
             Next
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

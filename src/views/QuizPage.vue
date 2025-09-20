@@ -152,12 +152,12 @@ const getOptionLetter = (index: number) => {
 
         <div class="text-center">
           <div class="flex items-center space-x-2">
-            <span class="text-2xl" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
-            <h1 class="text-xl font-bold text-gray-900">{{ category?.name }} Quiz</h1>
+            <span class="text-2xl text-indigo-600 dark:text-indigo-400" v-html="'<i class=&quot;' + (category?.icon || 'fas fa-book') + '&quot;></i>'"></span>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{{ category?.name }} Quiz</h1>
           </div>
         </div>
 
-        <div class="text-sm text-gray-500">
+        <div class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
           Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}
         </div>
       </div>
