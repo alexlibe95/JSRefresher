@@ -344,6 +344,75 @@
           "explanation": "useEffect with empty dependency array [] runs only once after the initial render, equivalent to componentDidMount."
         }
       ]
+    },
+    "angular": {
+      "name": "Angular",
+      "description": "Angular framework concepts and best practices",
+      "icon": "🅰️",
+      "hints": [
+        {
+          "id": "angular-1",
+          "title": "Components vs Directives",
+          "content": "Components are directives with a template. Components control a portion of the screen called a view. Directives are instructions in the DOM - structural directives (ngIf, ngFor) change DOM layout, attribute directives (ngStyle, ngClass) change appearance/behavior."
+        },
+        {
+          "id": "angular-2",
+          "title": "Dependency Injection",
+          "content": "Angular's DI system provides dependencies to components. Use @Injectable() decorator for services. Inject dependencies in constructor parameters. Angular creates singletons for services by default. Use providedIn: 'root' for automatic tree-shaking."
+        },
+        {
+          "id": "angular-3",
+          "title": "Change Detection",
+          "content": "Angular uses zone.js to detect changes. OnPush strategy checks for changes only when input properties change or events are explicitly triggered. Use async pipe for observables, trackBy function for ngFor to optimize performance."
+        },
+        {
+          "id": "angular-4",
+          "title": "RxJS & Observables",
+          "content": "Angular heavily uses RxJS for reactive programming. Use Observable for async operations. Common operators: map, filter, tap, switchMap, combineLatest. Subscribe in ngOnInit, unsubscribe in ngOnDestroy to prevent memory leaks."
+        },
+        {
+          "id": "angular-5",
+          "title": "Angular CLI Commands",
+          "content": "ng new creates new app, ng generate component/directive/service/pipe creates code. ng serve starts dev server, ng build builds for production. ng test runs unit tests, ng e2e runs end-to-end tests. Use --skip-tests to skip test files."
+        }
+      ],
+      "quiz": [
+        {
+          "id": "angular-quiz-1",
+          "question": "What is the purpose of the @Component decorator in Angular?",
+          "options": ["To define a service", "To mark a class as a component and provide metadata", "To create a directive", "To handle HTTP requests"],
+          "correct": 1,
+          "explanation": "The @Component decorator tells Angular that the class is a component and provides configuration metadata including selector, template, and styles."
+        },
+        {
+          "id": "angular-quiz-2",
+          "question": "Which directive is used for two-way data binding in Angular?",
+          "options": ["[property]", "(event)", "[(ngModel)]", "*ngIf"],
+          "correct": 2,
+          "explanation": "[(ngModel)] is the two-way data binding syntax in Angular. It combines property binding [] and event binding () for bidirectional data flow."
+        },
+        {
+          "id": "angular-quiz-3",
+          "question": "What is the correct way to inject a service in Angular?",
+          "options": ["Using constructor injection", "Using property injection", "Using setter injection", "All of the above"],
+          "correct": 0,
+          "explanation": "Angular recommends constructor injection for services. Add the service as a parameter in the component constructor, and Angular's DI system will provide the instance."
+        },
+        {
+          "id": "angular-quiz-4",
+          "question": "Which lifecycle hook is called after Angular has initialized all data-bound properties?",
+          "options": ["ngOnInit", "ngAfterViewInit", "ngOnChanges", "ngAfterContentInit"],
+          "correct": 0,
+          "explanation": "ngOnInit is called once after the first ngOnChanges and is the ideal place to initialize component data, fetch data from services, and set up subscriptions."
+        },
+        {
+          "id": "angular-quiz-5",
+          "question": "What is the purpose of the async pipe in Angular?",
+          "options": ["To handle asynchronous operations", "To subscribe to observables automatically", "To prevent memory leaks", "Both B and C"],
+          "correct": 3,
+          "explanation": "The async pipe subscribes to an Observable or Promise automatically and returns the latest value. It also unsubscribes when the component is destroyed, preventing memory leaks."
+        }
+      ]
     }
   }
 }
