@@ -192,7 +192,7 @@ const shuffleHints = () => {
                 {{ currentHint?.title }}
               </h2>
               <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 mb-8 transition-colors duration-300 border-l-4 border-l-indigo-500 dark:border-l-indigo-400">
-                <p class="text-gray-800 dark:text-gray-100 leading-relaxed whitespace-pre-line transition-colors duration-300 text-lg">
+                <p class="text-gray-800 dark:text-gray-100 leading-relaxed whitespace-pre-line transition-colors duration-300 text-base">
                   {{ currentHint?.content }}
                 </p>
               </div>
@@ -212,14 +212,14 @@ const shuffleHints = () => {
 
         <!-- Hint Grid Navigation -->
         <div v-if="hints.length > 1" class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">All Hints</h3>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">All Hints</h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
             <button
               v-for="(hint, index) in hints"
               :key="hint.id"
               @click="goToHint(index)"
               :class="[
-                'p-4 rounded-lg border-2 font-medium text-sm transition-all',
+                'p-4 rounded-lg border-2 font-medium text-sm transition-all cursor-pointer',
                 index === currentHintIndex
                   ? 'bg-indigo-100 dark:bg-indigo-900/30 border-indigo-300 dark:border-indigo-600 text-indigo-900 dark:text-indigo-200'
                   : 'bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
@@ -237,7 +237,7 @@ const shuffleHints = () => {
         <div v-if="isLastHint" class="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center transition-colors duration-300">
           <div class="text-6xl mb-6 text-indigo-600 dark:text-indigo-400"><i class="fas fa-trophy"></i></div>
           <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">All Hints Completed!</h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
             You've reviewed all {{ hints.length }} hints in this category.
           </p>
 

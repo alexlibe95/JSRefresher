@@ -343,7 +343,7 @@ const getOptionLetter = (index: number) => {
                   :key="question.id"
                   @click="goToQuestion(index)"
                 :class="[
-                  'aspect-square rounded-lg border-2 font-semibold text-sm transition-all',
+                  'aspect-square rounded-lg border-2 font-semibold text-sm transition-all cursor-pointer',
                   index === currentQuestionIndex
                     ? 'bg-indigo-600 border-indigo-600 text-white'
                     : userAnswers[index] === -1
