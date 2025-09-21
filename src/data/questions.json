@@ -79,6 +79,106 @@
           "id": "js-15",
           "title": "Generators",
           "content": "Generator functions use 'function*' and 'yield' to pause/resume execution. They return an iterator object. Use for...of loops to iterate through yielded values. Useful for lazy evaluation and infinite sequences."
+        },
+        {
+          "id": "js-16",
+          "title": "Symbol Type",
+          "content": "Symbols are unique and immutable primitives. Use Symbol('description') for object keys to avoid collisions. Well-known symbols like Symbol.iterator enable iteration protocols. Symbols are not enumerable in for...in loops."
+        },
+        {
+          "id": "js-17",
+          "title": "WeakMap and WeakSet",
+          "content": "WeakMap and WeakSet hold weak references to objects. Keys in WeakMap must be objects. They don't prevent garbage collection. Use for memory leak prevention, caches, and metadata storage."
+        },
+        {
+          "id": "js-18",
+          "title": "Proxy Objects",
+          "content": "Proxy wraps objects and intercepts operations like get, set, has, etc. Use for validation, logging, debugging, or creating reactive systems. Reflect API provides methods to perform default operations."
+        },
+        {
+          "id": "js-19",
+          "title": "Module Systems",
+          "content": "CommonJS: require/module.exports (Node.js). ES6 Modules: import/export (modern browsers). AMD: define/require (older browsers). UMD: Universal modules that work everywhere."
+        },
+        {
+          "id": "js-20",
+          "title": "Event Loop",
+          "content": "JavaScript is single-threaded but uses event loop for async operations. Call stack executes functions, callback queue holds completed async operations, microtask queue has higher priority (promises)."
+        },
+        {
+          "id": "js-21",
+          "title": "Memory Leaks",
+          "content": "Common causes: global variables, timers not cleared, event listeners not removed, closures holding references, circular references in DOM. Use tools like Chrome DevTools to identify leaks."
+        },
+        {
+          "id": "js-22",
+          "title": "BigInt",
+          "content": "BigInt handles integers larger than 2^53-1. Use 'n' suffix: 123n. Works with +, -, *, /, **, %. Use BigInt() constructor. Useful for database IDs, timestamps, and large calculations."
+        },
+        {
+          "id": "js-23",
+          "title": "Optional Chaining",
+          "content": "Optional chaining (?.) safely accesses nested properties without error. Example: user?.address?.street. Returns undefined if any property is null/undefined. Available since ES2020."
+        },
+        {
+          "id": "js-24",
+          "title": "Nullish Coalescing",
+          "content": "Nullish coalescing (??) returns right operand if left is null/undefined, otherwise returns left. Different from || which treats 0, '', false as falsy. Example: height ?? 'auto'"
+        },
+        {
+          "id": "js-25",
+          "title": "Logical Assignment",
+          "content": "Logical assignment operators: ||=, &&=, ??=. Example: a ||= b (a || (a = b)), a ??= b (a ?? (a = b)). Shorthand for common patterns. Available since ES2021."
+        },
+        {
+          "id": "js-26",
+          "title": "Intl API",
+          "content": "Internationalization API for formatting numbers, dates, currencies. Use Intl.NumberFormat, Intl.DateTimeFormat, Intl.Collator. Supports locales and formatting options. Essential for global applications."
+        },
+        {
+          "id": "js-27",
+          "title": "Web Workers",
+          "content": "Web Workers run JavaScript in background threads. Use for heavy computations without blocking UI. Communication via postMessage. Dedicated workers for specific tasks, shared workers for multiple scripts."
+        },
+        {
+          "id": "js-28",
+          "title": "Service Workers",
+          "content": "Service workers intercept network requests, cache resources, enable offline functionality. Lifecycle: install, activate, fetch. Use for PWAs, background sync, push notifications."
+        },
+        {
+          "id": "js-29",
+          "title": "Web Components",
+          "content": "Web Components are reusable custom elements. Use CustomElementRegistry, Shadow DOM, HTML Templates. Standards include Custom Elements, Shadow DOM, and ES Modules. Framework agnostic."
+        },
+        {
+          "id": "js-30",
+          "title": "Performance Optimization",
+          "content": "Minimize bundle size with code splitting. Use lazy loading for routes and components. Optimize images (WebP, responsive images). Use CDN for static assets. Implement caching strategies."
+        },
+        {
+          "id": "js-31",
+          "title": "Security Best Practices",
+          "content": "Never trust user input. Use Content Security Policy (CSP). Sanitize HTML with DOMPurify. Use HTTPS everywhere. Implement proper authentication/authorization. Regular security audits."
+        },
+        {
+          "id": "js-32",
+          "title": "Testing JavaScript",
+          "content": "Unit testing with Jest/Vitest. Integration testing with Testing Library. E2E testing with Playwright/Cypress. Test user interactions, edge cases, error scenarios. Use TDD approach."
+        },
+        {
+          "id": "js-33",
+          "title": "Error Handling",
+          "content": "Use try/catch for synchronous errors. Handle promise rejections with .catch() or async/await try/catch. Use global error handlers. Log errors with proper context. Implement graceful degradation."
+        },
+        {
+          "id": "js-34",
+          "title": "Code Organization",
+          "content": "Use modules for separation of concerns. Follow consistent naming conventions. Use linters (ESLint) and formatters (Prettier). Write self-documenting code with clear variable/function names."
+        },
+        {
+          "id": "js-35",
+          "title": "Modern JavaScript Features",
+          "content": "ES2023+ features: Array.prototype.findLast(), Array.prototype.toSorted(), Hashbang grammar. Keep up with TC39 proposals. Use Babel for transpilation. Check browser compatibility."
         }
       ],
       "quiz": [
@@ -186,6 +286,111 @@
           "options": ["6", "'33'", "'6'", "Error"],
           "correct": 1,
           "explanation": "When adding a number and string, JavaScript converts the number to string and concatenates them, resulting in '33'."
+        },
+        {
+          "id": "js-quiz-16",
+          "question": "Which method removes the last element from an array?",
+          "options": ["pop()", "push()", "shift()", "unshift()"],
+          "correct": 0,
+          "explanation": "pop() removes and returns the last element from an array. push() adds elements to the end."
+        },
+        {
+          "id": "js-quiz-17",
+          "question": "What does 'use strict' do?",
+          "options": ["Enables modern JavaScript features", "Makes code run faster", "Enables strict error checking", "Imports external modules"],
+          "correct": 2,
+          "explanation": "'use strict' enables strict mode, which catches common coding mistakes and prevents unsafe actions."
+        },
+        {
+          "id": "js-quiz-18",
+          "question": "Which symbol is used for optional chaining?",
+          "options": [".", "?.", "??", "::"],
+          "correct": 1,
+          "explanation": "The optional chaining operator (?.) allows reading the value of a property without throwing an error if the reference is null or undefined."
+        },
+        {
+          "id": "js-quiz-19",
+          "question": "What is a closure?",
+          "options": ["A way to close functions", "A function with access to outer scope variables", "A type of loop", "A debugging tool"],
+          "correct": 1,
+          "explanation": "A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned."
+        },
+        {
+          "id": "js-quiz-20",
+          "question": "Which of these is NOT a JavaScript framework?",
+          "options": ["React", "Angular", "Vue.js", "JavaScript"],
+          "correct": 3,
+          "explanation": "JavaScript is the programming language itself, while React, Angular, and Vue.js are frameworks built on top of it."
+        },
+        {
+          "id": "js-quiz-21",
+          "question": "What does the 'this' keyword refer to in a regular function?",
+          "options": ["The function itself", "The global object", "The calling object", "Undefined"],
+          "correct": 2,
+          "explanation": "In a regular function, 'this' refers to the object that called the function. In global scope, it refers to the global object (window in browsers)."
+        },
+        {
+          "id": "js-quiz-22",
+          "question": "Which method converts a JSON string to an object?",
+          "options": ["JSON.parse()", "JSON.stringify()", "JSON.object()", "JSON.convert()"],
+          "correct": 0,
+          "explanation": "JSON.parse() converts a JSON string to a JavaScript object. JSON.stringify() does the opposite - converts an object to JSON string."
+        },
+        {
+          "id": "js-quiz-23",
+          "question": "What is the difference between let and var?",
+          "options": ["No difference", "let is block-scoped, var is function-scoped", "var is block-scoped, let is function-scoped", "let is faster than var"],
+          "correct": 1,
+          "explanation": "let is block-scoped (only available within the block it's declared), while var is function-scoped and can be accessed outside blocks but within functions."
+        },
+        {
+          "id": "js-quiz-24",
+          "question": "Which operator is used for nullish coalescing?",
+          "options": ["||", "&&", "??", "??"],
+          "correct": 2,
+          "explanation": "The nullish coalescing operator (??) returns the right operand if the left is null or undefined, otherwise returns the left operand."
+        },
+        {
+          "id": "js-quiz-25",
+          "question": "What does BigInt do?",
+          "options": ["Handles large integers", "Creates big objects", "Stores binary data", "Handles floating point numbers"],
+          "correct": 0,
+          "explanation": "BigInt is used to represent integers larger than 2^53-1. Use 'n' suffix: 123n. Essential for database IDs and large calculations."
+        },
+        {
+          "id": "js-quiz-26",
+          "question": "Which method is used to add an element to the beginning of an array?",
+          "options": ["push()", "pop()", "shift()", "unshift()"],
+          "correct": 3,
+          "explanation": "unshift() adds one or more elements to the beginning of an array. push() adds to the end, shift() removes from the beginning."
+        },
+        {
+          "id": "js-quiz-27",
+          "question": "What is the purpose of a Promise?",
+          "options": ["To handle synchronous operations", "To handle asynchronous operations", "To create loops", "To define variables"],
+          "correct": 1,
+          "explanation": "Promises are used to handle asynchronous operations in JavaScript. They represent a value that may not be available yet."
+        },
+        {
+          "id": "js-quiz-28",
+          "question": "Which of these is a JavaScript Symbol?",
+          "options": ["Symbol()", "symbol()", "new Symbol()", "Symbol.create()"],
+          "correct": 0,
+          "explanation": "Symbol() creates a new unique symbol. Symbols are primitives, so they don't use 'new'. Symbol.create() is not a valid method."
+        },
+        {
+          "id": "js-quiz-29",
+          "question": "What does the 'async' keyword do?",
+          "options": ["Makes code run faster", "Makes a function return a Promise", "Prevents errors", "Creates loops"],
+          "correct": 1,
+          "explanation": "The 'async' keyword makes a function return a Promise automatically. Async functions can use 'await' to pause execution until a Promise resolves."
+        },
+        {
+          "id": "js-quiz-30",
+          "question": "Which method is used to find the index of an element in an array?",
+          "options": ["findIndex()", "indexOf()", "search()", "locate()"],
+          "correct": 1,
+          "explanation": "indexOf() returns the first index at which a given element can be found in the array. findIndex() is similar but for more complex searches."
         }
       ]
     },
@@ -268,6 +473,81 @@
           "id": "web-15",
           "title": "Progressive Enhancement",
           "content": "Build core functionality with HTML/CSS first, then enhance with JavaScript. Ensures site works without JS. Start with basic experience, add features progressively. Better accessibility and performance."
+        },
+        {
+          "id": "web-16",
+          "title": "Browser Compatibility",
+          "content": "Test across multiple browsers and versions. Use tools like BrowserStack, Can I Use, or MDN compatibility tables. Use progressive enhancement. Consider polyfills for older browsers."
+        },
+        {
+          "id": "web-17",
+          "title": "Web Security",
+          "content": "Use HTTPS everywhere. Implement Content Security Policy (CSP). Sanitize user inputs. Use secure cookies (HttpOnly, Secure, SameSite). Prevent XSS, CSRF, and other attacks."
+        },
+        {
+          "id": "web-18",
+          "title": "Web Analytics",
+          "content": "Use Google Analytics, Matomo, or Plausible for tracking. Track page views, user behavior, conversions. Implement event tracking for interactions. Respect user privacy with GDPR compliance."
+        },
+        {
+          "id": "web-19",
+          "title": "Web Performance Metrics",
+          "content": "Core Web Vitals: LCP (loading), FID (interactivity), CLS (visual stability). Use Lighthouse, PageSpeed Insights, Chrome DevTools. Monitor with Real User Monitoring (RUM)."
+        },
+        {
+          "id": "web-20",
+          "title": "Mobile-First Design",
+          "content": "Design for mobile first, then enhance for larger screens. Use responsive breakpoints. Optimize touch targets (44px minimum). Consider thumb-friendly navigation. Test on real devices."
+        },
+        {
+          "id": "web-21",
+          "title": "API Integration",
+          "content": "Use fetch() or axios for API calls. Handle loading, success, and error states. Implement proper error handling. Use environment variables for API endpoints. Consider API rate limits."
+        },
+        {
+          "id": "web-22",
+          "title": "State Management",
+          "content": "Use React Context, Vuex, Redux, or Zustand for complex state. Keep state local when possible. Use immutable updates. Consider state persistence for user preferences."
+        },
+        {
+          "id": "web-23",
+          "title": "Component Architecture",
+          "content": "Build reusable components. Use composition over inheritance. Follow single responsibility principle. Create component libraries. Use design systems like Material Design or Ant Design."
+        },
+        {
+          "id": "web-24",
+          "title": "Testing Strategies",
+          "content": "Unit testing: Jest, Vitest. Integration testing: Testing Library. E2E testing: Cypress, Playwright. Visual testing: Percy, Chromatic. Performance testing: Lighthouse CI."
+        },
+        {
+          "id": "web-25",
+          "title": "Deployment Strategies",
+          "content": "Use CI/CD pipelines. Deploy to staging first. Use feature flags. Implement blue-green deployments. Monitor error rates. Rollback strategy for failed deployments."
+        },
+        {
+          "id": "web-26",
+          "title": "Code Quality",
+          "content": "Use ESLint and Prettier for code consistency. Follow coding standards. Write meaningful commit messages. Use conventional commits. Regular code reviews and pair programming."
+        },
+        {
+          "id": "web-27",
+          "title": "Design Systems",
+          "content": "Create reusable component libraries with consistent styling. Use design tokens for colors, typography, spacing. Implement theme switching. Document component usage and props."
+        },
+        {
+          "id": "web-28",
+          "title": "User Experience",
+          "content": "Follow UX best practices. Use consistent navigation patterns. Provide clear feedback for user actions. Optimize loading states. Make forms user-friendly with proper validation."
+        },
+        {
+          "id": "web-29",
+          "title": "Internationalization",
+          "content": "Use i18n libraries like react-i18next, vue-i18n. Support multiple languages and locales. Handle RTL languages. Consider cultural differences in design and content."
+        },
+        {
+          "id": "web-30",
+          "title": "Modern Development Tools",
+          "content": "Use Vite for fast development. Hot Module Replacement for instant updates. Use TypeScript for type safety. Implement proper error boundaries. Use Storybook for component development."
         }
       ],
       "quiz": [
@@ -375,6 +655,111 @@
           "options": ["border-radius", "corner-radius", "rounded-corners", "border-style"],
           "correct": 0,
           "explanation": "border-radius property is used to create rounded corners on elements, with values like '10px' or '50%' for circles."
+        },
+        {
+          "id": "web-quiz-16",
+          "question": "What is the purpose of semantic HTML?",
+          "options": ["To make code look better", "To improve accessibility and SEO", "To reduce file size", "To make code run faster"],
+          "correct": 1,
+          "explanation": "Semantic HTML uses meaningful elements like <header>, <nav>, <main>, <article> which improve accessibility for screen readers and help search engines understand content structure."
+        },
+        {
+          "id": "web-quiz-17",
+          "question": "Which HTTP method is used to update existing data?",
+          "options": ["GET", "POST", "PUT", "DELETE"],
+          "correct": 2,
+          "explanation": "PUT is used to update existing data on the server, while POST is used to create new data. GET retrieves data and DELETE removes data."
+        },
+        {
+          "id": "web-quiz-18",
+          "question": "What does CSS Grid do?",
+          "options": ["Creates tables", "Creates flexible layouts", "Creates animations", "Creates forms"],
+          "correct": 1,
+          "explanation": "CSS Grid is a layout system that allows creating complex, responsive layouts with rows and columns. It's more powerful than Flexbox for two-dimensional layouts."
+        },
+        {
+          "id": "web-quiz-19",
+          "question": "What is the purpose of the 'alt' attribute in images?",
+          "options": ["To add image borders", "To provide alternative text for accessibility", "To set image dimensions", "To create image links"],
+          "correct": 1,
+          "explanation": "The 'alt' attribute provides alternative text when images can't be displayed and is essential for screen readers to understand image content."
+        },
+        {
+          "id": "web-quiz-20",
+          "question": "Which of these is NOT a web browser?",
+          "options": ["Chrome", "Firefox", "Safari", "Node.js"],
+          "correct": 3,
+          "explanation": "Node.js is a JavaScript runtime environment, not a web browser. Chrome, Firefox, and Safari are web browsers."
+        },
+        {
+          "id": "web-quiz-21",
+          "question": "What does 'responsive design' mean?",
+          "options": ["Design that works on all devices", "Design that loads quickly", "Design that looks good", "Design that uses many colors"],
+          "correct": 0,
+          "explanation": "Responsive design means creating websites that work well on all device sizes - desktop, tablet, and mobile - using flexible layouts and media queries."
+        },
+        {
+          "id": "web-quiz-22",
+          "question": "Which CSS property controls text alignment?",
+          "options": ["text-align", "text-center", "align-text", "center-text"],
+          "correct": 0,
+          "explanation": "text-align property controls horizontal text alignment with values like left, center, right, and justify."
+        },
+        {
+          "id": "web-quiz-23",
+          "question": "What is the purpose of a CDN?",
+          "options": ["To create websites", "To speed up content delivery", "To store databases", "To write code"],
+          "correct": 1,
+          "explanation": "CDN (Content Delivery Network) distributes content across multiple servers worldwide to reduce loading times and improve performance."
+        },
+        {
+          "id": "web-quiz-24",
+          "question": "Which HTML element is used for the main content?",
+          "options": ["<body>", "<main>", "<content>", "<section>"],
+          "correct": 1,
+          "explanation": "The <main> element represents the main content of the document, and there should only be one <main> element per page."
+        },
+        {
+          "id": "web-quiz-25",
+          "question": "What does HTTPS stand for?",
+          "options": ["HyperText Transfer Protocol Secure", "High Tech Transfer Protocol Secure", "HyperText Transfer Protocol Standard", "High Tech Transfer Protocol Standard"],
+          "correct": 0,
+          "explanation": "HTTPS stands for HyperText Transfer Protocol Secure, which encrypts data sent between the browser and server for security."
+        },
+        {
+          "id": "web-quiz-26",
+          "question": "Which CSS property creates a flex container?",
+          "options": ["display: flex", "display: grid", "display: block", "display: inline"],
+          "correct": 0,
+          "explanation": "display: flex creates a flex container, enabling flexbox layout with properties like justify-content, align-items, and flex-direction."
+        },
+        {
+          "id": "web-quiz-27",
+          "question": "What is the purpose of meta tags?",
+          "options": ["To style the page", "To provide metadata about the page", "To create links", "To add images"],
+          "correct": 1,
+          "explanation": "Meta tags provide metadata about the HTML document, including description, keywords, viewport settings, and character encoding."
+        },
+        {
+          "id": "web-quiz-28",
+          "question": "Which JavaScript method fetches data from an API?",
+          "options": ["fetch()", "get()", "request()", "load()"],
+          "correct": 0,
+          "explanation": "fetch() is the modern JavaScript method for making HTTP requests to APIs. It returns a Promise and is widely supported in modern browsers."
+        },
+        {
+          "id": "web-quiz-29",
+          "question": "What does 'mobile-first' design mean?",
+          "options": ["Design only for mobile", "Start with mobile design then enhance", "Make everything small", "Use only touch controls"],
+          "correct": 1,
+          "explanation": "Mobile-first design means starting with the mobile layout and then using media queries to enhance the design for larger screens."
+        },
+        {
+          "id": "web-quiz-30",
+          "question": "Which HTML element creates a navigation menu?",
+          "options": ["<menu>", "<nav>", "<navigation>", "<links>"],
+          "correct": 1,
+          "explanation": "The <nav> element is used to define navigation links and is semantic HTML that helps screen readers and search engines understand the page structure."
         }
       ]
     },
@@ -457,6 +842,81 @@
           "id": "css-15",
           "title": "CSS Custom Properties",
           "content": "CSS variables can be scoped to components. Use :root for global variables. Variables cascade and inherit. JavaScript can read/modify them. Support in all modern browsers. Great for theming and maintainable stylesheets."
+        },
+        {
+          "id": "css-16",
+          "title": "CSS Animations",
+          "content": "Use @keyframes to define animations. Properties: animation-name, duration, timing-function, delay, iteration-count, direction, fill-mode. Use animation shorthand. Consider prefers-reduced-motion for accessibility."
+        },
+        {
+          "id": "css-17",
+          "title": "CSS Transitions",
+          "content": "Transition properties change smoothly over time. Use transition-property, duration, timing-function, delay. Shorthand: transition: all 0.3s ease. Apply to hover states for interactive elements."
+        },
+        {
+          "id": "css-18",
+          "title": "CSS Grid Advanced",
+          "content": "Use grid-template-areas for named grid areas. grid-auto-rows/columns for implicit tracks. grid-row/column for item positioning. minmax() for flexible sizing. Subgrid for nested grids."
+        },
+        {
+          "id": "css-19",
+          "title": "CSS Flexbox Advanced",
+          "content": "Use flex-grow, flex-shrink, flex-basis. align-self for individual items. order property changes visual order. flex-wrap for multi-line layouts. justify-content and align-items for alignment."
+        },
+        {
+          "id": "css-20",
+          "title": "CSS Media Queries",
+          "content": "Use @media for responsive design. Test screen size, orientation, resolution. Combine with logical operators (and, or, not). Use min-width/max-width for mobile-first approach. Consider container queries."
+        },
+        {
+          "id": "css-21",
+          "title": "CSS Specificity",
+          "content": "Specificity calculation: inline styles (1,0,0,0), IDs (0,1,0,0), classes/attributes/pseudo-classes (0,0,1,0), elements/pseudo-elements (0,0,0,1). !important overrides all. Use wisely."
+        },
+        {
+          "id": "css-22",
+          "title": "CSS Box Model",
+          "content": "Content + padding + border + margin = total size. Use box-sizing: border-box to include padding/border in width/height. margin: auto for centering. box-shadow for depth."
+        },
+        {
+          "id": "css-23",
+          "title": "CSS Positioning",
+          "content": "position: static (default), relative (offset from normal position), absolute (relative to positioned parent), fixed (relative to viewport), sticky (relative + fixed behavior)."
+        },
+        {
+          "id": "css-24",
+          "title": "CSS Typography",
+          "content": "font-family, font-size, font-weight, line-height, letter-spacing, text-align, text-decoration, text-transform. Use web fonts (Google Fonts). Consider font-display: swap for performance."
+        },
+        {
+          "id": "css-25",
+          "title": "CSS Performance",
+          "content": "Minify CSS, use critical CSS above the fold. Avoid @import, use link tags. Reduce specificity, use efficient selectors. Consider CSS-in-JS vs separate files. Use CSS custom properties."
+        },
+        {
+          "id": "css-26",
+          "title": "CSS Architecture",
+          "content": "BEM methodology: Block__Element--Modifier. SMACSS: Base, Layout, Module, State, Theme. ITCSS: Inverted Triangle CSS. Use CSS modules for component-scoped styles."
+        },
+        {
+          "id": "css-27",
+          "title": "CSS Preprocessors",
+          "content": "Sass/SCSS: variables, nesting, mixins, functions, partials. Less: similar to Sass. PostCSS: plugins for autoprefixer, cssnext. Choose based on project needs and team familiarity."
+        },
+        {
+          "id": "css-28",
+          "title": "CSS Accessibility",
+          "content": "Ensure sufficient color contrast (4.5:1 ratio). Don't rely on color alone to convey meaning. Use focus indicators. Consider prefers-reduced-motion. Test with screen readers."
+        },
+        {
+          "id": "css-29",
+          "title": "CSS Best Practices",
+          "content": "Use semantic class names, avoid deep nesting. Follow mobile-first approach. Use CSS reset or normalize. Consistent naming conventions. Document your CSS with comments."
+        },
+        {
+          "id": "css-30",
+          "title": "CSS Modern Features",
+          "content": "CSS Container Queries, CSS Subgrid, CSS Logical Properties, CSS Custom Properties (variables), CSS Grid Level 2, CSS Color Level 5. Keep up with modern CSS specifications."
         }
       ],
       "quiz": [
@@ -564,6 +1024,111 @@
           "options": ["animation", "transition", "transform", "keyframe"],
           "correct": 1,
           "explanation": "The transition property creates smooth animations between different states of an element when a property changes."
+        },
+        {
+          "id": "css-quiz-16",
+          "question": "What does 'display: none' do?",
+          "options": ["Hides element but keeps space", "Removes element completely", "Makes element transparent", "Changes element position"],
+          "correct": 1,
+          "explanation": "display: none removes the element from the document flow completely - it takes up no space and is not visible."
+        },
+        {
+          "id": "css-quiz-17",
+          "question": "Which CSS property creates a shadow effect?",
+          "options": ["shadow", "box-shadow", "text-shadow", "Both 1 and 2"],
+          "correct": 3,
+          "explanation": "Both box-shadow (for elements) and text-shadow (for text) create shadow effects in CSS."
+        },
+        {
+          "id": "css-quiz-18",
+          "question": "What is CSS specificity order?",
+          "options": ["IDs, Classes, Elements", "Elements, Classes, IDs", "Classes, Elements, IDs", "Elements, IDs, Classes"],
+          "correct": 0,
+          "explanation": "CSS specificity is calculated as (IDs, Classes/Attributes/Pseudo-classes, Elements/Pseudo-elements). Higher specificity wins."
+        },
+        {
+          "id": "css-quiz-19",
+          "question": "Which CSS unit is relative to viewport width?",
+          "options": ["px", "em", "rem", "vw"],
+          "correct": 3,
+          "explanation": "vw (viewport width) is relative to 1% of the viewport width. vh is viewport height, vmin/vmax for smallest/largest dimension."
+        },
+        {
+          "id": "css-quiz-20",
+          "question": "What does 'position: absolute' do?",
+          "options": ["Positions relative to document", "Positions relative to viewport", "Positions relative to parent", "Positions relative to normal position"],
+          "correct": 2,
+          "explanation": "position: absolute positions an element relative to its nearest positioned ancestor (not static). If no positioned parent, it uses the document body."
+        },
+        {
+          "id": "css-quiz-21",
+          "question": "Which CSS property controls text color?",
+          "options": ["color", "text-color", "font-color", "foreground-color"],
+          "correct": 0,
+          "explanation": "The color property sets the color of text content in an element."
+        },
+        {
+          "id": "css-quiz-22",
+          "question": "What is the correct CSS Grid syntax?",
+          "options": ["display: grid", "display: flex", "display: table", "display: block"],
+          "correct": 0,
+          "explanation": "display: grid creates a grid container where you can place child elements in rows and columns."
+        },
+        {
+          "id": "css-quiz-23",
+          "question": "Which CSS property creates rounded corners?",
+          "options": ["border-radius", "corner-radius", "rounded-corners", "border-style"],
+          "correct": 0,
+          "explanation": "border-radius creates rounded corners on elements. Use values like '10px' or '50%' for circles."
+        },
+        {
+          "id": "css-quiz-24",
+          "question": "What does 'z-index' control?",
+          "options": ["Element size", "Element position", "Element stacking order", "Element opacity"],
+          "correct": 2,
+          "explanation": "z-index controls the stacking order of positioned elements, with higher values appearing in front of lower values."
+        },
+        {
+          "id": "css-quiz-25",
+          "question": "Which CSS property centers content horizontally?",
+          "options": ["text-align: center", "margin: 0 auto", "align: center", "center: true"],
+          "correct": 1,
+          "explanation": "margin: 0 auto centers block-level elements horizontally when they have a defined width."
+        },
+        {
+          "id": "css-quiz-26",
+          "question": "What is CSS-in-JS?",
+          "options": ["Writing CSS in JavaScript", "Converting JS to CSS", "Inline styles", "External CSS files"],
+          "correct": 0,
+          "explanation": "CSS-in-JS allows writing CSS styles directly in JavaScript code, often used in React and other component-based frameworks."
+        },
+        {
+          "id": "css-quiz-27",
+          "question": "Which CSS property makes text bold?",
+          "options": ["font-style: bold", "font-weight: bold", "text-decoration: bold", "font-bold: true"],
+          "correct": 1,
+          "explanation": "font-weight: bold makes text bold. Other values include normal, lighter, and numeric values (100-900)."
+        },
+        {
+          "id": "css-quiz-28",
+          "question": "What does 'box-sizing: border-box' do?",
+          "options": ["Includes padding and border in element size", "Excludes padding and border from element size", "Changes border style", "Creates a box around element"],
+          "correct": 0,
+          "explanation": "box-sizing: border-box makes the width and height properties include padding and border, not just content."
+        },
+        {
+          "id": "css-quiz-29",
+          "question": "Which CSS property controls element transparency?",
+          "options": ["visibility", "opacity", "transparent", "display"],
+          "correct": 1,
+          "explanation": "opacity controls element transparency, with values from 0 (fully transparent) to 1 (fully opaque)."
+        },
+        {
+          "id": "css-quiz-30",
+          "question": "What is the CSS cascade?",
+          "options": ["Order of CSS rules application", "Waterfall effect", "CSS animation", "Layout method"],
+          "correct": 0,
+          "explanation": "The CSS cascade determines which CSS rules apply when multiple rules target the same element, based on specificity, importance, and source order."
         }
       ]
     },
@@ -646,6 +1211,81 @@
           "id": "html-15",
           "title": "HTML Meta Tags",
           "content": "Meta tags in <head>: charset for encoding, viewport for responsive design, description/keywords for SEO. Open Graph tags for social media sharing. Use <meta name='robots' content='noindex'> to prevent search indexing."
+        },
+        {
+          "id": "html-16",
+          "title": "HTML5 Semantic Elements",
+          "content": "Use <header>, <nav>, <main>, <article>, <section>, <aside>, <footer> for better structure. Improves accessibility, SEO, and code readability. Screen readers and search engines understand content better."
+        },
+        {
+          "id": "html-17",
+          "title": "HTML Forms",
+          "content": "Use <form>, <input>, <select>, <textarea>, <button>. Input types: text, email, password, number, date, file. Use labels for accessibility. Validate with HTML5 attributes (required, pattern, min/max)."
+        },
+        {
+          "id": "html-18",
+          "title": "HTML5 Audio/Video",
+          "content": "<audio> and <video> elements with controls attribute. Multiple source formats for compatibility. Use preload for performance. Fallback content for non-supporting browsers. Consider accessibility with captions."
+        },
+        {
+          "id": "html-19",
+          "title": "HTML5 Web Storage",
+          "content": "localStorage (persistent) and sessionStorage (session-only). Use setItem(), getItem(), removeItem(), clear(). JSON.parse/stringify for objects. Check storage quotas and handle errors gracefully."
+        },
+        {
+          "id": "html-20",
+          "title": "HTML5 Geolocation",
+          "content": "navigator.geolocation.getCurrentPosition() for current location. watchPosition() for tracking. Handle errors (permission denied, unavailable). Use with maps for location-based features."
+        },
+        {
+          "id": "html-21",
+          "title": "HTML5 Drag and Drop",
+          "content": "draggable='true' on elements. Events: dragstart, dragover, drop. dataTransfer object for data exchange. Use preventDefault() on dragover to allow dropping. Visual feedback during drag operations."
+        },
+        {
+          "id": "html-22",
+          "title": "HTML5 Web Workers",
+          "content": "Run JavaScript in background threads. new Worker('worker.js'). Communication via postMessage(). Won't block UI. Use for heavy computations, file processing, or real-time data handling."
+        },
+        {
+          "id": "html-23",
+          "title": "HTML5 WebSockets",
+          "content": "Real-time communication between client and server. new WebSocket('ws://...'). Events: open, message, error, close. Send/receive data instantly. Use for chat apps, live updates, gaming."
+        },
+        {
+          "id": "html-24",
+          "title": "HTML5 Service Workers",
+          "content": "Intercept network requests, cache resources, enable offline functionality. Lifecycle: install, activate, fetch. Use for Progressive Web Apps. Handle background sync and push notifications."
+        },
+        {
+          "id": "html-25",
+          "title": "HTML5 Notification API",
+          "content": "Notification.requestPermission() for user consent. new Notification('title', options). Handle click events. Check notification support. Use responsibly to avoid spam."
+        },
+        {
+          "id": "html-26",
+          "title": "HTML5 Intersection Observer",
+          "content": "Watch elements entering/leaving viewport. new IntersectionObserver(callback, options). Use for lazy loading, infinite scroll, animations. Better performance than scroll event listeners."
+        },
+        {
+          "id": "html-27",
+          "title": "HTML5 Resize Observer",
+          "content": "Watch element size changes. new ResizeObserver(callback). Use for responsive layouts, chart resizing, dynamic content. Better than window resize events for specific elements."
+        },
+        {
+          "id": "html-28",
+          "title": "HTML5 Mutation Observer",
+          "content": "Watch DOM changes. new MutationObserver(callback). Monitor childList, attributes, subtree. Use for dynamic content, third-party scripts, debugging. Avoid infinite loops."
+        },
+        {
+          "id": "html-29",
+          "title": "HTML5 Performance",
+          "content": "Use <link rel='preload'> for critical resources. Implement lazy loading with loading='lazy'. Use resource hints: dns-prefetch, preconnect, prefetch. Monitor with Performance API."
+        },
+        {
+          "id": "html-30",
+          "title": "HTML5 Security",
+          "content": "Use Content Security Policy (CSP) headers. Sanitize user inputs. Use HTTPS everywhere. Implement secure headers: X-Frame-Options, X-Content-Type-Options. Regular security audits and updates."
         }
       ],
       "quiz": [
@@ -753,6 +1393,111 @@
           "options": ["<section>", "<article>", "<div>", "<content>"],
           "correct": 1,
           "explanation": "The <article> element represents a self-contained piece of content that could be independently distributed or reused."
+        },
+        {
+          "id": "html-quiz-16",
+          "question": "What does the 'lang' attribute do?",
+          "options": ["Sets language for the document", "Creates links", "Adds styling", "Defines layout"],
+          "correct": 0,
+          "explanation": "The lang attribute specifies the language of the document's content, important for accessibility and search engines."
+        },
+        {
+          "id": "html-quiz-17",
+          "question": "Which element creates a navigation menu?",
+          "options": ["<menu>", "<nav>", "<navigation>", "<links>"],
+          "correct": 1,
+          "explanation": "The <nav> element is used to define navigation links and is semantic HTML that helps screen readers understand the page structure."
+        },
+        {
+          "id": "html-quiz-18",
+          "question": "What is the purpose of the 'alt' attribute?",
+          "options": ["To add borders to images", "To provide alternative text", "To resize images", "To create image links"],
+          "correct": 1,
+          "explanation": "The 'alt' attribute provides alternative text for images when they can't be displayed, essential for accessibility."
+        },
+        {
+          "id": "html-quiz-19",
+          "question": "Which element is used for the main content?",
+          "options": ["<body>", "<main>", "<content>", "<section>"],
+          "correct": 1,
+          "explanation": "The <main> element represents the main content of the document and should only appear once per page."
+        },
+        {
+          "id": "html-quiz-20",
+          "question": "What does 'semantic HTML' mean?",
+          "options": ["HTML that looks good", "HTML with meaning", "HTML with colors", "HTML with animations"],
+          "correct": 1,
+          "explanation": "Semantic HTML uses meaningful elements like <header>, <nav>, <main>, <article> that describe their content and purpose."
+        },
+        {
+          "id": "html-quiz-21",
+          "question": "Which element creates a dropdown list?",
+          "options": ["<input type='dropdown'>", "<select>", "<option>", "<datalist>"],
+          "correct": 1,
+          "explanation": "The <select> element creates a dropdown list with <option> elements defining the available choices."
+        },
+        {
+          "id": "html-quiz-22",
+          "question": "What is the correct way to include external CSS?",
+          "options": ["<style src='styles.css'>", "<link rel='stylesheet' href='styles.css'>", "<css href='styles.css'>", "<include src='styles.css'>"],
+          "correct": 1,
+          "explanation": "The correct way to include external CSS is <link rel='stylesheet' href='styles.css'> in the HTML head."
+        },
+        {
+          "id": "html-quiz-23",
+          "question": "Which element is used for page header?",
+          "options": ["<header>", "<head>", "<top>", "<banner>"],
+          "correct": 0,
+          "explanation": "The <header> element represents introductory content or navigation links at the top of a page or section."
+        },
+        {
+          "id": "html-quiz-24",
+          "question": "What does 'responsive design' require?",
+          "options": ["Only CSS", "Meta viewport tag", "Only JavaScript", "Only HTML"],
+          "correct": 1,
+          "explanation": "Responsive design requires the meta viewport tag <meta name='viewport' content='width=device-width, initial-scale=1'> for proper mobile rendering."
+        },
+        {
+          "id": "html-quiz-25",
+          "question": "Which element creates a numbered list?",
+          "options": ["<ul>", "<ol>", "<li>", "<list>"],
+          "correct": 1,
+          "explanation": "<ol> creates an ordered (numbered) list, while <ul> creates an unordered (bulleted) list."
+        },
+        {
+          "id": "html-quiz-26",
+          "question": "What is the purpose of meta tags?",
+          "options": ["To style pages", "To provide document metadata", "To create links", "To add images"],
+          "correct": 1,
+          "explanation": "Meta tags provide metadata about the HTML document, including description, keywords, viewport, and character encoding."
+        },
+        {
+          "id": "html-quiz-27",
+          "question": "Which element is used for page footer?",
+          "options": ["<footer>", "<bottom>", "<end>", "<foot>"],
+          "correct": 0,
+          "explanation": "The <footer> element represents footer content at the bottom of a page or section."
+        },
+        {
+          "id": "html-quiz-28",
+          "question": "What does 'DOCTYPE' do?",
+          "options": ["Declares document type", "Creates document structure", "Adds styling", "Defines content"],
+          "correct": 0,
+          "explanation": "DOCTYPE declaration tells the browser which version of HTML the document is using, ensuring proper rendering."
+        },
+        {
+          "id": "html-quiz-29",
+          "question": "Which element creates a clickable button?",
+          "options": ["<button>", "<click>", "<input type='button'>", "<link>"],
+          "correct": 0,
+          "explanation": "<button> creates a clickable button. <input type='button'> is also valid but <button> is more flexible and semantic."
+        },
+        {
+          "id": "html-quiz-30",
+          "question": "What is the purpose of ARIA attributes?",
+          "options": ["To add animations", "To improve accessibility", "To add styling", "To create links"],
+          "correct": 1,
+          "explanation": "ARIA (Accessible Rich Internet Applications) attributes provide additional information to assistive technologies like screen readers."
         }
       ]
     },
@@ -835,6 +1580,81 @@
           "id": "testing-15",
           "title": "Accessibility Testing",
           "content": "Ensure applications are usable by people with disabilities. Tools: axe-core, Lighthouse accessibility audit, screen readers. Test keyboard navigation, color contrast, alt text. Follow WCAG guidelines. Automate with axe-playwright."
+        },
+        {
+          "id": "testing-16",
+          "title": "Test-Driven Development",
+          "content": "Write tests before code. Red-Green-Refactor cycle. Tests act as documentation and safety net. Improves code quality and confidence. Use Jest/Vitest with frameworks like React Testing Library or Vue Test Utils."
+        },
+        {
+          "id": "testing-17",
+          "title": "Behavior-Driven Development",
+          "content": "Write tests in natural language using Gherkin. Tools: Cucumber, SpecFlow. Scenarios: Given-When-Then format. Bridge gap between business and technical teams. Living documentation for features."
+        },
+        {
+          "id": "testing-18",
+          "title": "Test Data Management",
+          "content": "Use factories, builders, or fixtures for test data. Keep data isolated between tests. Use realistic but anonymized data. Consider data cleanup strategies. Mock external dependencies."
+        },
+        {
+          "id": "testing-19",
+          "title": "Continuous Integration Testing",
+          "content": "Run tests on every commit. Use GitHub Actions, GitLab CI, Jenkins. Test in multiple environments. Fail fast on test failures. Use parallel execution for speed. Monitor test suite health."
+        },
+        {
+          "id": "testing-20",
+          "title": "Visual Regression Testing",
+          "content": "Detect UI changes automatically. Tools: Percy, Chromatic, Applitools. Take screenshots, compare against baseline. Catch unintended visual changes. Essential for design system maintenance."
+        },
+        {
+          "id": "testing-21",
+          "title": "API Testing",
+          "content": "Test REST/GraphQL endpoints. Tools: Postman, Insomnia, Supertest. Test CRUD operations, authentication, error handling. Mock servers with json-server or MSW. Validate response schemas."
+        },
+        {
+          "id": "testing-22",
+          "title": "Database Testing",
+          "content": "Test data persistence, migrations, queries. Use test databases with known state. Test transactions, rollbacks. Mock databases for unit tests. Validate data integrity and relationships."
+        },
+        {
+          "id": "testing-23",
+          "title": "Security Testing",
+          "content": "Test for vulnerabilities: XSS, CSRF, SQL injection, authentication bypass. Use tools like OWASP ZAP, Snyk. Implement security headers. Test authorization at every level. Regular dependency audits."
+        },
+        {
+          "id": "testing-24",
+          "title": "Load Testing",
+          "content": "Test application under heavy load. Tools: Apache JMeter, k6, Artillery. Simulate multiple users, measure response times. Identify bottlenecks. Set realistic load scenarios based on expected traffic."
+        },
+        {
+          "id": "testing-25",
+          "title": "Cross-Browser Testing",
+          "content": "Test across different browsers and versions. Use BrowserStack, Sauce Labs, or local VMs. Test JavaScript compatibility, CSS rendering, form behavior. Consider mobile browsers and devices."
+        },
+        {
+          "id": "testing-26",
+          "title": "Mobile Testing",
+          "content": "Test on real devices and emulators. Use Appium for native apps, WebDriver for web. Test touch interactions, screen sizes, network conditions. Consider device-specific features like camera, GPS."
+        },
+        {
+          "id": "testing-27",
+          "title": "Test Reporting",
+          "content": "Generate comprehensive test reports. Use Allure, TestNG reports, or custom dashboards. Include screenshots, logs, performance metrics. Share with team and stakeholders. Track test trends over time."
+        },
+        {
+          "id": "testing-28",
+          "title": "Test Automation Best Practices",
+          "content": "Use Page Object Model for UI tests. Implement proper waits (explicit, not implicit). Test data should be separate from tests. Use descriptive test names. Group related tests. Clean up after tests."
+        },
+        {
+          "id": "testing-29",
+          "title": "Testing in Production",
+          "content": "Monitor real user behavior with analytics. Use feature flags for controlled rollouts. Implement canary releases. Monitor error rates and performance. Gather user feedback on new features."
+        },
+        {
+          "id": "testing-30",
+          "title": "Test Strategy Planning",
+          "content": "Define testing scope, objectives, and timelines. Choose appropriate testing types for each feature. Plan for test environments and data. Define success criteria. Consider risk-based testing approaches."
         }
       ],
       "quiz": [
@@ -942,6 +1762,111 @@
           "options": ["Unit Testing", "Integration Testing", "E2E Testing", "Component Testing"],
           "correct": 2,
           "explanation": "E2E tests are most expensive to maintain because they test complete user workflows and can break with UI changes."
+        },
+        {
+          "id": "testing-quiz-16",
+          "question": "What is TDD?",
+          "options": ["Test-Driven Development", "Test Data Development", "Test Documentation Development", "Test Design Development"],
+          "correct": 0,
+          "explanation": "TDD (Test-Driven Development) is a development approach where you write tests before writing the actual code."
+        },
+        {
+          "id": "testing-quiz-17",
+          "question": "Which tool is commonly used for unit testing JavaScript?",
+          "options": ["Jest", "Selenium", "Postman", "JMeter"],
+          "correct": 0,
+          "explanation": "Jest is a popular JavaScript testing framework developed by Facebook, commonly used for unit testing React applications."
+        },
+        {
+          "id": "testing-quiz-18",
+          "question": "What is the purpose of mocking in tests?",
+          "options": ["To make tests run faster", "To isolate code under test", "To create fake data", "To skip tests"],
+          "correct": 1,
+          "explanation": "Mocking replaces real dependencies with controlled substitutes, allowing you to test code in isolation from external services or complex dependencies."
+        },
+        {
+          "id": "testing-quiz-19",
+          "question": "What does CI/CD stand for?",
+          "options": ["Continuous Integration/Continuous Deployment", "Code Integration/Code Development", "Component Integration/Component Development", "Code Inspection/Code Delivery"],
+          "correct": 0,
+          "explanation": "CI/CD stands for Continuous Integration/Continuous Deployment, automating the process of building, testing, and deploying code changes."
+        },
+        {
+          "id": "testing-quiz-20",
+          "question": "Which testing level tests the interaction between components?",
+          "options": ["Unit Testing", "Integration Testing", "System Testing", "Acceptance Testing"],
+          "correct": 1,
+          "explanation": "Integration testing focuses on testing the interaction between different components or systems to ensure they work together correctly."
+        },
+        {
+          "id": "testing-quiz-21",
+          "question": "What is a test double?",
+          "options": ["A duplicate test", "A substitute for real objects in tests", "A test that runs twice", "A test with double coverage"],
+          "correct": 1,
+          "explanation": "Test doubles are objects that stand in for real objects during testing, including mocks, stubs, spies, and fakes."
+        },
+        {
+          "id": "testing-quiz-22",
+          "question": "Which assertion library is commonly used with Chai?",
+          "options": ["Jest", "Mocha", "Sinon", "Supertest"],
+          "correct": 1,
+          "explanation": "Chai is commonly used as an assertion library with Mocha, providing should/expect/assert syntax for making test assertions."
+        },
+        {
+          "id": "testing-quiz-23",
+          "question": "What is the purpose of test fixtures?",
+          "options": ["To fix broken tests", "To provide known test data", "To create test reports", "To run tests faster"],
+          "correct": 1,
+          "explanation": "Test fixtures provide a known, consistent state for tests to run against, including sample data, database state, or component props."
+        },
+        {
+          "id": "testing-quiz-24",
+          "question": "Which tool is used for browser automation testing?",
+          "options": ["Jest", "Cypress", "Postman", "Supertest"],
+          "correct": 1,
+          "explanation": "Cypress is a popular end-to-end testing framework that runs directly in the browser and provides automatic waiting and real-time reloading."
+        },
+        {
+          "id": "testing-quiz-25",
+          "question": "What is BDD?",
+          "options": ["Behavior-Driven Development", "Bug-Driven Development", "Browser-Driven Development", "Backend-Driven Development"],
+          "correct": 0,
+          "explanation": "BDD (Behavior-Driven Development) focuses on the behavior of the application from the user's perspective, using natural language specifications."
+        },
+        {
+          "id": "testing-quiz-26",
+          "question": "Which testing type focuses on user workflows?",
+          "options": ["Unit Testing", "Integration Testing", "End-to-End Testing", "Component Testing"],
+          "correct": 2,
+          "explanation": "End-to-End (E2E) testing simulates real user scenarios and tests the complete application flow from start to finish."
+        },
+        {
+          "id": "testing-quiz-27",
+          "question": "What is test coverage?",
+          "options": ["Number of test files", "Percentage of code tested", "Number of test cases", "Time to run tests"],
+          "correct": 1,
+          "explanation": "Test coverage measures the percentage of code that is executed when running the test suite, helping identify untested code paths."
+        },
+        {
+          "id": "testing-quiz-28",
+          "question": "Which tool is used for API testing?",
+          "options": ["Jest", "Cypress", "Postman", "Selenium"],
+          "correct": 2,
+          "explanation": "Postman is a popular tool for testing APIs, allowing you to send HTTP requests, view responses, and create automated API tests."
+        },
+        {
+          "id": "testing-quiz-29",
+          "question": "What is a test pyramid?",
+          "options": ["Structure of test organization", "Hierarchy of testing types", "Organization of test files", "Test execution order"],
+          "correct": 1,
+          "explanation": "The test pyramid illustrates the ideal distribution of different types of tests, with more unit tests at the bottom and fewer E2E tests at the top."
+        },
+        {
+          "id": "testing-quiz-30",
+          "question": "What is the purpose of test automation?",
+          "options": ["To replace manual testing completely", "To run tests faster and more frequently", "To make testing easier", "To reduce test coverage"],
+          "correct": 1,
+          "explanation": "Test automation allows running tests faster, more frequently, and more consistently than manual testing, enabling continuous integration and deployment."
         }
       ]
     },
@@ -1024,6 +1949,81 @@
           "id": "apis-15",
           "title": "API Documentation",
           "content": "Document APIs for developers. Tools: Swagger/OpenAPI, Postman Collections, GraphQL Playground. Include request/response examples, authentication methods, error codes. Use API versioning for breaking changes. Test endpoints regularly."
+        },
+        {
+          "id": "apis-16",
+          "title": "GraphQL Basics",
+          "content": "Query language for APIs. Single endpoint for all data. Clients specify exactly what data they need. Strongly typed schema. Use fragments for reusable selections. Mutations for data changes, subscriptions for real-time data."
+        },
+        {
+          "id": "apis-17",
+          "title": "API Rate Limiting",
+          "content": "Control API usage to prevent abuse. Implement token bucket or sliding window algorithms. Return 429 status for rate exceeded. Use headers: X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset. Consider different limits for different endpoints."
+        },
+        {
+          "id": "apis-18",
+          "title": "API Caching Strategies",
+          "content": "Use HTTP caching headers: Cache-Control, ETag, Last-Modified. Implement Redis or Memcached for server-side caching. Use CDN for static assets. Consider cache invalidation strategies. Monitor cache hit rates."
+        },
+        {
+          "id": "apis-19",
+          "title": "Microservices Architecture",
+          "content": "Break applications into small, independent services. Each service has its own database and API. Use service discovery (Consul, Eureka). Implement circuit breakers for fault tolerance. Use message queues for async communication."
+        },
+        {
+          "id": "apis-20",
+          "title": "API Gateway",
+          "content": "Single entry point for all client requests. Handles authentication, rate limiting, logging, routing. Tools: Kong, Express Gateway, AWS API Gateway. Offloads common concerns from individual services."
+        },
+        {
+          "id": "apis-21",
+          "title": "OAuth 2.0",
+          "content": "Authorization framework for secure API access. Flows: Authorization Code, Implicit, Resource Owner Password Credentials, Client Credentials. Use for third-party integrations. Implement refresh tokens for long-lived access."
+        },
+        {
+          "id": "apis-22",
+          "title": "JSON Web Tokens (JWT)",
+          "content": "Compact, self-contained tokens for securely transmitting information. Contains header, payload, signature. Use for stateless authentication. Store in localStorage or httpOnly cookies. Verify signatures server-side."
+        },
+        {
+          "id": "apis-23",
+          "title": "API Monitoring",
+          "content": "Monitor API performance, availability, and usage. Tools: Datadog, New Relic, Prometheus. Track response times, error rates, throughput. Set up alerts for anomalies. Monitor business metrics like conversion rates."
+        },
+        {
+          "id": "apis-24",
+          "title": "API Testing",
+          "content": "Test REST/GraphQL endpoints. Tools: Postman, Insomnia, Supertest. Test CRUD operations, authentication, error handling. Mock external dependencies. Validate response schemas and status codes."
+        },
+        {
+          "id": "apis-25",
+          "title": "API Security",
+          "content": "Implement HTTPS everywhere. Use API keys or OAuth for authentication. Rate limiting to prevent abuse. Input validation and sanitization. Use CORS appropriately. Regular security audits and penetration testing."
+        },
+        {
+          "id": "apis-26",
+          "title": "Database Design",
+          "content": "Choose appropriate database: SQL (PostgreSQL, MySQL) for relational data, NoSQL (MongoDB, Redis) for flexible schemas. Normalize data to reduce redundancy. Use indexes for query performance. Consider ACID vs BASE properties."
+        },
+        {
+          "id": "apis-27",
+          "title": "Data Validation",
+          "content": "Validate incoming data on server side. Use libraries like Joi, Yup, or express-validator. Sanitize inputs to prevent injection attacks. Provide meaningful error messages. Consider client-side validation for better UX."
+        },
+        {
+          "id": "apis-28",
+          "title": "Error Handling",
+          "content": "Use appropriate HTTP status codes: 200 OK, 400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error. Provide detailed error messages in development, generic ones in production. Log errors for debugging."
+        },
+        {
+          "id": "apis-29",
+          "title": "API Versioning",
+          "content": "Version APIs to maintain backward compatibility. Strategies: URL versioning (/api/v1/users), header versioning (Accept: application/vnd.api.v1+json), parameter versioning (?version=1). Deprecate old versions with warnings."
+        },
+        {
+          "id": "apis-30",
+          "title": "Scalability Considerations",
+          "content": "Design for horizontal scaling. Use load balancers. Implement database sharding or partitioning. Cache expensive operations. Use async processing for heavy tasks. Monitor performance metrics and set up auto-scaling."
         }
       ],
       "quiz": [
@@ -1131,6 +2131,111 @@
           "options": ["404", "403", "401", "500"],
           "correct": 0,
           "explanation": "HTTP 404 Not Found indicates that the requested resource could not be found on the server."
+        },
+        {
+          "id": "apis-quiz-16",
+          "question": "What is GraphQL?",
+          "options": ["Database query language", "API query language", "Database management system", "API testing tool"],
+          "correct": 1,
+          "explanation": "GraphQL is a query language for APIs that allows clients to request exactly the data they need from multiple sources in a single request."
+        },
+        {
+          "id": "apis-quiz-17",
+          "question": "Which HTTP method is used to update existing data?",
+          "options": ["GET", "POST", "PUT", "DELETE"],
+          "correct": 2,
+          "explanation": "PUT is used to update existing data on the server. POST is used to create new data, GET retrieves data, and DELETE removes data."
+        },
+        {
+          "id": "apis-quiz-18",
+          "question": "What is JWT used for?",
+          "options": ["Database storage", "API authentication", "Data encryption", "File transfer"],
+          "correct": 1,
+          "explanation": "JWT (JSON Web Tokens) are used for securely transmitting information between parties as a JSON object, commonly used for authentication and authorization."
+        },
+        {
+          "id": "apis-quiz-19",
+          "question": "What does REST stand for?",
+          "options": ["Representational State Transfer", "Remote State Transfer", "Resource State Transfer", "Request State Transfer"],
+          "correct": 0,
+          "explanation": "REST (Representational State Transfer) is an architectural style for designing networked applications using HTTP methods to access and manipulate resources."
+        },
+        {
+          "id": "apis-quiz-20",
+          "question": "Which HTTP status code indicates successful creation?",
+          "options": ["200 OK", "201 Created", "202 Accepted", "204 No Content"],
+          "correct": 1,
+          "explanation": "HTTP 201 Created indicates that a new resource has been successfully created as a result of the request."
+        },
+        {
+          "id": "apis-quiz-21",
+          "question": "What is CORS?",
+          "options": ["Cross-Origin Resource Sharing", "Cross-Origin Request Security", "Client-Origin Resource Sharing", "Client-Origin Request Security"],
+          "correct": 0,
+          "explanation": "CORS (Cross-Origin Resource Sharing) is a security feature that allows or restricts web applications from making requests to domains other than their own."
+        },
+        {
+          "id": "apis-quiz-22",
+          "question": "Which database type is document-oriented?",
+          "options": ["SQL", "NoSQL", "Relational", "Hierarchical"],
+          "correct": 1,
+          "explanation": "NoSQL databases like MongoDB are document-oriented, storing data as JSON-like documents with flexible schemas."
+        },
+        {
+          "id": "apis-quiz-23",
+          "question": "What is the purpose of API versioning?",
+          "options": ["To make APIs faster", "To maintain backward compatibility", "To add new features", "To improve security"],
+          "correct": 1,
+          "explanation": "API versioning allows you to introduce changes while maintaining backward compatibility for existing clients."
+        },
+        {
+          "id": "apis-quiz-24",
+          "question": "Which HTTP method is idempotent?",
+          "options": ["POST", "PUT", "PATCH", "DELETE"],
+          "correct": 1,
+          "explanation": "PUT is idempotent - making the same request multiple times produces the same result. POST is not idempotent as it creates new resources each time."
+        },
+        {
+          "id": "apis-quiz-25",
+          "question": "What is the purpose of middleware?",
+          "options": ["To store data", "To process requests/responses", "To create databases", "To design interfaces"],
+          "correct": 1,
+          "explanation": "Middleware functions are functions that have access to the request and response objects and can modify them or end the request-response cycle."
+        },
+        {
+          "id": "apis-quiz-26",
+          "question": "Which status code indicates authentication required?",
+          "options": ["401 Unauthorized", "403 Forbidden", "404 Not Found", "400 Bad Request"],
+          "correct": 0,
+          "explanation": "HTTP 401 Unauthorized indicates that the request lacks valid authentication credentials for the target resource."
+        },
+        {
+          "id": "apis-quiz-27",
+          "question": "What is WebSocket used for?",
+          "options": ["File transfer", "Real-time communication", "Database queries", "Image processing"],
+          "correct": 1,
+          "explanation": "WebSocket provides full-duplex communication channels over a single TCP connection, used for real-time features like chat, notifications, and live updates."
+        },
+        {
+          "id": "apis-quiz-28",
+          "question": "What does CRUD stand for?",
+          "options": ["Create Read Update Delete", "Code Read Update Delete", "Create Retrieve Update Delete", "Code Retrieve Update Delete"],
+          "correct": 0,
+          "explanation": "CRUD stands for Create, Read, Update, Delete - the four basic operations for persistent storage in databases and APIs."
+        },
+        {
+          "id": "apis-quiz-29",
+          "question": "Which database provides ACID properties?",
+          "options": ["MongoDB", "Redis", "PostgreSQL", "Cassandra"],
+          "correct": 2,
+          "explanation": "PostgreSQL is a relational database that provides ACID (Atomicity, Consistency, Isolation, Durability) properties for reliable transactions."
+        },
+        {
+          "id": "apis-quiz-30",
+          "question": "What is the purpose of an API gateway?",
+          "options": ["To store data", "To route requests to services", "To create databases", "To design interfaces"],
+          "correct": 1,
+          "explanation": "An API gateway acts as a single entry point for all client requests, handling routing, authentication, rate limiting, and other cross-cutting concerns."
         }
       ]
     },
@@ -1213,6 +2318,81 @@
           "id": "vue-15",
           "title": "Testing",
           "content": "Use Vue Test Utils for component testing, Vitest for unit testing. Test components in isolation, mock dependencies. Test computed properties, methods, and user interactions. Use shallow mounting for better performance."
+        },
+        {
+          "id": "vue-16",
+          "title": "Vue Router Advanced",
+          "content": "Use route guards for authentication, lazy loading for code splitting, route meta for permissions, programmatic navigation with router.push(), route parameters and query strings, nested routes for complex layouts."
+        },
+        {
+          "id": "vue-17",
+          "title": "Vuex Advanced Patterns",
+          "content": "Use modules for state organization, getters for computed state, actions for async operations, mutations for state changes. Implement plugins for logging, persistence. Use mapState, mapGetters, mapActions helpers."
+        },
+        {
+          "id": "vue-18",
+          "title": "Pinia State Management",
+          "content": "Modern alternative to Vuex. Simpler API, better TypeScript support, devtools integration. Use stores for state, getters for computed values, actions for mutations. Automatic reactivity with Composition API."
+        },
+        {
+          "id": "vue-19",
+          "title": "Vue 3 Composition API",
+          "content": "Use setup() function, reactive() for reactive data, ref() for primitives, computed() for derived state, watch() for side effects, lifecycle hooks (onMounted, onUpdated, onUnmounted). Better code organization and reusability."
+        },
+        {
+          "id": "vue-20",
+          "title": "Vue Components Advanced",
+          "content": "Use slots for content distribution, scoped slots for flexible templates, dynamic components with <component :is=\"comp\">, async components with defineAsyncComponent(), keep-alive for performance optimization."
+        },
+        {
+          "id": "vue-21",
+          "title": "Vue Performance Optimization",
+          "content": "Use v-memo for expensive computations, keep-alive for component caching, lazy loading for routes, code splitting with dynamic imports, virtual scrolling for large lists, computed properties for expensive operations."
+        },
+        {
+          "id": "vue-22",
+          "title": "Vue Animations",
+          "content": "Use <transition> for enter/leave animations, <transition-group> for list animations, animation classes (v-enter, v-enter-active, v-enter-to), JavaScript hooks (@enter, @after-enter), staggered animations with transition-group."
+        },
+        {
+          "id": "vue-23",
+          "title": "Vue Directives",
+          "content": "Built-in: v-if/v-else/v-show for conditional rendering, v-for for lists, v-bind for attributes, v-on for events, v-model for two-way binding. Custom directives: bind, inserted, update, componentUpdated, unbind hooks."
+        },
+        {
+          "id": "vue-24",
+          "title": "Vue Plugins",
+          "content": "Extend Vue functionality with plugins. Install with Vue.use(). Add global methods, directives, mixins, components. Examples: Vue Router, Vuex, Vue I18n, custom business logic plugins."
+        },
+        {
+          "id": "vue-25",
+          "title": "Vue SSR",
+          "content": "Server-Side Rendering for better SEO and performance. Use Nuxt.js framework for simplified setup. Handle hydration, meta tags, routing. Critical CSS inlining, code splitting, progressive enhancement."
+        },
+        {
+          "id": "vue-26",
+          "title": "Vue Accessibility",
+          "content": "Use semantic HTML, ARIA attributes, keyboard navigation, focus management. Test with screen readers. Follow WCAG guidelines. Use Vue A11y plugin for automated accessibility checks."
+        },
+        {
+          "id": "vue-27",
+          "title": "Vue Internationalization",
+          "content": "Use Vue I18n plugin for multi-language support. Reactive locale switching, pluralization, date/number formatting. Lazy loading of translation files. RTL language support with CSS logical properties."
+        },
+        {
+          "id": "vue-28",
+          "title": "Vue Best Practices",
+          "content": "Use Composition API for complex components, Options API for simple ones. Keep components small and focused. Use provide/inject for prop drilling. Implement proper error boundaries. Follow Vue style guide."
+        },
+        {
+          "id": "vue-29",
+          "title": "Vue 3 Migration",
+          "content": "Update from Vue 2 to Vue 3: Composition API adoption, Vuex to Pinia migration, router changes, breaking changes handling. Use migration build for gradual upgrade. Update testing setup and build tools."
+        },
+        {
+          "id": "vue-30",
+          "title": "Vue Ecosystem",
+          "content": "Nuxt.js for SSR/SPA, Quasar for cross-platform, Vuetify/Material Design for UI components, Vue CLI for scaffolding, Vite for fast development, Vue DevTools for debugging, Vue Use for composables."
         }
       ],
       "quiz": [
@@ -1320,6 +2500,111 @@
           "options": ["provide/inject", "props/emits", "context/inject", "parent/child"],
           "correct": 0,
           "explanation": "provide() and inject() are used for dependency injection in Vue, allowing parent components to provide data to deeply nested children."
+        },
+        {
+          "id": "vue-quiz-16",
+          "question": "Which Composition API function creates reactive data?",
+          "options": ["reactive()", "ref()", "computed()", "watch()"],
+          "correct": 0,
+          "explanation": "reactive() creates reactive objects, while ref() creates reactive primitives. computed() creates derived reactive values."
+        },
+        {
+          "id": "vue-quiz-17",
+          "question": "What is the purpose of keep-alive?",
+          "options": ["To cache inactive components", "To prevent component destruction", "To improve performance", "All of the above"],
+          "correct": 3,
+          "explanation": "keep-alive caches inactive component instances to preserve their state and improve performance by avoiding re-creation."
+        },
+        {
+          "id": "vue-quiz-18",
+          "question": "Which directive is used for list rendering?",
+          "options": ["v-if", "v-for", "v-show", "v-bind"],
+          "correct": 1,
+          "explanation": "v-for is used for rendering lists in Vue templates, iterating over arrays or objects."
+        },
+        {
+          "id": "vue-quiz-19",
+          "question": "What does v-model do?",
+          "options": ["One-way data binding", "Two-way data binding", "Event binding", "Style binding"],
+          "correct": 1,
+          "explanation": "v-model creates two-way data binding between form inputs and component data."
+        },
+        {
+          "id": "vue-quiz-20",
+          "question": "Which lifecycle hook is called after component updates?",
+          "options": ["onMounted", "onUpdated", "onUnmounted", "onBeforeUpdate"],
+          "correct": 1,
+          "explanation": "onUpdated is called after the component has updated its DOM in response to reactive state changes."
+        },
+        {
+          "id": "vue-quiz-21",
+          "question": "What is Pinia?",
+          "options": ["State management library", "Router library", "Testing library", "Animation library"],
+          "correct": 0,
+          "explanation": "Pinia is the recommended state management library for Vue 3, replacing Vuex with a simpler and more intuitive API."
+        },
+        {
+          "id": "vue-quiz-22",
+          "question": "Which function registers a global component?",
+          "options": ["Vue.component()", "app.component()", "Vue.use()", "app.use()"],
+          "correct": 1,
+          "explanation": "app.component() registers a global component in Vue 3. Vue.component() was used in Vue 2."
+        },
+        {
+          "id": "vue-quiz-23",
+          "question": "What is the purpose of Suspense?",
+          "options": ["Error handling", "Async component loading", "Route transitions", "Data fetching"],
+          "correct": 1,
+          "explanation": "Suspense allows components to wait for async operations and display fallback content while loading."
+        },
+        {
+          "id": "vue-quiz-24",
+          "question": "Which method is used for programmatic navigation?",
+          "options": ["router.push()", "router.go()", "router.navigate()", "router.redirect()"],
+          "correct": 0,
+          "explanation": "router.push() is used for programmatic navigation to add a new entry to the history stack."
+        },
+        {
+          "id": "vue-quiz-25",
+          "question": "What does Teleport do?",
+          "options": ["Renders component outside parent tree", "Creates portals", "Moves components", "Teleports data"],
+          "correct": 0,
+          "explanation": "Teleport renders a component's template anywhere in the DOM, outside the parent component tree."
+        },
+        {
+          "id": "vue-quiz-26",
+          "question": "Which directive is used for conditional rendering?",
+          "options": ["v-if", "v-for", "v-show", "v-bind"],
+          "correct": 0,
+          "explanation": "v-if conditionally renders elements based on truthy/falsy values. v-show toggles visibility with CSS display property."
+        },
+        {
+          "id": "vue-quiz-27",
+          "question": "What is the difference between v-if and v-show?",
+          "options": ["v-if removes elements, v-show hides with CSS", "v-show removes elements, v-if hides with CSS", "No difference", "v-if is faster"],
+          "correct": 0,
+          "explanation": "v-if completely removes elements from DOM when false, while v-show uses CSS display: none to hide them."
+        },
+        {
+          "id": "vue-quiz-28",
+          "question": "Which function creates computed properties?",
+          "options": ["computed()", "reactive()", "ref()", "watch()"],
+          "correct": 0,
+          "explanation": "computed() creates reactive computed values that automatically update when their dependencies change."
+        },
+        {
+          "id": "vue-quiz-29",
+          "question": "What is the purpose of watch?",
+          "options": ["To watch for data changes", "To create reactive data", "To compute values", "To bind events"],
+          "correct": 0,
+          "explanation": "watch() is used to watch for changes to reactive data and perform side effects when values change."
+        },
+        {
+          "id": "vue-quiz-30",
+          "question": "Which tool is recommended for Vue development?",
+          "options": ["Create React App", "Vue CLI", "Angular CLI", "Vite"],
+          "correct": 3,
+          "explanation": "Vite is the recommended build tool for Vue 3, providing fast development with instant hot module replacement."
         }
       ]
     },
@@ -1402,6 +2687,81 @@
           "id": "react-15",
           "title": "React DevTools",
           "content": "Browser extension for debugging React apps. Inspect component hierarchy, view props/state, profile performance. Use Profiler to measure render times. Check for unnecessary re-renders."
+        },
+        {
+          "id": "react-16",
+          "title": "React Router Advanced",
+          "content": "Use useNavigate for programmatic navigation, useParams for route parameters, useSearchParams for query strings, useLocation for current location, Outlet for nested routes, Navigate for redirects."
+        },
+        {
+          "id": "react-17",
+          "title": "React Context Advanced",
+          "content": "Use useContext for consuming context, createContext for creating providers, useReducer for complex state logic. Split contexts for performance. Use context selectors to prevent unnecessary re-renders."
+        },
+        {
+          "id": "react-18",
+          "title": "React Query/TanStack Query",
+          "content": "Powerful data fetching library. Handles caching, background updates, synchronization. Use useQuery for fetching, useMutation for mutations, useInfiniteQuery for pagination. Better than useEffect for server state."
+        },
+        {
+          "id": "react-19",
+          "title": "React Testing Library",
+          "content": "Testing utility focused on user interactions. Use render, screen, fireEvent, userEvent. Test user behavior, not implementation details. Query by accessible names, roles, labels. Follow testing best practices."
+        },
+        {
+          "id": "react-20",
+          "title": "React Performance Optimization",
+          "content": "Use React.memo for component memoization, useMemo for expensive computations, useCallback for function memoization, lazy loading with Suspense, code splitting with dynamic imports, virtual scrolling for large lists."
+        },
+        {
+          "id": "react-21",
+          "title": "React Forms",
+          "content": "Use controlled components with state, uncontrolled with refs. Handle form validation, submission, errors. Use react-hook-form for complex forms. Implement proper accessibility with labels, ARIA attributes."
+        },
+        {
+          "id": "react-22",
+          "title": "React Error Boundaries",
+          "content": "Catch JavaScript errors in component tree. Use componentDidCatch in class components, Error Boundary component wrapper. Display fallback UI. Log errors for monitoring. Don't use for async errors or event handlers."
+        },
+        {
+          "id": "react-23",
+          "title": "React Portals",
+          "content": "Render children into DOM node outside component tree. Use createPortal API. Useful for modals, tooltips, dropdowns. Maintains React event system. Consider accessibility and focus management."
+        },
+        {
+          "id": "react-24",
+          "title": "React Concurrent Features",
+          "content": "React 18 introduces concurrent rendering, automatic batching, Suspense improvements, startTransition for non-urgent updates. Use createRoot instead of render. Better user experience with non-blocking updates."
+        },
+        {
+          "id": "react-25",
+          "title": "React Server Components",
+          "content": "Render components on server, reducing client bundle size. Use 'use client' directive for client components. Server components can access databases directly. Better performance and SEO. Framework-specific implementation."
+        },
+        {
+          "id": "react-26",
+          "title": "React Accessibility",
+          "content": "Use semantic HTML, ARIA attributes, keyboard navigation, focus management. Test with screen readers. Follow WCAG guidelines. Use react-aria or headeless UI libraries for accessible components."
+        },
+        {
+          "id": "react-27",
+          "title": "React State Management",
+          "content": "Use useState for local state, useReducer for complex state, Context for global state, Zustand/Redux for large applications. Consider state colocation with component composition. Avoid prop drilling."
+        },
+        {
+          "id": "react-28",
+          "title": "React Best Practices",
+          "content": "Use functional components with hooks, keep components small and focused, use custom hooks for logic reuse, implement proper error boundaries, use TypeScript for type safety, follow React style guide."
+        },
+        {
+          "id": "react-29",
+          "title": "React Ecosystem",
+          "content": "Next.js for SSR/SPA, Create React App for quick setup, Vite for fast development, Material-UI/Ant Design for components, React Router for routing, Redux Toolkit for state, React Query for data fetching."
+        },
+        {
+          "id": "react-30",
+          "title": "React Modern Patterns",
+          "content": "Use compound components pattern, render props, higher-order components, custom hooks. Implement proper loading and error states. Use Suspense for async operations. Follow single responsibility principle."
         }
       ],
       "quiz": [
@@ -1509,6 +2869,111 @@
           "options": ["componentWillUnmount", "componentDidUnmount", "useEffect cleanup", "All of the above"],
           "correct": 2,
           "explanation": "The cleanup function returned from useEffect is called when the component is unmounted, equivalent to componentWillUnmount in class components."
+        },
+        {
+          "id": "react-quiz-16",
+          "question": "Which hook is used for side effects?",
+          "options": ["useState", "useEffect", "useContext", "useReducer"],
+          "correct": 1,
+          "explanation": "useEffect is used for side effects like data fetching, subscriptions, or DOM manipulation. It runs after render."
+        },
+        {
+          "id": "react-quiz-17",
+          "question": "What is the purpose of useCallback?",
+          "options": ["To memoize values", "To memoize functions", "To create callbacks", "To handle events"],
+          "correct": 1,
+          "explanation": "useCallback memoizes functions to prevent unnecessary re-renders of child components that depend on those functions."
+        },
+        {
+          "id": "react-quiz-18",
+          "question": "Which hook manages global state?",
+          "options": ["useState", "useContext", "useReducer", "useGlobalState"],
+          "correct": 1,
+          "explanation": "useContext is used to consume context values that are provided by a Context.Provider higher up in the component tree."
+        },
+        {
+          "id": "react-quiz-19",
+          "question": "What does React.memo do?",
+          "options": ["Memoizes component props", "Prevents re-renders if props unchanged", "Memoizes component state", "Caches component functions"],
+          "correct": 1,
+          "explanation": "React.memo prevents re-renders of functional components if their props haven't changed, similar to shouldComponentUpdate."
+        },
+        {
+          "id": "react-quiz-20",
+          "question": "Which hook is used for form handling?",
+          "options": ["useState", "useEffect", "useForm", "useInput"],
+          "correct": 0,
+          "explanation": "useState is commonly used for form handling in React, managing input values and form state."
+        },
+        {
+          "id": "react-quiz-21",
+          "question": "What is JSX?",
+          "options": ["JavaScript XML", "JavaScript Extension", "JSON XML", "Java Syntax Extension"],
+          "correct": 0,
+          "explanation": "JSX stands for JavaScript XML and allows you to write HTML-like syntax in JavaScript that gets compiled to React.createElement calls."
+        },
+        {
+          "id": "react-quiz-22",
+          "question": "Which hook is used for async operations?",
+          "options": ["useState", "useEffect", "useAsync", "usePromise"],
+          "correct": 1,
+          "explanation": "useEffect is commonly used for async operations like data fetching, although libraries like React Query provide better abstractions."
+        },
+        {
+          "id": "react-quiz-23",
+          "question": "What is the virtual DOM?",
+          "options": ["Real DOM copy", "Lightweight JavaScript representation", "DOM backup", "Component tree"],
+          "correct": 1,
+          "explanation": "Virtual DOM is a lightweight JavaScript representation of the actual DOM that React uses to optimize updates and improve performance."
+        },
+        {
+          "id": "react-quiz-24",
+          "question": "Which method renders React to DOM?",
+          "options": ["React.render()", "ReactDOM.render()", "render()", "createRoot()"],
+          "correct": 3,
+          "explanation": "createRoot() from react-dom/client is the modern way to render React applications in React 18."
+        },
+        {
+          "id": "react-quiz-25",
+          "question": "What is the purpose of keys in lists?",
+          "options": ["To identify list items", "To improve performance", "To maintain component state", "All of the above"],
+          "correct": 3,
+          "explanation": "Keys help React identify which items have changed, are added, or are removed, improving performance and maintaining component state."
+        },
+        {
+          "id": "react-quiz-26",
+          "question": "Which hook is used for complex state logic?",
+          "options": ["useState", "useEffect", "useReducer", "useContext"],
+          "correct": 2,
+          "explanation": "useReducer is used for complex state logic that involves multiple sub-values or when the next state depends on the previous one."
+        },
+        {
+          "id": "react-quiz-27",
+          "question": "What is React Router used for?",
+          "options": ["State management", "Routing", "Data fetching", "Styling"],
+          "correct": 1,
+          "explanation": "React Router is used for declarative routing in React applications, allowing navigation between different components."
+        },
+        {
+          "id": "react-quiz-28",
+          "question": "Which lifecycle method is deprecated?",
+          "options": ["componentDidMount", "componentWillUnmount", "componentWillMount", "componentDidUpdate"],
+          "correct": 2,
+          "explanation": "componentWillMount was deprecated in React 16.3 and removed in React 17. Use componentDidMount instead."
+        },
+        {
+          "id": "react-quiz-29",
+          "question": "What is the purpose of useMemo?",
+          "options": ["To memoize functions", "To memoize expensive computations", "To cache API calls", "To optimize re-renders"],
+          "correct": 1,
+          "explanation": "useMemo memoizes expensive computations so they don't run on every render if their dependencies haven't changed."
+        },
+        {
+          "id": "react-quiz-30",
+          "question": "Which tool is used for React testing?",
+          "options": ["Jest", "Mocha", "Jasmine", "All of the above"],
+          "correct": 3,
+          "explanation": "Jest, Mocha, and Jasmine can all be used for testing React applications, with Jest being the most commonly used with Create React App."
         }
       ]
     },
@@ -1591,6 +3056,81 @@
           "id": "angular-15",
           "title": "Performance",
           "content": "Use OnPush change detection strategy. Use trackBy in ngFor. Avoid unnecessary subscriptions. Use lazy loading. Minimize watchers. Use pure pipes. Profile with Angular DevTools."
+        },
+        {
+          "id": "angular-16",
+          "title": "Angular Router Advanced",
+          "content": "Use route guards (CanActivate, CanDeactivate), resolvers for data preloading, route parameters, query parameters, fragments. Implement lazy loading, preloading strategies, route animations."
+        },
+        {
+          "id": "angular-17",
+          "title": "Angular Reactive Forms",
+          "content": "Use FormBuilder, FormGroup, FormControl, FormArray. Implement custom validators, async validators, dynamic forms. Handle form submission, validation errors, disabled states. Use valueChanges for reactive updates."
+        },
+        {
+          "id": "angular-18",
+          "title": "Angular HTTP Client",
+          "content": "Use HttpClient for REST API calls. Implement interceptors for authentication, logging, error handling. Use HttpClientModule. Handle different response types, error handling, retry logic."
+        },
+        {
+          "id": "angular-19",
+          "title": "Angular Testing",
+          "content": "Use TestBed for component testing, Jasmine for test framework, Karma for test runner. Test components, services, pipes, directives. Mock dependencies, test async operations, test user interactions."
+        },
+        {
+          "id": "angular-20",
+          "title": "Angular Animations",
+          "content": "Use @angular/animations package. Define triggers, states, transitions, keyframes. Use animation metadata in components. Implement enter/leave animations, stagger effects, parallel/sequential animations."
+        },
+        {
+          "id": "angular-21",
+          "title": "Angular PWA",
+          "content": "Use Angular Service Worker for offline functionality, caching strategies, background sync. Implement push notifications. Use @angular/pwa schematics. Configure web app manifest for installable apps."
+        },
+        {
+          "id": "angular-22",
+          "title": "Angular State Management",
+          "content": "Use NgRx for complex state management, Akita for simpler solutions. Implement actions, reducers, selectors, effects. Use @ngrx/store, @ngrx/effects, @ngrx/entity for entity management."
+        },
+        {
+          "id": "angular-23",
+          "title": "Angular Internationalization",
+          "content": "Use @angular/localize for i18n. Extract messages with ng extract-i18n. Configure locales. Use currency, date, number pipes with locale. Handle RTL languages and cultural differences."
+        },
+        {
+          "id": "angular-24",
+          "title": "Angular Accessibility",
+          "content": "Follow WCAG guidelines. Use semantic HTML, ARIA attributes, keyboard navigation. Test with screen readers. Implement focus management, skip links, proper form labels. Use ngAria for automatic accessibility."
+        },
+        {
+          "id": "angular-25",
+          "title": "Angular Best Practices",
+          "content": "Use Angular CLI for project setup. Follow Angular style guide. Use OnPush change detection. Implement proper error handling. Use TypeScript strict mode. Write unit tests. Use linting and formatting."
+        },
+        {
+          "id": "angular-26",
+          "title": "Angular Architecture",
+          "content": "Use feature modules for organization. Implement core/shared modules. Use barrel exports. Separate concerns with services. Use dependency injection. Implement proper component communication patterns."
+        },
+        {
+          "id": "angular-27",
+          "title": "Angular Deployment",
+          "content": "Build for production with ng build --prod. Use Ahead-of-Time compilation. Enable tree shaking. Optimize bundle size. Configure CI/CD pipelines. Deploy to various platforms (Firebase, Netlify, AWS, etc.)."
+        },
+        {
+          "id": "angular-28",
+          "title": "Angular Ecosystem",
+          "content": "Angular CLI for scaffolding, Angular Material for UI components, Angular Universal for SSR, RxJS for reactive programming, NgRx for state management, Angular Testing Library for testing utilities."
+        },
+        {
+          "id": "angular-29",
+          "title": "Angular Migration",
+          "content": "Update from older versions to latest. Use Angular Update Guide. Handle breaking changes. Update dependencies. Test thoroughly. Use codelyzer for migration assistance. Plan for gradual migration."
+        },
+        {
+          "id": "angular-30",
+          "title": "Angular Modern Features",
+          "content": "Standalone components, new control flow syntax (@if, @for, @switch), inject() function, signals for reactivity, better hydration, improved performance, enhanced developer experience with Angular DevTools."
         }
       ],
       "quiz": [
@@ -1698,6 +3238,111 @@
           "options": ["To store configuration", "To define API endpoints", "To enable/disable features", "All of the above"],
           "correct": 3,
           "explanation": "Environment files (environment.ts, environment.prod.ts) store configuration like API URLs, feature flags, and other environment-specific settings."
+        },
+        {
+          "id": "angular-quiz-16",
+          "question": "Which CLI command creates a new Angular component?",
+          "options": ["ng generate component", "ng create component", "ng new component", "ng add component"],
+          "correct": 0,
+          "explanation": "ng generate component creates a new Angular component with all necessary files (component, template, styles, test)."
+        },
+        {
+          "id": "angular-quiz-17",
+          "question": "What is the purpose of HttpClientModule?",
+          "options": ["To create HTTP requests", "To handle routing", "To manage state", "To create forms"],
+          "correct": 0,
+          "explanation": "HttpClientModule provides HttpClient for making HTTP requests to REST APIs with features like interceptors, error handling, and typed responses."
+        },
+        {
+          "id": "angular-quiz-18",
+          "question": "Which decorator is used for services?",
+          "options": ["@Component", "@Service", "@Injectable", "@Directive"],
+          "correct": 2,
+          "explanation": "@Injectable decorator marks a class as available for dependency injection. It's used for services that may have their own dependencies."
+        },
+        {
+          "id": "angular-quiz-19",
+          "question": "What is the purpose of ngOnInit?",
+          "options": ["Component initialization", "Component destruction", "After view init", "Before view init"],
+          "correct": 0,
+          "explanation": "ngOnInit is called once after the component is initialized and its inputs are set. It's commonly used for data fetching and initialization logic."
+        },
+        {
+          "id": "angular-quiz-20",
+          "question": "Which directive is used for conditional rendering?",
+          "options": ["*ngIf", "*ngFor", "*ngSwitch", "*ngStyle"],
+          "correct": 0,
+          "explanation": "*ngIf conditionally includes or removes an element from the DOM based on the expression value."
+        },
+        {
+          "id": "angular-quiz-21",
+          "question": "What is the purpose of ReactiveFormsModule?",
+          "options": ["Template-driven forms", "Reactive forms", "Dynamic forms", "All form types"],
+          "correct": 1,
+          "explanation": "ReactiveFormsModule provides reactive forms with FormBuilder, FormGroup, and FormControl classes for programmatic form management."
+        },
+        {
+          "id": "angular-quiz-22",
+          "question": "Which lifecycle hook is called after view initialization?",
+          "options": ["ngOnInit", "ngAfterViewInit", "ngOnDestroy", "ngAfterContentInit"],
+          "correct": 1,
+          "explanation": "ngAfterViewInit is called after the component's view and child views have been initialized. Use it for DOM-dependent initialization."
+        },
+        {
+          "id": "angular-quiz-23",
+          "question": "What is the purpose of ViewChild?",
+          "options": ["To query child components", "To access DOM elements", "To communicate with parent", "To create child routes"],
+          "correct": 0,
+          "explanation": "ViewChild is used to get references to child components, directives, or DOM elements within the component's template."
+        },
+        {
+          "id": "angular-quiz-24",
+          "question": "Which operator is used for async operations in Angular?",
+          "options": ["map", "filter", "subscribe", "pipe"],
+          "correct": 2,
+          "explanation": "subscribe() is used to execute observables and handle their emissions. It's essential for working with async operations in Angular."
+        },
+        {
+          "id": "angular-quiz-25",
+          "question": "What is the purpose of CanActivate guard?",
+          "options": ["To activate routes", "To protect routes", "To redirect users", "To load data"],
+          "correct": 1,
+          "explanation": "CanActivate guard is used to protect routes by checking if a user can access them, typically used for authentication checks."
+        },
+        {
+          "id": "angular-quiz-26",
+          "question": "Which command builds Angular for production?",
+          "options": ["ng build", "ng build --prod", "ng serve --prod", "ng deploy"],
+          "correct": 1,
+          "explanation": "ng build --prod builds the application with production optimizations including AOT compilation, tree shaking, and bundle optimization."
+        },
+        {
+          "id": "angular-quiz-27",
+          "question": "What is the purpose of trackBy in ngFor?",
+          "options": ["To track DOM changes", "To improve performance", "To sort items", "To filter items"],
+          "correct": 1,
+          "explanation": "trackBy function helps Angular track which items have changed in a list, improving performance by avoiding unnecessary DOM manipulations."
+        },
+        {
+          "id": "angular-quiz-28",
+          "question": "Which lifecycle hook is called before component destruction?",
+          "options": ["ngOnDestroy", "ngOnInit", "ngAfterViewInit", "ngAfterContentInit"],
+          "correct": 0,
+          "explanation": "ngOnDestroy is called just before the component is destroyed, used for cleanup like unsubscribing from observables or clearing timers."
+        },
+        {
+          "id": "angular-quiz-29",
+          "question": "What is the purpose of async pipe?",
+          "options": ["To handle promises", "To subscribe to observables", "To manage async operations", "To create async functions"],
+          "correct": 1,
+          "explanation": "async pipe automatically subscribes to observables and unsubscribes when the component is destroyed, displaying the latest value."
+        },
+        {
+          "id": "angular-quiz-30",
+          "question": "Which tool is used for Angular testing?",
+          "options": ["Jest", "Karma", "Mocha", "All of the above"],
+          "correct": 3,
+          "explanation": "Angular uses Karma as the test runner, Jasmine as the testing framework, and supports various assertion libraries for comprehensive testing."
         }
       ]
     }
